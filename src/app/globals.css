@@ -3,19 +3,61 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --transition-duration: 1000ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  transition: transform var(--transition-duration) cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.section-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-timeline: --page-scroll block;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: var(--transition-duration);
+}
+
+.section-container::-webkit-scrollbar {
+  display: none;
+}
+
+.section-white {
+  background-color: white;
+  color: black;
+  transition: background-color var(--transition-duration) ease-in-out,
+              color var(--transition-duration) ease-in-out;
+}
+
+.section-black {
+  background-color: black;
+  color: white;
+  transition: background-color var(--transition-duration) ease-in-out,
+              color var(--transition-duration) ease-in-out;
 }
