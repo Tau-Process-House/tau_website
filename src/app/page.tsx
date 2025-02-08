@@ -30,7 +30,7 @@ export default function Home() {
           
           <div className="text-center mb-0">
             <p className="text-xl mb-2">Processes are created when strategy is implemented through technology.</p>
-            <p className="text-xl">Let's connect your strategy with our technology.</p>
+            <p className="text-xl">Let&apos;s connect your strategy with our technology.</p>
           </div>
           
           <div className="relative w-full max-w-md mx-auto aspect-square">
