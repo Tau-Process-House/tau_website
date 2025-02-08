@@ -30,7 +30,7 @@ export default function Home() {
           
           <div className="text-center mb-0">
             <p className="text-xl mb-2">Processes are created when strategy is implemented through technology.</p>
-            <p className="text-xl">Let&apos;s connect your strategy with our technology.</p>
+            <p className="text-xl">We help you to connect your strategy with your technology.</p>
           </div>
           
           <div className="relative w-full max-w-md mx-auto aspect-square">
@@ -57,17 +57,17 @@ export default function Home() {
             <div className="p-6 rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Technology</h3>
               <ul className="space-y-4">
-                <li>• Strong foundations, future-proofed</li>
-                <li>• Seamless integration with your best-in-class tools</li>
-                <li>• Leveraging your existing ecosystem</li>
+                <li>• Building ontop of strong foundations like Zoho One, Google Workspace or Microsoft 365</li>
+                <li>• Integrating your favorite software tools like Slack, Notion, Mailchimp, etc.</li>
+                <li>• Leveraging on-platform customization tools like scripting or workflow automation</li>
               </ul>
             </div>
             <div className="p-6 rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Methodology</h3>
               <ul className="space-y-4">
-                <li>• Designing streamlined, future-state processes</li>
-                <li>• Implementing within your existing environment</li>
-                <li>• Continuous tracking, automation and optimization</li>
+                <li>• Analysing your strategy, existing technology and user needs</li>
+                <li>• Designing, implementing and tracking these processes on your platform of choice</li>
+                <li>• Incremental redesign, automation and optimization of process steps</li>
               </ul>
             </div>
           </div>
@@ -81,15 +81,15 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4">Expertise</h3>
-              <p>Proven track record in process optimization and automation in various industries</p>
+              <p>Proven track record of our technology and methodology for process optimization in various industries and company sizes</p>
             </div>
             <div className="p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4">Custom Solutions</h3>
-              <p>Each client is unique, we tailor our solution to your specific business requirements</p>
+              <p>Every client is unique! We do not rely on one-fits-all solutions but tailor solutions to your specific requirements and your software stack</p>
             </div>
             <div className="p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4">Sustainable</h3>
-              <p>Built on leading platforms, ensuring continuous updates and adaptability to future technologies</p>
+              <p>Building on major platforms like Google, Microsoft and Zoho ensures continuous function- and security-updates to stay ahead of the curve</p>
             </div>
           </div>
         </div>
