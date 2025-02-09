@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useAnimation, PanInfo } from 'framer-motion';
+import { motion, useAnimation, PanInfo } from 'framer-motion';
 
 const teamMembers = [
   {
@@ -48,7 +48,7 @@ export default function TeamCarousel() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleDragEnd = async (event: any, info: PanInfo) => {
+  const handleDragEnd = async (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const swipeThreshold = 50;
     if (Math.abs(info.offset.x) > swipeThreshold) {
       if (info.offset.x > 0) {

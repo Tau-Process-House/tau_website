@@ -122,14 +122,14 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="p-6 rounded-lg text-center">
               <h3 className="text-2xl font-bold mb-4">For clients</h3>
-              <a href="mailto:info@tau-process.de" className="text-xl hover:underline">
-                info@tau-process.de
+              <a href="mailto:rimbas.itb+info@gmail.com" className="text-xl hover:underline">
+              rimbas.itb@gmail.com
               </a>
             </div>
             <div className="p-6 rounded-lg text-center">
               <h3 className="text-2xl font-bold mb-4">For applicants</h3>
               <a
-                href="https://www.linkedin.com/company/tau-process-house"
+                href="https://www.linkedin.com/company/rimbasdv/jobs/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xl hover:underline"
