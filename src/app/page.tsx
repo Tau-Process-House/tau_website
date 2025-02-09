@@ -101,9 +101,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Who we are</h2>
           
-          <div className="relative">
+          <div className="flex justify-center">
             <motion.div
-              className="flex justify-center"
+              className="w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
