@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import TeamCarousel from '@/components/TeamCarousel';
 
 export default function Home() {
   return (
@@ -95,8 +96,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Who are we Section */}
       <section className="section section-black">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Who we are</h2>
+          
+          <div className="relative">
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Team Cards Container */}
+              <TeamCarousel />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="section section-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Contact</h2>
           <div className="grid md:grid-cols-2 gap-8 mb-12">

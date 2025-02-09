@@ -61,3 +61,46 @@ body {
   transition: background-color var(--transition-duration) ease-in-out,
               color var(--transition-duration) ease-in-out;
 }
+
+
+/* Team Card Styles */
+.team-card {
+  @apply bg-white text-black p-8 rounded-lg shadow-xl max-w-sm mx-auto;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-image {
+  @apply w-48 h-48 mx-auto rounded-full mb-6 object-cover;
+}
+
+.team-quote {
+  @apply italic text-gray-600 text-lg mt-4;
+}
+
+.team-quote::before {
+  content: '"';
+}
+
+.team-quote::after {
+  content: '"';
+}
+
+/* Slider Controls */
+.slider-control {
+  @apply absolute top-1/2 -translate-y-1/2 bg-black/10 hover:bg-black/20 
+         w-12 h-12 rounded-full flex items-center justify-center 
+         text-black transition-all cursor-pointer;
+}
+
+.slider-prev {
+  @apply left-4;
+}
+
+.slider-next {
+  @apply right-4;
+}
+
