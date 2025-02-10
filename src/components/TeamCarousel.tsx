@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, useAnimation, PanInfo } from 'framer-motion';
+import Image from 'next/image';
 
 const teamMembers = [
   {
@@ -32,28 +33,19 @@ const teamMembers = [
 const TeamCarousel = () => {
   const [mounted, setMounted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const controls = useAnimation();
 
-  // Debounce für das Resize-Event
   useEffect(() => {
-    const checkMobile = () => {
+    setMounted(true);
+    setIsMobile(window.innerWidth < 768);
+    
+    const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
     
-    let timeoutId: NodeJS.Timeout;
-    const debouncedCheckMobile = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(checkMobile, 250);
-    };
-    
-    checkMobile();
-    setMounted(true);
-    window.addEventListener('resize', debouncedCheckMobile);
-    return () => {
-      window.removeEventListener('resize', debouncedCheckMobile);
-      clearTimeout(timeoutId);
-    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Lazy loading für Bilder
@@ -79,27 +71,7 @@ const TeamCarousel = () => {
   };
 
   if (!mounted) {
-    // Render mobile version während des Server-Side Renderings
-    return (
-      <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
-        <div className="relative h-[500px] flex items-center justify-center">
-          <div className="flex items-center w-full justify-center">
-            <div className="shrink-0 w-full">
-              <div className="team-card w-[300px] mx-auto max-w-[90%]">
-                <img 
-                  src={teamMembers[0].image} 
-                  alt={teamMembers[0].name} 
-                  className="team-image" 
-                />
-                <h3 className="text-2xl font-bold mb-2">{teamMembers[0].name}</h3>
-                <p className="text-gray-600 mb-4">{teamMembers[0].role}</p>
-                <p className="team-quote">{teamMembers[0].quote}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return null; // Render nichts während des Server-Side Renderings
   }
 
   return (
@@ -120,10 +92,12 @@ const TeamCarousel = () => {
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)}
               >
                 <div className="team-card w-[300px]">
-                  <img 
+                  <Image 
                     src={teamMembers[(currentIndex - 1 + teamMembers.length) % teamMembers.length].image} 
                     alt="Previous team member" 
                     className="team-image" 
+                    width={300}
+                    height={300}
                   />
                 </div>
               </div>
@@ -132,7 +106,7 @@ const TeamCarousel = () => {
             {/* Aktuelle Karte */}
             <div className={`shrink-0 ${!isMobile ? 'z-10 scale-105' : 'w-full'}`}>
               <div className={`team-card w-[300px] ${isMobile ? 'mx-auto max-w-[90%]' : ''}`}>
-                <img 
+                <Image 
                   src={teamMembersWithLoading[currentIndex].image} 
                   alt={teamMembersWithLoading[currentIndex].name} 
                   className="team-image" 
@@ -153,10 +127,12 @@ const TeamCarousel = () => {
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % teamMembers.length)}
               >
                 <div className="team-card w-[300px]">
-                  <img 
+                  <Image 
                     src={teamMembers[(currentIndex + 1) % teamMembers.length].image} 
                     alt="Next team member" 
                     className="team-image" 
+                    width={300}
+                    height={300}
                   />
                 </div>
               </div>

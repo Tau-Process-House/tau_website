@@ -104,3 +104,28 @@ body {
   @apply right-4;
 }
 
+/* Fügen Sie diese Styles am Ende der Datei hinzu */
+.section-dots {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 50;
+}
+
+.section-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.6);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.section-dot.active {
+  transform: scale(1.5);
+  background-color: rgba(128, 128, 128, 0.9);
+}
+
