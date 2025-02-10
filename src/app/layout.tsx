@@ -3,7 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap'  // Verbessert FCP (First Contentful Paint)
+});
 
 export const metadata: Metadata = {
   title: "Tau Process House",
@@ -25,12 +28,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://cdn-cookieyes.com" />
+      </head>
       <body>
         {children}
         <Script
           id="cookieyes"
           strategy="lazyOnload"
           src="https://cdn-cookieyes.com/client_data/9f7466614a16a609c3f3f65c/script.js"
+          defer
         />
       </body>
     </html>

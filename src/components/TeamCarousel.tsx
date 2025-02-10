@@ -29,22 +29,38 @@ const teamMembers = [
   }
 ];
 
-export default function TeamCarousel() {
+const TeamCarousel = () => {
   const [mounted, setMounted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
   const controls = useAnimation();
 
+  // Debounce für das Resize-Event
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
     
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheckMobile = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 250);
+    };
+    
     checkMobile();
     setMounted(true);
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener('resize', debouncedCheckMobile);
+    return () => {
+      window.removeEventListener('resize', debouncedCheckMobile);
+      clearTimeout(timeoutId);
+    };
   }, []);
+
+  // Lazy loading für Bilder
+  const teamMembersWithLoading = teamMembers.map(member => ({
+    ...member,
+    loading: "lazy" as const
+  }));
 
   const handleDragEnd = async (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const swipeThreshold = 50;
@@ -117,13 +133,16 @@ export default function TeamCarousel() {
             <div className={`shrink-0 ${!isMobile ? 'z-10 scale-105' : 'w-full'}`}>
               <div className={`team-card w-[300px] ${isMobile ? 'mx-auto max-w-[90%]' : ''}`}>
                 <img 
-                  src={teamMembers[currentIndex].image} 
-                  alt={teamMembers[currentIndex].name} 
+                  src={teamMembersWithLoading[currentIndex].image} 
+                  alt={teamMembersWithLoading[currentIndex].name} 
                   className="team-image" 
+                  loading="lazy"
+                  width={300}
+                  height={300}
                 />
-                <h3 className="text-2xl font-bold mb-2">{teamMembers[currentIndex].name}</h3>
-                <p className="text-gray-600 mb-4">{teamMembers[currentIndex].role}</p>
-                <p className="team-quote">{teamMembers[currentIndex].quote}</p>
+                <h3 className="text-2xl font-bold mb-2">{teamMembersWithLoading[currentIndex].name}</h3>
+                <p className="text-gray-600 mb-4">{teamMembersWithLoading[currentIndex].role}</p>
+                <p className="team-quote">{teamMembersWithLoading[currentIndex].quote}</p>
               </div>
             </div>
 
@@ -147,4 +166,6 @@ export default function TeamCarousel() {
       </div>
     </div>
   );
-} 
+}
+
+export default TeamCarousel; 
