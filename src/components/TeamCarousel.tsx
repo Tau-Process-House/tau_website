@@ -3,7 +3,15 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation, PanInfo } from 'framer-motion';
 import Image from 'next/image';
 
-const teamMembers = [
+interface TeamMember {
+  image: string;
+  name: string;
+  role: string;
+  quote: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const teamMembers: TeamMember[] = [
   {
     image: "/team/felix.jpg",
     name: "Felix Rimbakowsky",
@@ -48,7 +56,6 @@ const TeamCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Lazy loading für Bilder
   const teamMembersWithLoading = teamMembers.map(member => ({
     ...member,
     loading: "lazy" as const
@@ -58,20 +65,17 @@ const TeamCarousel = () => {
     const swipeThreshold = 50;
     if (Math.abs(info.offset.x) > swipeThreshold) {
       if (info.offset.x > 0) {
-        // Nach rechts gewischt
         setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
       } else {
-        // Nach links gewischt
         setCurrentIndex((prev) => (prev + 1) % teamMembers.length);
       }
     } else {
-      // Zurück zur Ausgangsposition, wenn nicht weit genug gewischt wurde
       await controls.start({ x: 0 });
     }
   };
 
   if (!mounted) {
-    return null; // Render nichts während des Server-Side Renderings
+    return null;
   }
 
   return (
@@ -85,7 +89,6 @@ const TeamCarousel = () => {
             onDragEnd={handleDragEnd}
             animate={controls}
           >
-            {/* Vorherige und aktuelle Karte nur auf Desktop anzeigen */}
             {!isMobile && (
               <div 
                 className="shrink-0 opacity-50 cursor-pointer transition-opacity hover:opacity-75"
@@ -103,7 +106,6 @@ const TeamCarousel = () => {
               </div>
             )}
 
-            {/* Aktuelle Karte */}
             <div className={`shrink-0 ${!isMobile ? 'z-10 scale-105' : 'w-full'}`}>
               <div className={`team-card w-[300px] ${isMobile ? 'mx-auto max-w-[90%]' : ''}`}>
                 <Image 
@@ -120,7 +122,6 @@ const TeamCarousel = () => {
               </div>
             </div>
 
-            {/* Nächste Karte nur auf Desktop anzeigen */}
             {!isMobile && (
               <div 
                 className="shrink-0 opacity-50 cursor-pointer transition-opacity hover:opacity-75"
@@ -142,6 +143,6 @@ const TeamCarousel = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TeamCarousel; 
