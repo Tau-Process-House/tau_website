@@ -30,6 +30,18 @@ export default function RootLayout({
     <html lang="en" className={`${inter.className} antialiased`}>
       <head>
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WJFGRZMTSF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WJFGRZMTSF');
+          `}
+        </Script>
       </head>
       <body>
         {children}

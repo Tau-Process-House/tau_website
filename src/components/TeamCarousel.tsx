@@ -11,7 +11,7 @@ const teamMembers = [
     quote: "Processes are the bridge between vision and reality"
   },
   {
-    image: "/team/luca.jpeg",
+    image: "/team/luca.png",
     name: "Luca Bleckmann",
     role: "Lead Project Manager",
     quote: "Technology should serve people, not the other way around"
