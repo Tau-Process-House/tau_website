@@ -48,7 +48,7 @@ export default function RootLayout({
         <Script
           id="cookieyes"
           strategy="lazyOnload"
-          src="https://cdn-cookieyes.com/client_data/9f7466614a16a609c3f3f65c/script.js"
+          src="https://cdn-cookieyes.com/client_data/b45a3cd385ffd614b2659a4a/script.js"
           defer
         />
       </body>
