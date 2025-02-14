@@ -2,30 +2,13 @@
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 
-// Dynamische Imports für alle Sektionen
-const HeroSection = dynamic(() => import('@/components/HeroSection'), {
-  loading: () => <div className="section section-black">Loading...</div>
-});
-
-const WhatSection = dynamic(() => import('@/components/WhatSection'), {
-  loading: () => <div className="section section-white">Loading...</div>
-});
-
-const HowSection = dynamic(() => import('@/components/HowSection'), {
-  loading: () => <div className="section section-black">Loading...</div>
-});
-
-const WhySection = dynamic(() => import('@/components/WhySection'), {
-  loading: () => <div className="section section-white">Loading...</div>
-});
-
-const TeamCarousel = dynamic(() => import('@/components/TeamCarousel'), {
-  loading: () => <div className="section section-black">Loading...</div>
-});
-
-const ContactSection = dynamic(() => import('@/components/ContactSection'), {
-  loading: () => <div className="section section-white">Loading...</div>
-});
+// Vereinfachte dynamische Imports
+const HeroSection = dynamic(() => import('@/components/HeroSection'));
+const WhatSection = dynamic(() => import('@/components/WhatSection'));
+const HowSection = dynamic(() => import('@/components/HowSection'));
+const WhySection = dynamic(() => import('@/components/WhySection'));
+const TeamCarousel = dynamic(() => import('@/components/TeamCarousel'));
+const ContactSection = dynamic(() => import('@/components/ContactSection'));
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -33,22 +16,18 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-
     const updateActiveDot = () => {
       const container = document.querySelector('.section-container');
       if (!container) return;
-
       const sectionHeight = window.innerHeight;
       const scrollPosition = container.scrollTop;
       const currentSection = Math.round(scrollPosition / sectionHeight);
-
       setActiveSection(currentSection);
     };
 
     const container = document.querySelector('.section-container');
     if (container) {
       container.addEventListener('scroll', updateActiveDot);
-      // Initial ausführen
       updateActiveDot();
     }
 
@@ -64,7 +43,6 @@ export default function Home() {
         top: index * window.innerHeight,
         behavior: 'smooth'
       });
-      setActiveSection(index);
     }
   };
 
@@ -78,9 +56,7 @@ export default function Home() {
         <section className="section section-black">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Who we are</h2>
-            <div className="flex justify-center">
-              <TeamCarousel />
-            </div>
+            <TeamCarousel />
           </div>
         </section>
         <ContactSection />

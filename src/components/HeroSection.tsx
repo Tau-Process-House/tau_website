@@ -18,7 +18,7 @@ export default function HeroSection() {
               alt="Process House Logo" 
               width={128} 
               height={128} 
-              className="mx-auto mb-6" 
+              className="mx-auto" 
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Process House</h1>

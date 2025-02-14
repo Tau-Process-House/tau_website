@@ -8,15 +8,14 @@ interface TeamMember {
   name: string;
   role: string;
   quote: string;
-  loading?: 'lazy' | 'eager';
 }
 
-const teamMembers: TeamMember[] = [
+const teamMembers = [
   {
     image: "/team/felix.jpg",
     name: "Felix Rimbakowsky",
     role: "Founder & CEO",
-    quote: "Processes are the bridge between vision and reality"
+    quote: "Processes are the bridge between the vision and reality of a business"
   },
   {
     image: "/team/luca.png",
@@ -28,7 +27,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/placeholder.png",
     name: "[Your Name Here]",
     role: "Future Team Member",
-    quote: "Join our team and shape the future of process automation"
+    quote: "Join our team and shape the future of process automation together with us!"
   },
   {
     image: "/team/moritz.jpeg",
@@ -56,11 +55,6 @@ const TeamCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const teamMembersWithLoading = teamMembers.map(member => ({
-    ...member,
-    loading: "lazy" as const
-  }));
-
   const handleDragEnd = async (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const swipeThreshold = 50;
     if (Math.abs(info.offset.x) > swipeThreshold) {
@@ -74,14 +68,12 @@ const TeamCarousel = () => {
     }
   };
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-8 overflow-visible">
+    <div className="relative w-full max-w-5xl mx-auto px-8">
       <div className="relative h-[500px] flex items-center justify-center">
-        <div className="flex items-center w-full justify-center overflow-visible">
+        <div className="flex items-center w-full justify-center">
           <motion.div
             className={`flex gap-4 ${isMobile ? 'px-4' : ''}`}
             drag="x"
@@ -109,16 +101,15 @@ const TeamCarousel = () => {
             <div className={`shrink-0 ${!isMobile ? 'z-10 scale-105' : 'w-full'}`}>
               <div className={`team-card w-[300px] ${isMobile ? 'mx-auto max-w-[90%]' : ''}`}>
                 <Image 
-                  src={teamMembersWithLoading[currentIndex].image} 
-                  alt={teamMembersWithLoading[currentIndex].name} 
+                  src={teamMembers[currentIndex].image} 
+                  alt={teamMembers[currentIndex].name} 
                   className="team-image" 
-                  loading="lazy"
                   width={300}
                   height={300}
                 />
-                <h3 className="text-2xl font-bold mb-2">{teamMembersWithLoading[currentIndex].name}</h3>
-                <p className="text-gray-600 mb-4">{teamMembersWithLoading[currentIndex].role}</p>
-                <p className="team-quote">{teamMembersWithLoading[currentIndex].quote}</p>
+                <h3 className="text-2xl font-bold mb-2">{teamMembers[currentIndex].name}</h3>
+                <p className="text-gray-600 mb-4">{teamMembers[currentIndex].role}</p>
+                <p className="team-quote">{teamMembers[currentIndex].quote}</p>
               </div>
             </div>
 

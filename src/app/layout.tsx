@@ -12,12 +12,7 @@ export const metadata: Metadata = {
   title: "Tau Process House",
   description: "Process Automation for your company",
   icons: {
-    icon: [
-      {
-        url: 'favicon.ico',
-        href: 'favicon.ico'
-      }
-    ],
+    icon: [{ url: 'favicon.ico', href: 'favicon.ico' }]
   }
 };
 
