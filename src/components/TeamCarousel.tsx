@@ -3,13 +3,6 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation, PanInfo } from 'framer-motion';
 import Image from 'next/image';
 
-interface TeamMember {
-  image: string;
-  name: string;
-  role: string;
-  quote: string;
-}
-
 const teamMembers = [
   {
     image: "/team/felix.jpg",
