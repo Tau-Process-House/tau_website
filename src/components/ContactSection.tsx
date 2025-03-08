@@ -9,13 +9,13 @@ export default function ContactSection() {
           <div className="p-6 rounded-lg text-center">
             <h3 className="text-2xl font-bold mb-4">For clients</h3>
             <a href="mailto:rimbas.itb+info@gmail.com" className="text-xl hover:underline">
-              rimbas.itb@gmail.com
+              info@tauprocess.de
             </a>
           </div>
           <div className="p-6 rounded-lg text-center">
             <h3 className="text-2xl font-bold mb-4">For applicants</h3>
             <a
-              href="https://www.linkedin.com/company/rimbasdv/jobs/"
+              href="https://join.com/companies/tauprocess"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xl hover:underline"
