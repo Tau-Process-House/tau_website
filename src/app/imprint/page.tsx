@@ -16,8 +16,8 @@ export default function Imprint() {
           <div>
             <h2 className="text-2xl font-bold mb-4">Information according to § 5 TMG</h2>
             <p>Felix Rimbakowsky</p>
-            <p>Kreuzbergstraße 26</p>
-            <p>10965 Berlin</p>
+            <p>Großbeerenstraße 71</p>
+            <p>10963 Berlin</p>
           </div>
 
           <div>
@@ -35,8 +35,8 @@ export default function Imprint() {
           <div>
             <h2 className="text-2xl font-bold mb-4">Responsible for content according to § 55 Abs. 2 RStV</h2>
             <p>Felix Rimbakowsky</p>
-            <p>Kreuzbergstraße 26</p>
-            <p>10965 Berlin</p>
+            <p>Großbeerenstraße 71</p>
+            <p>10963 Berlin</p>
           </div>
 
            <div>
