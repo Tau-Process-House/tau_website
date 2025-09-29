@@ -17,6 +17,12 @@ const teamMembers = [
     quote: "Technology should serve people, not the other way around"
   },
   {
+    image: "/team/bhuvenesh.jpg",
+    name: "Bhuvenesh Verma",
+    role: "AI Developer",
+    quote: "Agents that listen, processes that respond"
+  },
+  {
     image: "/team/placeholder.png",
     name: "[Your Name Here]",
     role: "Future Team Member",
