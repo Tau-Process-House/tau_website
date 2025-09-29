@@ -16,12 +16,7 @@ const teamMembers = [
     role: "Lead Project Manager",
     quote: "Technology should serve people, not the other way around"
   },
-  {
-    image: "/team/bhuvenesh.jpg",
-    name: "Bhuvenesh Verma",
-    role: "AI Developer",
-    quote: "Agents that listen, processes that respond"
-  },
+  
   {
     image: "/team/placeholder.png",
     name: "[Your Name Here]",
@@ -33,6 +28,12 @@ const teamMembers = [
     name: "Moritz Bruder",
     role: "Technical Advisor",
     quote: "Automation is about empowering humans to do what they do best"
+  },
+  {
+    image: "/team/bhuvenesh.jpg",
+    name: "Bhuvenesh Verma",
+    role: "AI Developer",
+    quote: "Agents that listen, processes that respond"
   }
 ];
 
