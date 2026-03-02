@@ -106,7 +106,7 @@ export default function PrivacyPolicy() {
             </p>
             <p className="mt-3">
               Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können Ihre
-              Einwilligung jederzeit durch Klick auf „Cookie-Einstellungen" am unteren
+              Einwilligung jederzeit durch Klick auf &bdquo;Cookie-Einstellungen&ldquo; am unteren
               Seitenrand widerrufen. Weitere Informationen zur Datenverarbeitung durch Google:{' '}
               <a
                 href="https://policies.google.com/privacy"
