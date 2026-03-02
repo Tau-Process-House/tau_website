@@ -79,4 +79,4 @@ Die Website kann auf verschiedenen Hosting-Plattformen deployed werden, die Next
 
 ## Lizenz
 
-Alle Rechte vorbehalten © tau process house GmbH
+Alle Rechte vorbehalten © Felix Rimbakowsky

@@ -1,0 +1,120 @@
+{
+  "caseStudies": [
+    {
+      "id": "case-001",
+      "type": "caseStudy",
+      "client": "Berlin Consulting GmbH",
+      "industry": "Professional Services",
+      "headline": "End-to-End Billing Automation",
+      "tagline": "From 14 days to 2 days — automated billing across the full project lifecycle",
+      "challenge": "Invoice creation was entirely manual, taking up to 14 days after service delivery. Proposals were assembled by copying data between disconnected tools, and there was no systematic way to track the handover from project completion to invoice dispatch. The team spent significant time on administrative tasks instead of client work.",
+      "solution": {
+        "summary": "Full migration to Zoho One with a connected process chain from lead capture to invoice dispatch — no manual steps required.",
+        "apps": ["Zoho CRM", "Zoho Projects", "Zoho Books", "Zoho Flow"],
+        "description": "New leads are captured and qualified in Zoho CRM. Accepted leads trigger automatic proposal generation directly in CRM. Upon client sign-off, a linked project is created in Zoho Projects. When the project is marked complete, Zoho Flow automatically generates and dispatches the invoice via Zoho Books — with all line items pulled from the project data."
+      },
+      "artifacts": [
+        "Automatic PDF invoices on project completion",
+        "Real-time billing status dashboard",
+        "Automated client notification emails",
+        "Monthly revenue report (Zoho Analytics)"
+      ],
+      "kpis": [
+        { "metric": "Billing cycle", "before": "14 days", "after": "2 days", "improvement": "-86%" },
+        { "metric": "Proposal creation time", "before": "2 hours", "after": "5 minutes", "improvement": "-96%" },
+        { "metric": "Manual billing errors", "before": "~8 / month", "after": "0", "improvement": "-100%" }
+      ],
+      "tags": ["Zoho One", "Billing Automation", "CRM", "Flow"],
+      "published": true
+    },
+    {
+      "id": "case-002",
+      "type": "caseStudy",
+      "client": "Placeholder Client B",
+      "industry": "E-Commerce",
+      "headline": "Lead Enrichment & Sales Acceleration",
+      "tagline": "70% more lead data, 60% faster first contact through automated enrichment",
+      "challenge": "The sales team spent 30–40% of their working time manually researching incoming leads before making first contact. Data quality was inconsistent across the CRM, and high-value leads were routinely contacted too late — often after a competitor had already reached out.",
+      "solution": {
+        "summary": "AI-powered lead enrichment integrated directly into Zoho CRM, triggering automatically on every new lead creation.",
+        "apps": ["Zoho CRM", "Zoho Flow", "Zoho Analytics"],
+        "description": "When a new lead enters Zoho CRM, an automated flow triggers an AI agent that enriches the lead record with company size, industry, revenue range, LinkedIn context, and an AI-generated qualification score. The sales team receives a prioritised, context-rich lead queue — ready to act on immediately without any manual research."
+      },
+      "artifacts": [
+        "Enriched lead profiles with company data",
+        "AI qualification scores per lead",
+        "Prioritised daily sales queue",
+        "Weekly pipeline performance report"
+      ],
+      "kpis": [
+        { "metric": "Lead data completeness", "before": "35%", "after": "87%", "improvement": "+149%" },
+        { "metric": "Time to first contact", "before": "4.5 hours", "after": "45 minutes", "improvement": "-83%" },
+        { "metric": "Lead-to-opportunity rate", "before": "12%", "after": "21%", "improvement": "+75%" }
+      ],
+      "tags": ["Zoho CRM", "AI", "Lead Management", "Flow"],
+      "published": true
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-001",
+      "type": "product",
+      "name": "Lead Enrichment Agent",
+      "tagline": "Automatic enrichment of incoming CRM leads with company data and AI qualification",
+      "problem": "Sales teams spend 30–40% of their time on manual lead research before making first contact — time that should be spent selling. Most CRMs are filled with incomplete records that require hours of research per week.",
+      "description": "A ready-to-deploy AI agent that integrates directly into your Zoho CRM. Every new lead is automatically enriched with firmographic data, LinkedIn context, and an AI-generated qualification score. Your team sees a prioritised, context-rich queue — not a list of empty names.",
+      "showcase": {
+        "type": "image",
+        "url": "/products/lead-enrichment-screenshot.png",
+        "alt": "Lead Enrichment Agent showing enriched lead profiles with qualification scores in Zoho CRM"
+      },
+      "results": [
+        { "metric": "Lead data completeness", "improvement": "+70%" },
+        { "metric": "Time to first contact", "improvement": "-60%" },
+        { "metric": "Lead-to-opportunity rate", "improvement": "+75%" }
+      ],
+      "pricing": {
+        "model": "monthly",
+        "price": 149,
+        "currency": "EUR",
+        "label": "149 € / month"
+      },
+      "cta": {
+        "label": "Request Implementation",
+        "href": "mailto:info@tauprocess.de?subject=Lead%20Enrichment%20Agent"
+      },
+      "tags": ["AI", "Zoho CRM", "Lead Management"],
+      "published": true
+    },
+    {
+      "id": "prod-002",
+      "type": "product",
+      "name": "Document Automation Suite",
+      "tagline": "Generate proposals, contracts, and invoices automatically from your Zoho data",
+      "problem": "Creating business documents manually is repetitive, error-prone, and slow. The data already exists in your CRM and ERP — but still gets copy-pasted into Word templates by hand, every single time.",
+      "description": "A Zoho-native document automation suite that generates professional PDFs — proposals, contracts, invoices, and project reports — directly from your Zoho CRM and Books data. Triggered manually by a single click, by a workflow event, or on a schedule. Documents are delivered to clients automatically.",
+      "showcase": {
+        "type": "image",
+        "url": "/products/document-automation-screenshot.png",
+        "alt": "Document Automation Suite showing a generated proposal PDF with live Zoho CRM data"
+      },
+      "results": [
+        { "metric": "Document creation time", "improvement": "-95%" },
+        { "metric": "Formatting errors", "improvement": "-100%" },
+        { "metric": "Time to send proposal", "improvement": "-90%" }
+      ],
+      "pricing": {
+        "model": "monthly",
+        "price": 99,
+        "currency": "EUR",
+        "label": "99 € / month"
+      },
+      "cta": {
+        "label": "Request Implementation",
+        "href": "mailto:info@tauprocess.de?subject=Document%20Automation%20Suite"
+      },
+      "tags": ["Zoho CRM", "Zoho Books", "Document Generation", "Automation"],
+      "published": true
+    }
+  ]
+}
