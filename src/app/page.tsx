@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react';
 // Vereinfachte dynamische Imports
 const HeroSection = dynamic(() => import('@/components/HeroSection'));
 const WhatSection = dynamic(() => import('@/components/WhatSection'));
-const HowSection = dynamic(() => import('@/components/HowSection'));
-const WhySection = dynamic(() => import('@/components/WhySection'));
+const OurServicesSection = dynamic(() => import('@/components/OurServicesSection'));
+const OurWorkSection = dynamic(() => import('@/components/OurWorkSection'));
+const KpiSection = dynamic(() => import('@/components/KpiSection'));
 const TeamCarousel = dynamic(() => import('@/components/TeamCarousel'));
 const ContactSection = dynamic(() => import('@/components/ContactSection'));
 
@@ -51,8 +52,10 @@ export default function Home() {
       <main className="section-container">
         <HeroSection />
         <WhatSection />
-        <HowSection />
-        <WhySection />
+        <OurServicesSection />
+        {/* OurWorkSection hidden until case studies are ready */}
+        {/* <OurWorkSection /> */}
+        <KpiSection />
         <section className="section section-black">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Who we are</h2>
@@ -63,7 +66,7 @@ export default function Home() {
       </main>
       {mounted && (
         <div className="section-dots">
-          {[0, 1, 2, 3, 4, 5].map((index) => (
+          {[0, 1, 2, 3, 4].map((index) => (
             <div
               key={index}
               className={`section-dot ${activeSection === index ? 'active' : ''}`}

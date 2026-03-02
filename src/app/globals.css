@@ -167,6 +167,15 @@ body {
   .max-w-3xl {
     padding-left: 4rem !important;
   }
+}
 
+/* Our Work detail panel: internal scroll container */
+.work-detail-panel {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.work-detail-panel::-webkit-scrollbar {
+  display: none;
 }
 

@@ -8,7 +8,7 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="p-6 rounded-lg text-center">
             <h3 className="text-2xl font-bold mb-4">For clients</h3>
-            <a href="mailto:rimbas.itb+info@gmail.com" className="text-xl hover:underline">
+            <a href="mailto:info@tauprocess.de" className="text-xl hover:underline">
               info@tauprocess.de
             </a>
           </div>
@@ -24,9 +24,15 @@ export default function ContactSection() {
             </a>
           </div>
         </div>
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 flex justify-center gap-6">
           <Link href="/imprint" className="text-sm hover:underline">
             Imprint
+          </Link>
+          <Link href="/privacy" className="text-sm hover:underline">
+            Privacy Policy
+          </Link>
+          <Link href="/faq" className="text-sm hover:underline">
+            FAQ
           </Link>
         </div>
       </div>
