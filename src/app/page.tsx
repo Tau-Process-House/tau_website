@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const HeroSection = dynamic(() => import('@/components/HeroSection'));
 const WhatSection = dynamic(() => import('@/components/WhatSection'));
 const OurServicesSection = dynamic(() => import('@/components/OurServicesSection'));
-const OurWorkSection = dynamic(() => import('@/components/OurWorkSection'));
+
 const KpiSection = dynamic(() => import('@/components/KpiSection'));
 const TeamCarousel = dynamic(() => import('@/components/TeamCarousel'));
 const ContactSection = dynamic(() => import('@/components/ContactSection'));
