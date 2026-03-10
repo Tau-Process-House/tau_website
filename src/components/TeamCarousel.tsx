@@ -2,42 +2,17 @@
 import { useState, useEffect } from 'react';
 import { motion, useAnimation, PanInfo } from 'framer-motion';
 import Image from 'next/image';
+import { useLocalized } from '@/lib/use-localized';
+import teamData from '@/data/team.json';
+import type { TeamContent } from '@/types/content';
 
-const teamMembers = [
-  {
-    image: "/team/felix.jpg",
-    name: "Felix Rimbakowsky",
-    role: "Founder & CEO",
-    quote: "Processes are the bridge between the vision and reality of a business"
-  },
-  {
-    image: "/team/luca.png",
-    name: "Luca Bleckmann",
-    role: "Lead Project Manager",
-    quote: "Technology should serve people, not the other way around"
-  },
-  
-  {
-    image: "/team/placeholder.png",
-    name: "[Your Name Here]",
-    role: "Future Team Member",
-    quote: "Join our team and shape the future of process automation together with us!"
-  },
-  {
-    image: "/team/moritz.jpeg",
-    name: "Moritz Bruder",
-    role: "Technical Advisor",
-    quote: "Automation is about empowering humans to do what they do best"
-  },
-  {
-    image: "/team/bhuvenesh.jpg",
-    name: "Bhuvenesh Verma",
-    role: "AI Developer",
-    quote: "Agents that listen, processes that respond"
-  }
-];
+const team = teamData as TeamContent;
 
 const TeamCarousel = () => {
+  const loc = useLocalized();
+
+  const teamMembers = team.members.filter((m) => m.visible);
+
   const [mounted, setMounted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -46,11 +21,11 @@ const TeamCarousel = () => {
   useEffect(() => {
     setMounted(true);
     setIsMobile(window.innerWidth < 768);
-    
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -82,15 +57,15 @@ const TeamCarousel = () => {
             animate={controls}
           >
             {!isMobile && (
-              <div 
+              <div
                 className="shrink-0 opacity-50 cursor-pointer transition-opacity hover:opacity-75"
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)}
               >
                 <div className="team-card w-[300px]">
-                  <Image 
-                    src={teamMembers[(currentIndex - 1 + teamMembers.length) % teamMembers.length].image} 
-                    alt="Previous team member" 
-                    className="team-image" 
+                  <Image
+                    src={teamMembers[(currentIndex - 1 + teamMembers.length) % teamMembers.length].image}
+                    alt={loc(team.prevAlt)}
+                    className="team-image"
                     width={300}
                     height={300}
                   />
@@ -100,29 +75,29 @@ const TeamCarousel = () => {
 
             <div className={`shrink-0 ${!isMobile ? 'z-10 scale-105' : 'w-full'}`}>
               <div className={`team-card w-[300px] ${isMobile ? 'mx-auto max-w-[90%]' : ''}`}>
-                <Image 
-                  src={teamMembers[currentIndex].image} 
-                  alt={teamMembers[currentIndex].name} 
-                  className="team-image" 
+                <Image
+                  src={teamMembers[currentIndex].image}
+                  alt={teamMembers[currentIndex].name}
+                  className="team-image"
                   width={300}
                   height={300}
                 />
                 <h3 className="text-2xl font-bold mb-2">{teamMembers[currentIndex].name}</h3>
-                <p className="text-gray-600 mb-4">{teamMembers[currentIndex].role}</p>
-                <p className="team-quote">{teamMembers[currentIndex].quote}</p>
+                <p className="text-gray-600 mb-4">{loc(teamMembers[currentIndex].role)}</p>
+                <p className="team-quote">{loc(teamMembers[currentIndex].quote)}</p>
               </div>
             </div>
 
             {!isMobile && (
-              <div 
+              <div
                 className="shrink-0 opacity-50 cursor-pointer transition-opacity hover:opacity-75"
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % teamMembers.length)}
               >
                 <div className="team-card w-[300px]">
-                  <Image 
-                    src={teamMembers[(currentIndex + 1) % teamMembers.length].image} 
-                    alt="Next team member" 
-                    className="team-image" 
+                  <Image
+                    src={teamMembers[(currentIndex + 1) % teamMembers.length].image}
+                    alt={loc(team.nextAlt)}
+                    className="team-image"
                     width={300}
                     height={300}
                   />
@@ -136,4 +111,4 @@ const TeamCarousel = () => {
   );
 };
 
-export default TeamCarousel; 
+export default TeamCarousel;

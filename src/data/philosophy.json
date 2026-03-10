@@ -1,0 +1,21 @@
+{
+  "title": {
+    "de": "Unsere Philosophie",
+    "en": "Our Philosophy"
+  },
+  "paragraphs": [
+    {
+      "de": "Wir entwickeln IT-Systeme um  Menschen stärken, nicht Sie zu ersetzen.",
+      "en": "We design IT systems not to replace humans, but to elevate them."
+    },
+    {
+      "de": "Unser Ziel ist die perfekte Mensch-Maschine Symbiose, in der Technologie die Komplexität übernimmt und Menschen auf das Wesentliche konzentrieren können.",
+      "en": "Our goal is the perfect symbiosis where technology handles the complexity, so your people can focus on the result."
+    }
+  ],
+  "vennLabels": {
+    "people":     { "de": "Menschen",    "en": "people" },
+    "technology": { "de": "Technologie", "en": "technology" },
+    "process":    { "de": "Prozess",     "en": "process" }
+  }
+}

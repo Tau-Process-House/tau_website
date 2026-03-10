@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "target": 5,
+      "suffix": "+",
+      "label": {
+        "de": "Jahre Zoho Erfahrung",
+        "en": "Years of Zoho Experience"
+      }
+    },
+    {
+      "target": 25,
+      "suffix": "+",
+      "label": {
+        "de": "Implementierungen",
+        "en": "Implementations"
+      }
+    }
+  ]
+}
