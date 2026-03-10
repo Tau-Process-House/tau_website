@@ -1,48 +1,66 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import faqData from '@/data/faq.json'
+import type { Metadata } from 'next';
+import { Link } from '@/i18n/navigation';
+import faqData from '@/data/faq.json';
+import metaData from '@/data/metadata.json';
+import type { FaqPageContent, MetadataContent } from '@/types/content';
 
-const FONT = 'Arial, Helvetica, sans-serif'
+const FONT = 'Arial, Helvetica, sans-serif';
 
-export const metadata: Metadata = {
-  title: 'FAQ — Häufige Fragen zu Zoho & Zusammenarbeit',
-  description:
-    'Antworten auf häufige Fragen rund um Zoho One, CRM-Implementierung, Kosten eines Zoho-Freelancers und die Zusammenarbeit mit Felix Rimbakowsky / Tau Process House.',
-  alternates: {
-    canonical: 'https://tauprocess.de/faq',
-  },
-  openGraph: {
-    title: 'FAQ | Tau Process House',
-    description:
-      'Was kostet ein Zoho-Freelancer? Wie läuft eine Zoho-Implementierung ab? Antworten auf die wichtigsten Fragen.',
-    url: 'https://tauprocess.de/faq',
-  },
-}
+const faq = faqData as FaqPageContent;
+const meta = metaData as MetadataContent;
 
-interface FaqItem {
-  id: string
-  question: string
-  answer: string
-  published: boolean
-}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const loc = (f: { de: string; en: string }) => f[locale as 'de' | 'en'] ?? f.de;
+  const siteUrl = meta.site.url;
 
-const faqs: FaqItem[] = (faqData as FaqItem[]).filter((f) => f.published)
-
-// JSON-LD FAQPage schema — optimiert für Google AI Overview und LLMs
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqs.map((faq) => ({
-    '@type': 'Question',
-    'name': faq.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': faq.answer,
+  return {
+    title: loc(meta.faq.title),
+    description: loc(meta.faq.description),
+    alternates: {
+      canonical: `${siteUrl}/${locale}/faq`,
+      languages: {
+        de: `${siteUrl}/de/faq`,
+        en: `${siteUrl}/en/faq`,
+      },
     },
-  })),
+    openGraph: {
+      title: loc(meta.faq.ogTitle),
+      description: loc(meta.faq.ogDescription),
+      url: `${siteUrl}/${locale}/faq`,
+    },
+  };
 }
 
-export default function FaqPage() {
+export default async function FaqPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const loc = (f: { de: string; en: string }) => f[locale as 'de' | 'en'] ?? f.de;
+
+  const page = faq.page;
+  const faqs = faq.items.filter((f) => f.published);
+
+  // JSON-LD FAQPage schema — optimised for Google AI Overview and LLMs
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: loc(item.question),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: loc(item.answer),
+      },
+    })),
+  };
+
   return (
     <>
       <script
@@ -71,7 +89,7 @@ export default function FaqPage() {
               fontFamily: FONT,
             }}
           >
-            ← tauprocess.de
+            {loc(page.backLink)}
           </Link>
 
           <h1
@@ -82,7 +100,7 @@ export default function FaqPage() {
               fontFamily: FONT,
             }}
           >
-            Häufige Fragen
+            {loc(page.title)}
           </h1>
           <p
             style={{
@@ -92,20 +110,14 @@ export default function FaqPage() {
               fontFamily: FONT,
             }}
           >
-            Zoho One, CRM-Implementierung, Kosten und Zusammenarbeit mit Felix Rimbakowsky.
+            {loc(page.subtitle)}
           </p>
 
           {/* FAQ list */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0',
-            }}
-          >
-            {faqs.map((faq, i) => (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {faqs.map((item, i) => (
               <div
-                key={faq.id}
+                key={item.id}
                 style={{
                   borderTop: '1px solid rgba(0,0,0,0.08)',
                   paddingTop: '1.75rem',
@@ -123,7 +135,7 @@ export default function FaqPage() {
                     lineHeight: '1.4',
                   }}
                 >
-                  {faq.question}
+                  {loc(item.question)}
                 </h2>
                 <p
                   style={{
@@ -134,7 +146,7 @@ export default function FaqPage() {
                     margin: 0,
                   }}
                 >
-                  {faq.answer}
+                  {loc(item.answer)}
                 </p>
               </div>
             ))}
@@ -158,7 +170,7 @@ export default function FaqPage() {
                 fontFamily: FONT,
               }}
             >
-              Noch eine Frage?
+              {loc(page.ctaTitle)}
             </p>
             <p
               style={{
@@ -168,10 +180,10 @@ export default function FaqPage() {
                 fontFamily: FONT,
               }}
             >
-              Felix antwortet persönlich — in der Regel innerhalb eines Werktags.
+              {loc(page.ctaText)}
             </p>
             <a
-              href="mailto:info@tauprocess.de"
+              href={`mailto:${page.ctaEmail}`}
               style={{
                 display: 'inline-block',
                 backgroundColor: '#000',
@@ -184,7 +196,7 @@ export default function FaqPage() {
                 fontFamily: FONT,
               }}
             >
-              info@tauprocess.de →
+              {page.ctaEmail} →
             </a>
           </div>
 
@@ -202,17 +214,17 @@ export default function FaqPage() {
             }}
           >
             <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Startseite
+              {loc(page.footerLinks.home)}
             </Link>
             <Link href="/imprint" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Impressum
+              {loc(page.footerLinks.imprint)}
             </Link>
             <Link href="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Datenschutz
+              {loc(page.footerLinks.privacy)}
             </Link>
           </div>
         </div>
       </main>
     </>
-  )
+  );
 }

@@ -23,6 +23,10 @@
 # large Files
 /files
 
+#cache
+/.npm-tmp
+/.venv
+
 # misc
 .DS_Store
 *.pem

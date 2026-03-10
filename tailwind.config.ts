@@ -17,6 +17,13 @@ const config: Config = {
       },
     },
   },
+  corePlugins: {
+    preflight: true,
+  },
+  safelist: [
+    'section',
+    'section-black',
+  ],
   plugins: [],
 }
 

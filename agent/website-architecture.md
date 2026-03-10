@@ -1,6 +1,6 @@
 # Website-Architektur: Tau Process House
 
-> Analyse-Stand: März 2026
+> Stand: März 2026 (JSON Content-System vollständig umgebaut)
 
 ---
 
@@ -9,15 +9,15 @@
 | Schicht | Technologie | Version |
 |---|---|---|
 | Framework | Next.js (App Router) | 15.1.6 |
+| i18n | next-intl | ^4 |
 | UI-Bibliothek | React | 19.0.0 |
 | Sprache | TypeScript | ^5 |
 | Styling | Tailwind CSS + globales CSS | ^3.4.1 |
 | Animationen | Framer Motion | ^12.4.1 |
-| Scroll-Erkennung | react-intersection-observer | ^9.15.1 |
-| Fonts | Google Fonts – Inter (via `next/font`) | – |
+| Fonts | Inter (via `next/font/google`) | – |
 | Analytics | Google Analytics 4 (GA4) | – |
 | Cookie-Consent | CookieYes | – |
-| Hosting | Vercel (vermutlich, basierend auf next.svg im public-Ordner) | – |
+| Hosting | Vercel | – |
 
 ---
 
@@ -27,42 +27,95 @@
 tau-process-house/
 ├── public/
 │   ├── img/
+│   │   ├── logo.webp           ← aktiv verwendet
 │   │   ├── logo.png
-│   │   ├── logo.svg
-│   │   └── logo.webp          ← aktiv verwendetes Format
+│   │   └── logo.svg
 │   ├── team/
 │   │   ├── felix.jpg
 │   │   ├── luca.png
 │   │   ├── moritz.jpeg
-│   │   ├── bhuvenesh.jpg
-│   │   └── placeholder.png
-│   ├── file.svg               ← Next.js Default (ungenutzt)
-│   ├── globe.svg              ← Next.js Default (ungenutzt)
-│   ├── next.svg               ← Next.js Default (ungenutzt)
-│   └── window.svg             ← Next.js Default (ungenutzt)
+│   │   └── bhuvenesh.jpg
+│   └── llms.txt                ← LLM-Crawler-Info (tauprocess.de/llms.txt)
 │
 ├── src/
 │   ├── app/
 │   │   ├── favicon.ico
-│   │   ├── globals.css        ← Globales Styling + Tailwind
-│   │   ├── layout.tsx         ← Root Layout: Metadata, Fonts, Analytics, Cookies
-│   │   ├── page.tsx           ← Hauptseite (One-Pager)
-│   │   └── imprint/
-│   │       └── page.tsx       ← Impressum-Seite
+│   │   ├── globals.css         ← Scroll-Snap, Section-Klassen, Tailwind-Import
+│   │   ├── layout.tsx          ← Root Layout: minimal (children pass-through)
+│   │   ├── robots.ts           ← robots.txt (erlaubt GPTBot, ClaudeBot etc.)
+│   │   ├── sitemap.ts          ← sitemap.xml (bilingual mit hreflang)
+│   │   └── [locale]/           ← Locale-Routing (de | en)
+│   │       ├── layout.tsx      ← Haupt-Layout: Metadata, JSON-LD, GA4, Cookies, LanguageToggle
+│   │       ├── page.tsx        ← Hauptseite (One-Pager, 'use client')
+│   │       ├── imprint/
+│   │       │   └── page.tsx
+│   │       ├── privacy/
+│   │       │   └── page.tsx
+│   │       ├── faq/
+│   │       │   └── page.tsx    ← FAQ-Seite mit FAQPage JSON-LD (bilingual)
+│   │       └── zoho-check/
+│   │           ├── layout.tsx
+│   │           └── page.tsx    ← CRM-Check-Funnel ('use client', multi-step)
 │   │
-│   └── components/
-│       ├── HeroSection.tsx    ← Sektion 1: Logo + Tagline
-│       ├── WhatSection.tsx    ← Sektion 2: Was wir tun (Venn-Diagramm)
-│       ├── HowSection.tsx     ← Sektion 3: Wie wir es tun (2 Spalten)
-│       ├── WhySection.tsx     ← Sektion 4: Warum wir (3 Cards)
-│       ├── TeamCarousel.tsx   ← Sektion 5 (eingebettet): Team-Karussell
-│       └── ContactSection.tsx ← Sektion 6: Kontakt + Impressum-Link
+│   ├── components/
+│   │   ├── HeroSection.tsx            ← useTranslations('hero')
+│   │   ├── WhatSection.tsx            ← useTranslations('philosophy')
+│   │   ├── OurServicesSection.tsx     ← useTranslations('services')
+│   │   ├── KpiSection.tsx             ← useTranslations('kpi')
+│   │   ├── OurWorkSection.tsx         ← aktiv; Anzeige via NEXT_PUBLIC_SHOW_OUR_WORK steuern
+│   │   ├── TeamCarousel.tsx           ← useTranslations('team')
+│   │   ├── ContactSection.tsx         ← useTranslations('contact')
+│   │   ├── LanguageToggle.tsx         ← DE/EN Umschalter (fixed top-right)
+│   │   └── zoho-check/
+│   │       ├── CheckHero.tsx
+│   │       ├── StepInput.tsx
+│   │       ├── ModuleGuidePanel.tsx
+│   │       ├── StepLoading.tsx
+│   │       ├── PdfEmailModal.tsx
+│   │       └── StepResults.tsx
+│   │
+│   ├── data/                   ← ALLE redaktionellen Inhalte hier pflegen
+│   │   ├── hero.json           ← Titel, Tagline, Logo-Pfad
+│   │   ├── philosophy.json     ← Abschnitt "Unsere Philosophie": Texte, Venn-Labels
+│   │   ├── services.json       ← Leistungen: Titel, Zoho-Banner, 4 Steps
+│   │   ├── kpi.json            ← KPI-Zahlen, Suffixe, Labels
+│   │   ├── team.json           ← Team-Mitglieder (visible-Flag zum Ein-/Ausblenden)
+│   │   ├── contact.json        ← E-Mail, Jobportal-URL, Footer-Links
+│   │   ├── imprint.json        ← Adresse, Kontakt, USt-ID, Labels
+│   │   ├── metadata.json       ← SEO-Titel/Description, OG, Twitter, JSON-LD Person+Org
+│   │   ├── faq.json            ← FAQ-Seite-Labels (page.*) + 8 FAQ-Einträge (items[])
+│   │   └── work.json           ← Case Studies, Produkte + Solutions (für OurWorkSection)
+│   ├── i18n/
+│   │   ├── routing.ts          ← Locale-Konfiguration (de | en, default: de)
+│   │   ├── request.ts          ← next-intl Server-Konfiguration
+│   │   └── navigation.ts       ← Lokalisierte Link/Router-Helpers
+│   ├── messages/
+│   │   ├── de.json             ← NUR noch nav.dotLabel (alle Inhalte in src/data/)
+│   │   └── en.json             ← NUR noch nav.dotLabel
+│   ├── middleware.ts            ← Locale-Detection & Redirect
+│   │
+│   ├── types/
+│   │   ├── content.ts          ← TypeScript-Typen für alle src/data/*.json Dateien
+│   │   ├── work.ts
+│   │   └── zoho-check.ts
+│   │
+│   ├── lib/
+│   │   ├── use-localized.ts    ← Shared Hook: useLocalized() für Client-Komponenten
+│   │   └── zoho-check/
+│   │       ├── module-classifier.ts
+│   │       ├── prompts.ts
+│   │       └── pdf-generator.tsx
+│   │
+│   └── app/api/zoho-check/
+│       ├── extract/route.ts
+│       ├── analyze/route.ts
+│       ├── send-pdf/route.ts
+│       └── crm-lead/route.ts
 │
-├── next.config.ts             ← Next.js Config (Bild-Whitelist)
-├── tailwind.config.ts         ← Tailwind-Konfiguration
-├── tsconfig.json              ← TypeScript-Konfiguration
-├── postcss.config.mjs         ← PostCSS für Tailwind
-├── eslint.config.mjs          ← ESLint-Regeln
+├── agent/                      ← Dokumentation für Agents (diese Dateien)
+├── .env.local.example
+├── next.config.ts
+├── tailwind.config.ts
 └── package.json
 ```
 
@@ -70,146 +123,154 @@ tau-process-house/
 
 ## 3. Seitenstruktur (One-Pager)
 
-Die Website ist als **vertikaler Full-Screen-One-Pager** aufgebaut. Alle Sektionen sind gleichzeitig im DOM geladen, der Nutzer scrollt mit **CSS Scroll-Snap** zwischen ihnen.
+Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y mandatory`). Aktuell **5 aktive Sektionen** in `page.tsx`.
 
 ```
 ┌─────────────────────────────────┐
 │  [●] ← Navigationsdots (links)  │
 │                                 │
-│  Sektion 1 – HeroSection        │  Hintergrund: Schwarz
-│  Logo + "Process House"         │  Farbe: Weiß
-│  "where processes want to live" │
+│  1 — HeroSection                │  schwarz
+│  Logo + "Process House"         │
 ├─────────────────────────────────┤
-│  Sektion 2 – WhatSection        │  Hintergrund: Weiß
-│  "What we do"                   │  Farbe: Schwarz
-│  Venn-Diagramm: strategy ∩      │
-│  technology = process           │
+│  2 — OurPhilosophySection       │  weiß
+│  "Our Philosophy"               │
+│  Venn: strategy ∩ technology    │
 ├─────────────────────────────────┤
-│  Sektion 3 – HowSection         │  Hintergrund: Schwarz
-│  "How we do it"                 │  Farbe: Weiß
-│  Technology | Methodology       │
-│  (2-Spalten-Grid)               │
+│  3 — OurServicesSection         │  schwarz
+│  "Our Services"                 │
+│  Zoho-Banner (Logo + Text)      │
+│  4 Journey-Karten (Hover-Flip)  │
 ├─────────────────────────────────┤
-│  Sektion 4 – WhySection         │  Hintergrund: Weiß
-│  "Why us"                       │  Farbe: Schwarz
-│  Expertise | Custom | Sustain.  │
-│  (3-Spalten-Grid)               │
+│  4 — KpiSection                 │  weiß
+│  "5+ Jahre · 25+ Impl."         │
+│  Count-up Animation (0.8s)      │
 ├─────────────────────────────────┤
-│  Sektion 5 – Team               │  Hintergrund: Schwarz
-│  "Who we are"                   │  Farbe: Weiß
-│  TeamCarousel (Swipe/Drag)      │
+│  5 — TeamCarousel               │  schwarz
+│  "Who we are"                   │
+│  Swipe/Drag-Karussell           │
 ├─────────────────────────────────┤
-│  Sektion 6 – ContactSection     │  Hintergrund: Weiß
-│  "Contact"                      │  Farbe: Schwarz
-│  For Clients | For Applicants   │
-│  Impressum-Link                 │
+│  6 — ContactSection             │  weiß
+│  "Contact"                      │
+│  FAQ · Imprint · Privacy        │
 └─────────────────────────────────┘
 
-Separate Route: /imprint           Eigenständige Seite (schwarz)
+Separate Routen (jeweils /de/ und /en/):
+  /[locale]/faq          → FAQ-Seite (bilingual, mit FAQPage JSON-LD)
+  /[locale]/imprint      → Impressum
+  /[locale]/privacy      → Datenschutzerklärung
+  /[locale]/zoho-check   → CRM-Check-Funnel (eigenständige Seite)
 ```
 
----
-
-## 4. Navigation
-
-- **Scroll-Snap**: CSS `scroll-snap-type: y mandatory` sorgt für magnetisches Einrasten an Sektionen
-- **Navigationsdots**: 6 fixe Punkte (links, vertikal zentriert), zeigen aktive Sektion; Klick scrollt zur Sektion
-- **Kein klassisches Menü / Header**: Die Navigation ist vollständig auf die Dots reduziert
-- **Imprint-Link**: Nur im Footer von ContactSection; öffnet `/imprint` als eigene Seite
+> **Hinweis:** `OurWorkSection` ist aktiv eingebunden. Die Anzeige wird via `NEXT_PUBLIC_SHOW_OUR_WORK` in `.env.local` gesteuert. Default: `false` → KpiSection wird gezeigt. Auf `true` setzen, um OurWorkSection anzuzeigen.
 
 ---
 
-## 5. Komponenten-Überblick
+## 4. Komponenten-Überblick
 
-### `layout.tsx` (Root Layout)
-- Lädt Inter-Font mit `display: 'swap'` für bessere Performance
-- Setzt globale Metadaten (`title`, `description`, `favicon`)
-- Bindet **Google Analytics 4** mit `strategy="afterInteractive"` ein
-- Bindet **CookieYes** mit `strategy="lazyOnload"` ein
-- `lang="en"` auf dem HTML-Element
+### `app/layout.tsx` (Root Layout)
+- Minimal: gibt `children` direkt weiter, kein HTML/Body (das macht `[locale]/layout.tsx`)
 
-### `page.tsx` (Hauptseite)
-- Ist als `'use client'` markiert (clientseitig gerendert)
-- Lädt alle Sektions-Komponenten via `next/dynamic` (Lazy Loading)
-- Verwaltet den aktiven Sektion-Index via `useState`
-- Liest Scroll-Position aus dem `.section-container`-Element
+### `app/[locale]/layout.tsx` (Haupt-Layout — Server Component)
+- `lang={locale}` dynamisch, GA4, CookieYes, Google Consent Mode v2
+- `NextIntlClientProvider` wrapping, `LanguageToggle` eingebunden
+- `generateMetadata()` mit `getTranslations()` — bilingual
+- JSON-LD `@graph`: `Person` (Felix) + `Organization` (Tau Process House), sprachabhängig
+- `alternates.languages` für hreflang DE/EN
 
-### `HeroSection.tsx`
-- Einfache Fade-in-Animation via Framer Motion
-- Zeigt Logo (`.webp`) und Headline
-- Kein CTA (Call to Action)
+### `app/[locale]/page.tsx` (Hauptseite)
+- `'use client'` — Scroll-Listener, Navigationsdots-State
+- Sektionen via `next/dynamic` geladen
+- `useTranslations('team')` für "Who we are" Titel
 
-### `WhatSection.tsx`
-- Reines JSX, keine Animationen, kein Client-State
-- Visualisiert die Kernbotschaft über ein CSS-basiertes Venn-Diagramm
+### `middleware.ts`
+- `next-intl/middleware` — Locale-Detection, Redirect `/` → `/de`
+- Matcher: alle Pfade außer `/api`, `/_next`, statische Dateien
 
-### `HowSection.tsx`
-- Reines JSX, kein Client-State
-- Zeigt zwei Listen (Technology / Methodology) mit `[x]`-Präfixen als Bullet-Style
+### Komponenten (alle JSON-gesteuert via `useLocalized()`)
+- **HeroSection** — liest aus `data/hero.json`
+- **WhatSection** — liest aus `data/philosophy.json`, Venn-Diagramm
+- **OurServicesSection** — liest aus `data/services.json`, 4 Karten, Zoho-Banner
+- **KpiSection** — liest aus `data/kpi.json`, Count-up Animation
+- **TeamCarousel** — liest aus `data/team.json`, `visible: false` blendet Mitglieder aus
+- **ContactSection** — liest aus `data/contact.json`, lokalisierte Links via `@/i18n/navigation`
+- **LanguageToggle** — Fixed top-right, Pill-Style DE | EN
 
-### `WhySection.tsx`
-- Reines JSX, kein Client-State
-- 3-Spalten-Grid mit Kurztext-Cards
+### `faq/page.tsx`
+- Server Component, kein next-intl mehr
+- Liest alle Labels aus `data/faq.json` (Abschnitt `page.*`)
+- FAQ-Items aus `data/faq.json` (Abschnitt `items[]`, `published`-Flag)
+- SEO-Metadata aus `data/metadata.json`
+- Bilinguales FAQPage JSON-LD Schema
 
-### `TeamCarousel.tsx`
-- `'use client'` – komplexeste Komponente
-- Erkennt Mobilgerät via `window.innerWidth` im `useEffect`
-- Unterstützt Swipe/Drag (Framer Motion) und Klick auf Nachbar-Cards
-- Datenhaltung: Team-Mitglieder als hartcodiertes Array im File selbst
-- Enthält noch einen Platzhalter-Eintrag "[Your Name Here]"
-
-### `ContactSection.tsx`
-- Kein Client-State
-- Zeigt zwei Kontaktwege (E-Mail / Job-Portal)
-- E-Mail-Anzeige (`info@tauprocess.de`) und `mailto`-Ziel (`rimbas.itb+info@gmail.com`) stimmen **nicht überein**
+### `[locale]/layout.tsx`
+- Metadata (Title, Description, OG, Twitter) aus `data/metadata.json`
+- JSON-LD `@graph` (Person + Organization) aus `data/metadata.json`
+- kein `getTranslations()` mehr — nur noch `getMessages()` für `NextIntlClientProvider`
 
 ### `imprint/page.tsx`
-- Eigenständige Route (`/imprint`)
-- Ist als `'use client'` markiert, obwohl kein Client-Feature verwendet wird
-- Enthält Impressumspflichtangaben nach § 5 TMG, USt-ID und EU-ODR-Hinweis
+- Server Component, kein next-intl mehr
+- Adresse, VAT-ID, alle Labels aus `data/imprint.json`
+
+### `OurWorkSection.tsx`
+- Filter-Galerie: All / Solutions / Case Studies / Products
+- JSON-gesteuert via `src/data/work.json` (bilingual: alle Textfelder als `{ de, en }`)
+- Drei Detail-Komponenten: `CaseStudyDetail`, `ProductDetail`, `SolutionDetail`
+- Lokalisierung via `useLocale()` + `useLoc()`-Helper
+- Aktivierung via `NEXT_PUBLIC_SHOW_OUR_WORK=true` in `.env.local`
+- Vollständige Datenschema-Dokumentation: `agent/konzepte/our-work-datenschema.md`
 
 ---
 
-## 6. Styling-Architektur
-
-Das Styling kombiniert zwei Ansätze:
-
-**Tailwind CSS** für komponentennahe Utility-Klassen direkt in JSX.
-
-**Globales CSS** (`globals.css`) für wiederverwendbare, layout-kritische Klassen:
-
-| Klasse | Verwendung |
-|---|---|
-| `.section` | Vollbild-Section (100dvh, flex-center, scroll-snap) |
-| `.section-black` | Dunkle Sektion (Hintergrund schwarz, Text weiß) |
-| `.section-white` | Helle Sektion (Hintergrund weiß, Text schwarz) |
-| `.section-container` | Scroll-Container (overflow-y scroll, snap-type mandatory) |
-| `.section-dots` | Fixierte Navigationspunkte (links, z-index 50) |
-| `.section-dot` | Einzelner Navigationspunkt |
-| `.team-card` | Team-Karte (via @apply) |
-| `.team-image` | Team-Profilbild (rund, 192px) |
-| `.team-quote` | Kursives Zitat mit typografischen Anführungszeichen |
-
-Media Queries: `max-width: 768px` (mobile) und `min-width: 769px` (desktop). Tailwind-Breakpoints (`md:`) werden parallel genutzt.
-
----
-
-## 7. Externe Abhängigkeiten & Integrationen
+## 5. Externe Abhängigkeiten & Integrationen
 
 | Service | Zweck | Einbindung |
 |---|---|---|
-| Google Analytics 4 | Seitenaufruf-Tracking | Script-Tag in `layout.tsx`, `afterInteractive` |
-| CookieYes | DSGVO Cookie-Consent-Banner | Script-Tag in `layout.tsx`, `lazyOnload` |
-| Google Fonts (CDN) | Inter-Font | `next/font/google` |
+| Google Analytics 4 | Tracking | Script in `[locale]/layout.tsx`, `afterInteractive`, Consent Mode v2 |
+| CookieYes | DSGVO Cookie-Consent | Script in `[locale]/layout.tsx`, `afterInteractive` |
+| next-intl | i18n (DE/EN) | Middleware, `[locale]/`-Routing, JSON-Übersetzungsdateien |
+| Google Fonts | Inter | `next/font/google` |
 | join.com | Stellenanzeigen | Externer Link in ContactSection |
-| cdn-cookieyes.com | Preconnect im `<head>` | `<link rel="preconnect">` |
+| OpenRouter API | KI-Analyse (zoho-check) | Server-seitig via `OPENROUTER_API_KEY` |
+| Resend | E-Mail-Versand (zoho-check PDF) | Server-seitig via `RESEND_API_KEY` |
+| Zoho CRM | Lead-Anlage | Server-seitig via OAuth Refresh Token |
 
 ---
 
-## 8. Git & Deployment
+## 6. Umgebungsvariablen (Auszug relevante Feature-Flags)
 
-- Repository mit `.git`-Verzeichnis vorhanden
-- Branch: `master`
-- Kein `.env`-File sichtbar; keine CI/CD-Konfigurationsdatei im Ordner
-- `package.json` enthält Standard-Next.js-Scripts: `dev`, `build`, `start`, `lint`
-- Entwicklungsserver mit Turbopack: `next dev --turbopack`
+| Variable | Default | Zweck |
+|---|---|---|
+| `NEXT_PUBLIC_SHOW_OUR_WORK` | `false` | `true` → OurWorkSection wird angezeigt statt KpiSection |
+
+---
+
+## 7. Content-Pflege: Wo was ändern
+
+| Was ändern | Datei |
+|---|---|
+| Hero-Titel, Tagline, Logo | `src/data/hero.json` |
+| Philosophie-Texte, Venn-Labels | `src/data/philosophy.json` |
+| Leistungen (Titel, Steps, Zoho-Banner) | `src/data/services.json` |
+| KPI-Zahlen & Labels | `src/data/kpi.json` |
+| Team: Namen, Bilder, Rollen, Zitate | `src/data/team.json` (+ `visible: false` zum Ausblenden) |
+| Kontakt-E-Mail, Jobportal-URL | `src/data/contact.json` |
+| Impressum: Adresse, E-Mail, USt-ID | `src/data/imprint.json` |
+| SEO-Titles, Descriptions, OG-Daten | `src/data/metadata.json` |
+| FAQ-Fragen & Antworten | `src/data/faq.json` → `items[]` (+ `published: false` zum Ausblenden) |
+| FAQ-Seiten-Labels (Titel, CTA etc.) | `src/data/faq.json` → `page.*` |
+| Our Work (Cases, Solutions, Products) | `src/data/work.json` |
+| Team-Bild hinzufügen | `public/team/` ablegen, Pfad in `team.json` eintragen |
+
+---
+
+## 8. Offene Asset-Aufgabe
+
+| Datei | Beschreibung | Status |
+|-------|-------------|--------|
+| `/public/img/og-image.png` | 1200×630px OG-Bild für Social-Previews | **fehlend** |
+
+---
+
+## 9. Konzept-Dokumentation
+
+Vollständiges Konzept des JSON Content-Systems: `agent/konzepte/content-management-system.md`

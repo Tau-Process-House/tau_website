@@ -1,0 +1,112 @@
+{
+  "site": {
+    "name": "Tau Process House",
+    "url": "https://tauprocess.de",
+    "email": "info@tauprocess.de",
+    "title": {
+      "de": "Felix Rimbakowsky · Zoho-Experte & Prozessautomatisierung",
+      "en": "Felix Rimbakowsky · Zoho Expert & Process Automation"
+    },
+    "titleTemplate": "%s | Tau Process House",
+    "description": {
+      "de": "Felix Rimbakowsky ist Zoho-Experte aus Berlin & Hannover mit über 5 Jahren Erfahrung. Tau Process House implementiert Zoho One für KMU: CRM, Projekte, Abrechnung und Automatisierung — flexibel auf Stundenbasis, ohne Agenturoverhead.",
+      "en": "Felix Rimbakowsky is a Zoho expert from Berlin & Hannover with over 5 years of experience. Tau Process House implements Zoho One for SMEs: CRM, Projects, Billing and Automation — flexibly on an hourly basis, without agency overhead."
+    },
+    "ogTitle": {
+      "de": "Felix Rimbakowsky · Zoho-Experte | Tau Process House",
+      "en": "Felix Rimbakowsky · Zoho Expert | Tau Process House"
+    },
+    "ogDescription": {
+      "de": "Zoho One Implementierung auf Stundenbasis — CRM, Projekte, Abrechnung, Automatisierung. 5+ Jahre Zoho-Erfahrung, Zugang zu Zoho Premium Support, Berlin & Hannover.",
+      "en": "Zoho One implementation on an hourly basis — CRM, Projects, Billing, Automation. 5+ years of Zoho experience, access to Zoho Premium Support, Berlin & Hannover."
+    },
+    "ogLocale": {
+      "de": "de_DE",
+      "en": "en_US"
+    },
+    "ogImageAlt": {
+      "de": "Felix Rimbakowsky — Zoho-Experte & Tau Process House",
+      "en": "Felix Rimbakowsky — Zoho Expert & Tau Process House"
+    },
+    "twitterTitle": {
+      "de": "Felix Rimbakowsky · Zoho-Experte | Tau Process House",
+      "en": "Felix Rimbakowsky · Zoho Expert | Tau Process House"
+    },
+    "twitterDescription": {
+      "de": "Zoho One Implementierung auf Stundenbasis. CRM, Projekte, Abrechnung, Automatisierung für KMU.",
+      "en": "Zoho One implementation on an hourly basis. CRM, Projects, Billing, Automation for SMEs."
+    }
+  },
+  "faq": {
+    "title": {
+      "de": "FAQ — Häufige Fragen zu Zoho & Zusammenarbeit",
+      "en": "FAQ — Frequently Asked Questions about Zoho & Collaboration"
+    },
+    "description": {
+      "de": "Antworten auf häufige Fragen rund um Zoho One, CRM-Implementierung, Kosten eines Zoho-Freelancers und die Zusammenarbeit mit Felix Rimbakowsky / Tau Process House.",
+      "en": "Answers to frequently asked questions about Zoho One, CRM implementation, costs of a Zoho freelancer and working with Felix Rimbakowsky / Tau Process House."
+    },
+    "ogTitle": {
+      "de": "FAQ | Tau Process House",
+      "en": "FAQ | Tau Process House"
+    },
+    "ogDescription": {
+      "de": "Was kostet ein Zoho-Freelancer? Wie läuft eine Zoho-Implementierung ab? Antworten auf die wichtigsten Fragen.",
+      "en": "What does a Zoho freelancer cost? How does a Zoho implementation work? Answers to the most important questions."
+    }
+  },
+  "person": {
+    "name": "Felix Rimbakowsky",
+    "email": "info@tauprocess.de",
+    "jobTitle": {
+      "de": "Zoho-Experte & Freelance-Berater",
+      "en": "Zoho Expert & Freelance Consultant"
+    },
+    "description": {
+      "de": "Felix Rimbakowsky ist freiberuflicher Zoho-Experte mit über 5 Jahren Erfahrung in der Implementierung von Zoho One für kleine und mittelständische Unternehmen.",
+      "en": "Felix Rimbakowsky is a freelance Zoho expert with over 5 years of experience implementing Zoho One for small and medium-sized businesses."
+    },
+    "knowsAbout": [
+      "Zoho One",
+      "Zoho CRM",
+      "Zoho Projects",
+      "Zoho Books",
+      "Zoho Flow",
+      "Zoho Analytics",
+      "Process Automation",
+      "CRM Implementation",
+      "ERP Migration",
+      "Business Process Management"
+    ]
+  },
+  "organization": {
+    "name": "Tau Process House",
+    "description": {
+      "de": "Tau Process House ist das Beratungsunternehmen von Felix Rimbakowsky. Spezialisiert auf Zoho One Implementierungen für KMU.",
+      "en": "Tau Process House is the consulting company of Felix Rimbakowsky, specializing in Zoho One implementations for SMEs."
+    },
+    "areaServed": ["Berlin", "Hannover", "Deutschland", "DACH"],
+    "offerCatalogName": {
+      "de": "Zoho-Beratungsleistungen",
+      "en": "Zoho Consulting Services"
+    },
+    "offers": [
+      {
+        "de": "Zoho One Consulting & Prozessanalyse",
+        "en": "Zoho One Consulting & Process Analysis"
+      },
+      {
+        "de": "Zoho One Migration & Setup",
+        "en": "Zoho One Migration & Setup"
+      },
+      {
+        "de": "Iterative Zoho-Entwicklung & Automatisierung",
+        "en": "Iterative Zoho Development & Automation"
+      },
+      {
+        "de": "Zoho Training & Rollout-Begleitung",
+        "en": "Zoho Training & Rollout Support"
+      }
+    ]
+  }
+}

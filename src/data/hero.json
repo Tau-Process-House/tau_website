@@ -1,0 +1,14 @@
+{
+  "title": "Process House",
+  "tagline": {
+    "de": "where processes want to live",
+    "en": "where processes want to live"
+  },
+  "logo": {
+    "src": "/img/logo.webp",
+    "alt": {
+      "de": "Process House Logo",
+      "en": "Process House Logo"
+    }
+  }
+}
