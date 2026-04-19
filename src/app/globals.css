@@ -6,6 +6,12 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --transition-duration: 1000ms;
+  --gold: #C8962E;
+  --gold-light: #E8B84A;
+}
+
+.agent-gold {
+  color: var(--gold);
 }
 
 html {

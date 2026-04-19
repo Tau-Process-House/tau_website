@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tau Agent — Workflow Automation AI Agent</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --black:#000000;
+    --bg-card:#0A0A0A;
+    --bg-surface:rgba(255,255,255,0.05);
+    --bg-surface-hover:rgba(255,255,255,0.08);
+    --white:#FFFFFF;
+    --white-80:rgba(255,255,255,0.8);
+    --white-50:rgba(255,255,255,0.5);
+    --white-35:rgba(255,255,255,0.35);
+    --white-25:rgba(255,255,255,0.25);
+    --white-15:rgba(255,255,255,0.15);
+    --white-08:rgba(255,255,255,0.08);
+    --gold:#C8962E;
+    --gold-light:#E8B84A;
+    --gold-dark:#A67A1E;
+    --gold-glow:#F5D678;
+    --gold-15:rgba(200,150,46,0.15);
+    --gold-08:rgba(200,150,46,0.08);
+    --radius:8px;
+    --radius-lg:12px;
+    --font:Arial,Helvetica,sans-serif;
+  }
+  html{scroll-behavior:smooth;background:var(--black)}
+  body{font-family:var(--font);color:var(--white);background:var(--black);line-height:1.6;overflow-x:hidden}
+
+  /* ---- Utility ---- */
+  .container{max-width:1200px;margin:0 auto;padding:0 32px}
+  .section{padding:120px 0}
+  .section-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .section-title{font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;margin-bottom:16px}
+  .section-sub{font-size:17px;color:var(--white-50);max-width:560px;line-height:1.7}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+  /* ---- Animations ---- */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+  .fade-up{animation:fadeUp 0.8s ease both}
+  .delay-1{animation-delay:0.1s}
+  .delay-2{animation-delay:0.2s}
+  .delay-3{animation-delay:0.3s}
+  .delay-4{animation-delay:0.4s}
+
+  /* ---- Nav ---- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background 0.3s,backdrop-filter 0.3s}
+  .nav.scrolled{background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--white-08)}
+  .nav .container{display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;text-decoration:none;color:var(--white)}
+  .nav-logo .mark{width:36px;height:36px;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--black);font-size:20px;font-weight:700}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-links a{color:var(--white-50);text-decoration:none;font-size:14px;transition:color 0.2s}
+  .nav-links a:hover{color:var(--white)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer;text-decoration:none;transition:all 0.2s;border:none}
+  .btn-gold{background:var(--gold);color:var(--black)}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+  .btn-outline-gold{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+  .btn-outline-gold:hover{background:var(--gold-08)}
+  .btn-outline-white{background:transparent;color:var(--white-80);border:1px solid var(--white-25)}
+  .btn-outline-white:hover{background:var(--white-08)}
+
+  /* ---- Dot Nav ---- */
+  .dot-nav{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:10px}
+  .dot-nav .dot{width:8px;height:8px;border-radius:50%;background:rgba(128,128,128,0.5);transition:all 0.3s;cursor:pointer;border:none}
+  .dot-nav .dot.active{background:var(--gold);box-shadow:0 0 8px rgba(200,150,46,0.4)}
+
+  /* ---- Hero ---- */
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden}
+  .hero-content{position:relative;z-index:2;max-width:640px}
+  .hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:700;line-height:1.08;margin-bottom:20px;letter-spacing:-0.02em}
+  .hero h1 .gold{color:var(--gold)}
+  .hero p{font-size:18px;color:var(--white-50);margin-bottom:36px;line-height:1.7;max-width:480px}
+  .waitlist-form{display:flex;gap:10px;max-width:440px}
+  .waitlist-form input{flex:1;padding:12px 16px;border-radius:6px;border:1px solid var(--white-15);background:var(--white-08);color:var(--white);font-size:14px;font-family:var(--font);outline:none;transition:border-color 0.2s}
+  .waitlist-form input:focus{border-color:var(--gold)}
+  .waitlist-form input::placeholder{color:var(--white-25)}
+  .hero-canvas{position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:600px;height:500px;opacity:0.3}
+  .node{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--white-25)}
+  .node.gold{background:var(--gold);box-shadow:0 0 20px rgba(200,150,46,0.3)}
+  .line{position:absolute;height:1px;background:var(--white-08);transform-origin:left center}
+
+  /* ---- Social Proof ---- */
+  .social-proof{border-top:0.5px solid var(--white-08);border-bottom:0.5px solid var(--white-08);padding:40px 0}
+  .social-proof .container{display:flex;align-items:center;justify-content:space-between}
+  .logo-strip{display:flex;align-items:center;gap:40px}
+  .logo-placeholder{width:80px;height:28px;background:var(--white-08);border-radius:4px}
+  .proof-text{font-size:14px;color:var(--white-35)}
+  .proof-text strong{color:var(--gold);font-weight:700}
+
+  /* ---- Demo ---- */
+  .demo-frame{background:var(--bg-card);border:0.5px solid var(--white-15);border-radius:var(--radius-lg);overflow:hidden;max-width:900px;margin:40px auto 0}
+  .demo-topbar{background:rgba(255,255,255,0.03);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:0.5px solid var(--white-08)}
+  .demo-dot{width:10px;height:10px;border-radius:50%;background:var(--white-08)}
+  .demo-url{flex:1;margin-left:8px;padding:5px 12px;border-radius:4px;background:var(--white-05);font-size:12px;color:var(--white-25);border:0.5px solid var(--white-08)}
+  .demo-body{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(200,150,46,0.03),transparent)}
+  .demo-body .play-btn{width:72px;height:72px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s}
+  .demo-body .play-btn:hover{transform:scale(1.08)}
+  .demo-body .play-btn svg{margin-left:4px}
+
+  /* ---- Problem/Solution ---- */
+  .compare-card{background:var(--bg-card);border:0.5px solid var(--white-15);border-radius:var(--radius-lg);padding:40px;position:relative}
+  .compare-card.before{border-color:rgba(255,255,255,0.08)}
+  .compare-card.after{border-color:var(--gold);background:var(--gold-08)}
+  .compare-card .label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+  .compare-card.before .label{color:var(--white-35)}
+  .compare-card.after .label{color:var(--gold)}
+  .stat{margin-bottom:16px}
+  .stat .number{font-size:36px;font-weight:700;line-height:1}
+  .stat .desc{font-size:13px;color:var(--white-35);margin-top:4px}
+  .compare-card.after .stat .number{color:var(--gold)}
+
+  /* ---- How It Works ---- */
+  .step-card{background:var(--bg-card);border:0.5px solid var(--white-15);border-radius:var(--radius);padding:32px 24px;transition:all 0.3s;position:relative}
+  .step-card:hover{border-color:var(--gold);background:var(--gold-08)}
+  .step-card .num{font-size:13px;color:var(--white-25);font-family:var(--font);margin-bottom:40px;letter-spacing:1px}
+  .step-card:hover .num{color:var(--gold)}
+  .step-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+  .step-card p{font-size:14px;color:var(--white-35);line-height:1.6}
+  .step-connector{display:flex;align-items:center;justify-content:center;color:var(--white-15);font-size:24px;padding:0 8px}
+
+  /* ---- Features ---- */
+  .feature-card{background:var(--bg-card);border:0.5px solid var(--white-08);border-radius:var(--radius);padding:28px 24px;transition:all 0.3s}
+  .feature-card:hover{border-color:var(--white-25);background:var(--bg-surface-hover)}
+  .feature-card .icon{width:40px;height:40px;border-radius:8px;background:var(--gold-15);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--gold);font-size:18px}
+  .feature-card h4{font-size:16px;font-weight:700;margin-bottom:8px}
+  .feature-card p{font-size:13px;color:var(--white-35);line-height:1.6}
+
+  /* ---- Integrations ---- */
+  .tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+  .tab{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--white-15);background:transparent;color:var(--white-50);cursor:pointer;transition:all 0.2s;font-family:var(--font)}
+  .tab.active{background:var(--white);color:var(--black);border-color:var(--white)}
+  .tab:hover:not(.active){border-color:var(--white-25);color:var(--white-80)}
+  .integration-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px}
+  .integration-item{background:var(--bg-surface);border:0.5px solid var(--white-08);border-radius:var(--radius);padding:20px 12px;text-align:center;transition:all 0.2s}
+  .integration-item:hover{border-color:var(--white-25);background:var(--bg-surface-hover)}
+  .integration-item .logo-box{width:40px;height:40px;background:var(--white-08);border-radius:8px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--white-25);font-weight:700}
+  .integration-item span{font-size:12px;color:var(--white-50)}
+
+  /* ---- Pricing ---- */
+  .pricing-card{background:var(--bg-card);border:0.5px solid var(--white-15);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:all 0.3s;position:relative}
+  .pricing-card.featured{border:1.5px solid var(--gold)}
+  .pricing-card .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:11px;font-weight:700;padding:4px 14px;border-radius:4px;letter-spacing:0.5px}
+  .pricing-card .tier{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white-35);margin-bottom:12px}
+  .pricing-card.featured .tier{color:var(--gold)}
+  .pricing-card .price{font-size:42px;font-weight:700;margin-bottom:4px}
+  .pricing-card .price span{font-size:16px;font-weight:400;color:var(--white-35)}
+  .pricing-card .price-sub{font-size:13px;color:var(--white-25);margin-bottom:24px}
+  .pricing-card ul{list-style:none;text-align:left;margin-bottom:28px}
+  .pricing-card ul li{font-size:14px;color:var(--white-50);padding:8px 0;border-bottom:0.5px solid var(--white-08);display:flex;align-items:center;gap:10px}
+  .pricing-card ul li::before{content:"→";color:var(--gold);font-weight:700;font-size:12px}
+
+  /* ---- Testimonials ---- */
+  .testimonial-card{background:var(--bg-card);border:0.5px solid var(--white-08);border-radius:var(--radius-lg);padding:36px;transition:border-color 0.3s}
+  .testimonial-card:hover{border-color:var(--white-25)}
+  .testimonial-card blockquote{font-size:17px;color:var(--white-80);line-height:1.7;margin-bottom:24px;font-style:italic}
+  .testimonial-card .author{display:flex;align-items:center;gap:12px}
+  .testimonial-card .avatar{width:40px;height:40px;border-radius:50%;background:var(--white-08);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--white-35)}
+  .testimonial-card .name{font-size:14px;font-weight:700}
+  .testimonial-card .role{font-size:12px;color:var(--white-35)}
+  .testimonial-card .metric{display:inline-block;background:var(--gold-15);color:var(--gold);font-size:13px;font-weight:700;padding:4px 12px;border-radius:4px;margin-bottom:16px}
+
+  /* ---- Trust ---- */
+  .trust-badges{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+  .trust-badge{background:var(--bg-surface);border:0.5px solid var(--white-08);border-radius:var(--radius);padding:16px 24px;text-align:center}
+  .trust-badge .badge-icon{font-size:24px;margin-bottom:6px;color:var(--white-25)}
+  .trust-badge span{font-size:13px;font-weight:700;color:var(--white-50)}
+  .trust-features{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+  .trust-feature{font-size:14px;color:var(--white-35);display:flex;align-items:center;gap:8px}
+  .trust-feature::before{content:"→";color:var(--gold);font-weight:700}
+
+  /* ---- FAQ ---- */
+  .faq-item{border-bottom:0.5px solid var(--white-08);padding:20px 0}
+  .faq-q{font-size:16px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color 0.2s}
+  .faq-q:hover{color:var(--gold)}
+  .faq-q .arrow{font-size:18px;color:var(--white-25);transition:transform 0.3s}
+  .faq-item.open .faq-q .arrow{transform:rotate(45deg);color:var(--gold)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease}
+  .faq-item.open .faq-a{max-height:200px;padding-top:12px}
+  .faq-a p{font-size:14px;color:var(--white-50);line-height:1.7}
+
+  /* ---- Final CTA ---- */
+  .final-cta{text-align:center;padding:140px 0;border-top:0.5px solid var(--white-08)}
+  .final-cta h2{font-size:clamp(28px,4vw,48px);font-weight:700;margin-bottom:16px;letter-spacing:-0.01em}
+  .final-cta p{font-size:17px;color:var(--white-50);margin-bottom:36px}
+  .final-cta .waitlist-form{margin:0 auto;max-width:440px}
+  .counter{font-size:13px;color:var(--gold);font-weight:700;margin-top:16px}
+
+  /* ---- Footer ---- */
+  footer{border-top:0.5px solid var(--white-08);padding:40px 0}
+  footer .container{display:flex;justify-content:space-between;align-items:center}
+  footer .links{display:flex;gap:24px}
+  footer .links a{font-size:13px;color:var(--white-25);text-decoration:none;transition:color 0.2s}
+  footer .links a:hover{color:var(--white-50)}
+  footer .copy{font-size:12px;color:var(--white-25)}
+
+  /* ---- Responsive ---- */
+  @media(max-width:768px){
+    .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+    .nav-links a:not(.btn){display:none}
+    .social-proof .container{flex-direction:column;gap:20px;text-align:center}
+    .logo-strip{gap:24px}
+    .dot-nav{display:none}
+    .hero-canvas{display:none}
+    .trust-features{flex-direction:column;align-items:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- Dot Nav -->
+<nav class="dot-nav" id="dotNav">
+  <button class="dot active" onclick="scrollToSection(0)"></button>
+  <button class="dot" onclick="scrollToSection(1)"></button>
+  <button class="dot" onclick="scrollToSection(2)"></button>
+  <button class="dot" onclick="scrollToSection(3)"></button>
+  <button class="dot" onclick="scrollToSection(4)"></button>
+  <button class="dot" onclick="scrollToSection(5)"></button>
+  <button class="dot" onclick="scrollToSection(6)"></button>
+  <button class="dot" onclick="scrollToSection(7)"></button>
+  <button class="dot" onclick="scrollToSection(8)"></button>
+  <button class="dot" onclick="scrollToSection(9)"></button>
+  <button class="dot" onclick="scrollToSection(10)"></button>
+  <button class="dot" onclick="scrollToSection(11)"></button>
+</nav>
+
+<!-- Nav -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="mark">T</div>
+      Tau Agent
+    </a>
+    <div class="nav-links">
+      <a href="#demo">Product</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#demo">Demo</a>
+      <a href="#final-cta" class="btn btn-gold">Get early access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- S1: Hero -->
+<section class="hero section-anchor" id="hero">
+  <div class="container">
+    <div class="hero-content fade-up">
+      <div class="section-label">Workflow automation AI agent</div>
+      <h1>Workflows that <span class="gold">finish themselves.</span></h1>
+      <p>The AI agent that runs procurement, approvals, and operations for enterprise teams — so your people focus on results, not routing.</p>
+      <div class="waitlist-form">
+        <input type="email" placeholder="you@company.com">
+        <button class="btn btn-gold">Join the waitlist</button>
+      </div>
+    </div>
+  </div>
+  <!-- Decorative nodes -->
+  <div class="hero-canvas" id="heroCanvas"></div>
+</section>
+
+<!-- S2: Social Proof -->
+<section class="social-proof section-anchor" id="social">
+  <div class="container">
+    <div class="logo-strip">
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+    </div>
+    <div class="proof-text">
+      <strong>2,400+</strong> teams on the waitlist
+    </div>
+  </div>
+</section>
+
+<!-- S3: Demo -->
+<section class="section section-anchor" id="demo">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="section-label">See it in action</div>
+      <h2 class="section-title" style="max-width:600px;margin:0 auto 8px">Watch Tau Agent automate a workflow in real time</h2>
+      <p class="section-sub" style="margin:0 auto">From natural language description to running automation — in under 60 seconds.</p>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-topbar">
+        <div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+        <div class="demo-url">app.tauagent.com/demo</div>
+      </div>
+      <div class="demo-body">
+        <div class="play-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="#000"/></svg>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px">
+      <a href="#" class="btn btn-outline-gold">Book a personal demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- S4: Problem → Solution -->
+<section class="section section-anchor" id="problem" style="border-top:0.5px solid var(--white-08)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-label">The problem</div>
+      <h2 class="section-title" style="max-width:560px;margin:0 auto">Your team wastes hours on work that should take minutes</h2>
+    </div>
+    <div class="grid-2">
+      <div class="compare-card before">
+        <div class="label">Before Tau Agent</div>
+        <div class="stat"><div class="number">12 hrs</div><div class="desc">Average approval cycle time</div></div>
+        <div class="stat"><div class="number">5 tools</div><div class="desc">Touched per workflow handoff</div></div>
+        <div class="stat"><div class="number">60%</div><div class="desc">Of ops time on repetitive routing</div></div>
+      </div>
+      <div class="compare-card after">
+        <div class="label">After Tau Agent</div>
+        <div class="stat"><div class="number">4 min</div><div class="desc">Agent-driven approval cycle</div></div>
+        <div class="stat"><div class="number">1 agent</div><div class="desc">Handles cross-tool orchestration</div></div>
+        <div class="stat"><div class="number">90%</div><div class="desc">Reduction in manual routing</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: How It Works -->
+<section class="section section-anchor" id="how">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title" style="max-width:480px;margin:0 auto">Three steps to autonomous workflows</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch">
+      <div class="step-card fade-up">
+        <div class="num">01</div>
+        <h3>Connect</h3>
+        <p>Plug in Slack, Jira, SAP, Salesforce, and 50+ tools in minutes. No code required.</p>
+      </div>
+      <div class="step-connector">→</div>
+      <div class="step-card fade-up delay-1">
+        <div class="num">02</div>
+        <h3>Describe</h3>
+        <p>Tell the agent what to do in plain English. It maps your workflow automatically.</p>
+      </div>
+      <div class="step-connector">→</div>
+      <div class="step-card fade-up delay-2">
+        <div class="num">03</div>
+        <h3>Deploy</h3>
+        <p>The agent runs 24/7 — routing, approving, escalating, and reporting back to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: Features -->
+<section class="section section-anchor" id="features" style="border-top:0.5px solid var(--white-08)">
+  <div class="container">
+    <div style="margin-bottom:60px">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Built for enterprise complexity</h2>
+      <p class="section-sub">Everything you need to replace manual handoffs with intelligent automation.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card">
+        <div class="icon">⟁</div>
+        <h4>Smart routing</h4>
+        <p>Automatically assigns tasks to the right person based on role, workload, availability, and custom business rules.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⌘</div>
+        <h4>Natural language triggers</h4>
+        <p>Describe workflows in plain English. The agent interprets intent and builds the automation for you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">◎</div>
+        <h4>Full audit trail</h4>
+        <p>Every decision logged, timestamped, and explainable. Export-ready for compliance and internal review.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⧉</div>
+        <h4>Approval chains</h4>
+        <p>Multi-level approvals with escalation rules, SLA enforcement, and automatic reminders built in.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⑂</div>
+        <h4>Conditional logic</h4>
+        <p>If/then branching that adapts in real time based on live data from your connected systems.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">◧</div>
+        <h4>Live dashboards</h4>
+        <p>Track cycle times, bottlenecks, and agent performance with real-time reporting and alerts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: Integrations -->
+<section class="section section-anchor" id="integrations">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="section-label">Integrations</div>
+      <h2 class="section-title" style="max-width:480px;margin:0 auto">Works with your entire stack</h2>
+      <p class="section-sub" style="margin:0 auto">50+ pre-built connectors. If you use it, Tau Agent plugs into it.</p>
+    </div>
+    <div class="tabs" style="justify-content:center">
+      <button class="tab active">All</button>
+      <button class="tab">CRM</button>
+      <button class="tab">ERP</button>
+      <button class="tab">ITSM</button>
+      <button class="tab">Communication</button>
+      <button class="tab">Storage</button>
+    </div>
+    <div class="integration-grid">
+      <div class="integration-item"><div class="logo-box">SF</div><span>Salesforce</span></div>
+      <div class="integration-item"><div class="logo-box">HS</div><span>HubSpot</span></div>
+      <div class="integration-item"><div class="logo-box">SAP</div><span>SAP</span></div>
+      <div class="integration-item"><div class="logo-box">OR</div><span>Oracle</span></div>
+      <div class="integration-item"><div class="logo-box">NS</div><span>NetSuite</span></div>
+      <div class="integration-item"><div class="logo-box">SN</div><span>ServiceNow</span></div>
+      <div class="integration-item"><div class="logo-box">JR</div><span>Jira</span></div>
+      <div class="integration-item"><div class="logo-box">SK</div><span>Slack</span></div>
+      <div class="integration-item"><div class="logo-box">TM</div><span>Teams</span></div>
+      <div class="integration-item"><div class="logo-box">GD</div><span>Google Drive</span></div>
+      <div class="integration-item"><div class="logo-box">SP</div><span>SharePoint</span></div>
+      <div class="integration-item"><div class="logo-box">BX</div><span>Box</span></div>
+      <div class="integration-item"><div class="logo-box">ZH</div><span>Zoho</span></div>
+      <div class="integration-item"><div class="logo-box">AS</div><span>Asana</span></div>
+      <div class="integration-item"><div class="logo-box">NT</div><span>Notion</span></div>
+      <div class="integration-item"><div class="logo-box">SG</div><span>SendGrid</span></div>
+      <div class="integration-item"><div class="logo-box">ST</div><span>Stripe</span></div>
+      <div class="integration-item"><div class="logo-box">QK</div><span>QuickBooks</span></div>
+    </div>
+    <div style="text-align:center;margin-top:28px">
+      <p style="font-size:14px;color:var(--white-25)">Don't see your tool? <a href="#" style="color:var(--gold);text-decoration:none">Request a connector →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- S8: Pricing -->
+<section class="section section-anchor" id="pricing" style="border-top:0.5px solid var(--white-08)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title" style="max-width:420px;margin:0 auto">Simple, transparent pricing</h2>
+      <p class="section-sub" style="margin:0 auto">Start small, scale as you grow. No hidden fees.</p>
+    </div>
+    <div class="grid-3">
+      <div class="pricing-card">
+        <div class="tier">Starter</div>
+        <div class="price">€49 <span>/mo</span></div>
+        <div class="price-sub">per workspace</div>
+        <ul>
+          <li>Up to 10 workflows</li>
+          <li>5 integrations</li>
+          <li>Email support</li>
+          <li>Basic analytics</li>
+        </ul>
+        <a href="#" class="btn btn-outline-white" style="width:100%;justify-content:center">Get started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="badge">MOST POPULAR</div>
+        <div class="tier">Growth</div>
+        <div class="price">€149 <span>/mo</span></div>
+        <div class="price-sub">per workspace</div>
+        <ul>
+          <li>Unlimited workflows</li>
+          <li>All integrations</li>
+          <li>Priority support</li>
+          <li>Advanced analytics</li>
+          <li>Custom approval chains</li>
+        </ul>
+        <a href="#" class="btn btn-gold" style="width:100%;justify-content:center">Join the waitlist</a>
+      </div>
+      <div class="pricing-card">
+        <div class="tier">Enterprise</div>
+        <div class="price" style="font-size:32px;padding-top:8px">Custom</div>
+        <div class="price-sub">tailored to your needs</div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>SSO / SAML</li>
+          <li>Dedicated account manager</li>
+          <li>Custom SLA</li>
+          <li>On-prem option</li>
+        </ul>
+        <a href="#" class="btn btn-outline-gold" style="width:100%;justify-content:center">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S9: Testimonials -->
+<section class="section section-anchor" id="testimonials">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px">
+      <div class="section-label">Early results</div>
+      <h2 class="section-title" style="max-width:480px;margin:0 auto">What beta teams are saying</h2>
+    </div>
+    <div class="grid-2">
+      <div class="testimonial-card">
+        <div class="metric">Onboarding: 3 weeks → 2 days</div>
+        <blockquote>"Tau Agent eliminated our vendor onboarding bottleneck entirely. What used to take three weeks of back-and-forth now runs on autopilot."</blockquote>
+        <div class="author">
+          <div class="avatar">MR</div>
+          <div><div class="name">Maria Richter</div><div class="role">Head of Procurement · TechCorp GmbH</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="metric">40 hrs/week saved across ops</div>
+        <blockquote>"We described our approval workflow in one sentence and the agent built it. The audit trail alone justified the investment."</blockquote>
+        <div class="author">
+          <div class="avatar">SK</div>
+          <div><div class="name">Stefan Klein</div><div class="role">VP Operations · DataScale AG</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S10: Trust -->
+<section class="section section-anchor" id="trust" style="border-top:0.5px solid var(--white-08)">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Enterprise ready</div>
+    <h2 class="section-title" style="max-width:420px;margin:0 auto 40px">Built for security and compliance</h2>
+    <div class="trust-badges">
+      <div class="trust-badge"><div class="badge-icon">◉</div><span>SOC 2 Type II</span></div>
+      <div class="trust-badge"><div class="badge-icon">◉</div><span>GDPR</span></div>
+      <div class="trust-badge"><div class="badge-icon">◉</div><span>ISO 27001</span></div>
+      <div class="trust-badge"><div class="badge-icon">◉</div><span>99.9% SLA</span></div>
+    </div>
+    <div class="trust-features">
+      <div class="trust-feature">SSO / SAML</div>
+      <div class="trust-feature">Role-based access</div>
+      <div class="trust-feature">Data residency (EU/US)</div>
+      <div class="trust-feature">Encryption at rest & in transit</div>
+    </div>
+  </div>
+</section>
+
+<!-- S11: FAQ -->
+<section class="section section-anchor" id="faq">
+  <div class="container" style="max-width:720px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+    </div>
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">How is this different from Zapier or Make? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>Zapier and Make are rule-based — you build explicit if/then flows. Tau Agent is an AI agent that understands intent, makes decisions, and adapts in real time. You describe what you want, and the agent figures out how to do it.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I customize the AI's decision-making? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>Yes. You define guardrails, approval thresholds, escalation rules, and decision boundaries. The agent operates within your policies — it's autonomous, not unsupervised.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What happens if the agent makes a mistake? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>Every action is logged in the audit trail and reversible. You can set confidence thresholds where the agent pauses and asks a human to confirm before proceeding.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does setup take? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>Most teams are running their first workflow within 30 minutes. Enterprise deployments with SSO and custom connectors typically take 1–2 weeks with our onboarding team.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is my data used to train AI models? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>No. Your data is yours. We never use customer data for model training. All data is encrypted, isolated, and stored in your chosen region (EU or US).</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What support do you offer? <span class="arrow">+</span></div>
+      <div class="faq-a"><p>Starter includes email support. Growth gets priority response within 4 hours. Enterprise includes a dedicated account manager and custom SLA with phone support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S12: Final CTA -->
+<section class="final-cta section-anchor" id="final-cta">
+  <div class="container">
+    <div class="section-label">Early access</div>
+    <h2>Stop building workflows.<br>Start deploying <span style="color:var(--gold)">agents.</span></h2>
+    <p>Early access spots are limited — launching Q2 2026.</p>
+    <div class="waitlist-form">
+      <input type="email" placeholder="you@company.com">
+      <button class="btn btn-gold">Join the waitlist</button>
+    </div>
+    <div class="counter">2,400+ teams already on the list</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="https://tauprocess.de">Tau Process House</a>
+      <a href="#">Imprint</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </div>
+    <div class="copy">© 2026 Tau Process House GmbH</div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Dot nav
+const sections = document.querySelectorAll('.section-anchor');
+const dots = document.querySelectorAll('.dot-nav .dot');
+function scrollToSection(i) {
+  sections[i]?.scrollIntoView({ behavior: 'smooth' });
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const i = [...sections].indexOf(e.target);
+      dots.forEach((d, j) => d.classList.toggle('active', j === i));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => obs.observe(s));
+
+// FAQ
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Hero decorative nodes
+const canvas = document.getElementById('heroCanvas');
+if (canvas) {
+  for (let i = 0; i < 20; i++) {
+    const node = document.createElement('div');
+    node.className = 'node' + (Math.random() > 0.7 ? ' gold' : '');
+    node.style.left = Math.random() * 100 + '%';
+    node.style.top = Math.random() * 100 + '%';
+    node.style.animation = `float ${2 + Math.random() * 3}s ease-in-out infinite ${Math.random() * 2}s`;
+    canvas.appendChild(node);
+  }
+  for (let i = 0; i < 12; i++) {
+    const line = document.createElement('div');
+    line.className = 'line';
+    const x1 = Math.random() * 100, y1 = Math.random() * 100;
+    const x2 = Math.random() * 100, y2 = Math.random() * 100;
+    const dx = x2 - x1, dy = y2 - y1;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+    line.style.left = x1 + '%';
+    line.style.top = y1 + '%';
+    line.style.width = len + '%';
+    line.style.transform = `rotate(${angle}deg)`;
+    canvas.appendChild(line);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,423 +1,173 @@
 {
   "caseStudies": [
     {
-      "artifacts": [
-        {
-          "de": "Automatische PDF-Rechnungen bei Projektabschluss",
-          "en": "Automatic PDF invoices on project completion"
-        },
-        {
-          "de": "Echtzeit-Dashboard für Abrechnungsstatus",
-          "en": "Real-time billing status dashboard"
-        },
-        {
-          "de": "Automatisierte Benachrichtigungs-E-Mails an Kunden",
-          "en": "Automated client notification emails"
-        },
-        {
-          "de": "Monatlicher Umsatzbericht (Zoho Analytics)",
-          "en": "Monthly revenue report (Zoho Analytics)"
-        }
-      ],
-      "challenge": {
-        "de": "Die Rechnungserstellung war vollständig manuell und dauerte bis zu 14 Tage nach Leistungserbringung. Angebote wurden durch Kopieren von Daten aus verschiedenen Tools zusammengestellt, und es gab keinen systematischen Weg, den Übergang vom Projektabschluss zum Rechnungsversand zu verfolgen. Das Team verbrachte erhebliche Zeit mit administrativen Aufgaben statt mit Kundenprojekten.",
-        "en": "Invoice creation was entirely manual, taking up to 14 days after service delivery. Proposals were assembled by copying data between disconnected tools, and there was no systematic way to track the handover from project completion to invoice dispatch. The team spent significant time on administrative tasks instead of client work."
-      },
-      "client": "Berlin Consulting GmbH",
-      "headline": {
-        "de": "End-to-End Abrechnungsautomatisierung",
-        "en": "End-to-End Billing Automation"
-      },
       "id": "case-001",
-      "industry": {
-        "de": "Beratung & Professional Services",
-        "en": "Professional Services"
-      },
-      "kpis": [
-        {
-          "after": "2 days",
-          "before": "14 days",
-          "improvement": "-86%",
-          "metric": {
-            "de": "Abrechnungszyklus",
-            "en": "Billing cycle"
-          }
-        },
-        {
-          "after": "5 minutes",
-          "before": "2 hours",
-          "improvement": "-96%",
-          "metric": {
-            "de": "Angebotserstellungszeit",
-            "en": "Proposal creation time"
-          }
-        },
-        {
-          "after": "0",
-          "before": "~8 / month",
-          "improvement": "-100%",
-          "metric": {
-            "de": "Manuelle Abrechnungsfehler",
-            "en": "Manual billing errors"
-          }
-        }
-      ],
-      "published": false,
-      "solution": {
-        "apps": [
-          "Zoho CRM",
-          "Zoho Projects",
-          "Zoho Books",
-          "Zoho Flow"
-        ],
-        "description": {
-          "de": "Neue Leads werden in Zoho CRM erfasst und qualifiziert. Akzeptierte Leads lösen automatisch die Angebotserstellung direkt im CRM aus. Nach Kundenfreigabe wird ein verknüpftes Projekt in Zoho Projects angelegt. Wenn das Projekt als abgeschlossen markiert wird, generiert Zoho Flow automatisch eine Rechnung über Zoho Books — mit allen Positionen aus den Projektdaten.",
-          "en": "New leads are captured and qualified in Zoho CRM. Accepted leads trigger automatic proposal generation directly in CRM. Upon client sign-off, a linked project is created in Zoho Projects. When the project is marked complete, Zoho Flow automatically generates and dispatches the invoice via Zoho Books — with all line items pulled from the project data."
-        },
-        "summary": {
-          "de": "Vollständige Migration auf Zoho One mit einer verbundenen Prozesskette von der Lead-Erfassung bis zum Rechnungsversand — keine manuellen Schritte erforderlich.",
-          "en": "Full migration to Zoho One with a connected process chain from lead capture to invoice dispatch — no manual steps required."
-        }
-      },
+      "type": "caseStudy",
+      "client": "Berlin Consulting GmbH",
+      "industry": { "de": "Beratung & Professional Services", "en": "Professional Services" },
+      "headline": { "de": "End-to-End Abrechnungsautomatisierung", "en": "End-to-End Billing Automation" },
       "tagline": {
         "de": "Von 14 auf 2 Tage — vollautomatisierte Abrechnung über den gesamten Projektlebenszyklus",
         "en": "From 14 days to 2 days — automated billing across the full project lifecycle"
       },
-      "tags": [
-        "Zoho One",
-        "Billing Automation",
-        "CRM",
-        "Flow"
+      "challenge": {
+        "de": "Die Rechnungserstellung war vollständig manuell und dauerte bis zu 14 Tage nach Leistungserbringung.",
+        "en": "Invoice creation was entirely manual, taking up to 14 days after service delivery."
+      },
+      "solution": {
+        "summary": { "de": "Vollständige Migration auf Zoho One.", "en": "Full migration to Zoho One." },
+        "apps": ["Zoho CRM", "Zoho Projects", "Zoho Books", "Zoho Flow"],
+        "description": { "de": "Automatisierte Prozesskette von Lead bis Rechnung.", "en": "Automated process chain from lead to invoice." }
+      },
+      "artifacts": [
+        { "de": "Automatische PDF-Rechnungen", "en": "Automatic PDF invoices" }
       ],
-      "type": "caseStudy"
+      "kpis": [
+        { "improvement": "-86%", "metric": { "de": "Abrechnungszyklus", "en": "Billing cycle" }, "before": "14 days", "after": "2 days" }
+      ],
+      "tags": ["Zoho One", "Billing Automation"],
+      "published": false
     },
     {
       "id": "case-002",
       "type": "caseStudy",
       "client": "Placeholder Client B",
-      "industry": {
-        "de": "E-Commerce",
-        "en": "E-Commerce"
-      },
-      "headline": {
-        "de": "Lead-Anreicherung & Sales-Beschleunigung",
-        "en": "Lead Enrichment & Sales Acceleration"
-      },
+      "industry": { "de": "E-Commerce", "en": "E-Commerce" },
+      "headline": { "de": "Lead-Anreicherung & Sales-Beschleunigung", "en": "Lead Enrichment & Sales Acceleration" },
       "tagline": {
-        "de": "70% mehr Lead-Daten, 60% schnellerer Erstkontakt durch automatisierte Anreicherung",
-        "en": "70% more lead data, 60% faster first contact through automated enrichment"
+        "de": "70% mehr Lead-Daten, 60% schnellerer Erstkontakt",
+        "en": "70% more lead data, 60% faster first contact"
       },
-      "challenge": {
-        "de": "Das Vertriebsteam verbrachte 30–40 % seiner Arbeitszeit damit, eingehende Leads vor dem Erstkontakt manuell zu recherchieren. Die Datenqualität im CRM war inkonsistent, und hochwertige Leads wurden regelmäßig zu spät kontaktiert — oft nachdem ein Wettbewerber bereits Kontakt aufgenommen hatte.",
-        "en": "The sales team spent 30–40% of their working time manually researching incoming leads before making first contact. Data quality was inconsistent across the CRM, and high-value leads were routinely contacted too late — often after a competitor had already reached out."
-      },
+      "challenge": { "de": "", "en": "" },
       "solution": {
-        "summary": {
-          "de": "KI-gestützte Lead-Anreicherung direkt in Zoho CRM integriert, die automatisch bei jeder neuen Lead-Erstellung ausgelöst wird.",
-          "en": "AI-powered lead enrichment integrated directly into Zoho CRM, triggering automatically on every new lead creation."
-        },
-        "apps": [
-          "Zoho CRM",
-          "Zoho Flow",
-          "Zoho Analytics"
-        ],
-        "description": {
-          "de": "Wenn ein neuer Lead in Zoho CRM eingeht, löst ein automatisierter Flow einen KI-Agenten aus, der den Lead-Datensatz mit Unternehmensgröße, Branche, Umsatzbereich, LinkedIn-Kontext und einem KI-generierten Qualifizierungsscore anreichert. Das Vertriebsteam erhält eine priorisierte, kontextreiche Lead-Queue — sofort einsatzbereit, ohne manuelle Recherche.",
-          "en": "When a new lead enters Zoho CRM, an automated flow triggers an AI agent that enriches the lead record with company size, industry, revenue range, LinkedIn context, and an AI-generated qualification score. The sales team receives a prioritised, context-rich lead queue — ready to act on immediately without any manual research."
-        }
+        "summary": { "de": "", "en": "" },
+        "apps": ["Zoho CRM", "Zoho Flow"],
+        "description": { "de": "", "en": "" }
       },
-      "artifacts": [
-        {
-          "de": "Angereicherte Lead-Profile mit Unternehmensdaten",
-          "en": "Enriched lead profiles with company data"
-        },
-        {
-          "de": "KI-Qualifizierungsscores pro Lead",
-          "en": "AI qualification scores per lead"
-        },
-        {
-          "de": "Priorisierte tägliche Vertriebsqueue",
-          "en": "Prioritised daily sales queue"
-        },
-        {
-          "de": "Wöchentlicher Pipeline-Performance-Bericht",
-          "en": "Weekly pipeline performance report"
-        }
-      ],
-      "kpis": [
-        {
-          "metric": {
-            "de": "Lead-Datenvollständigkeit",
-            "en": "Lead data completeness"
-          },
-          "before": "35%",
-          "after": "87%",
-          "improvement": "+149%"
-        },
-        {
-          "metric": {
-            "de": "Zeit bis zum Erstkontakt",
-            "en": "Time to first contact"
-          },
-          "before": "4.5 hours",
-          "after": "45 minutes",
-          "improvement": "-83%"
-        },
-        {
-          "metric": {
-            "de": "Lead-zu-Opportunity-Rate",
-            "en": "Lead-to-opportunity rate"
-          },
-          "before": "12%",
-          "after": "21%",
-          "improvement": "+75%"
-        }
-      ],
-      "tags": [
-        "Zoho CRM",
-        "AI",
-        "Lead Management",
-        "Flow"
-      ],
-      "published": true
+      "artifacts": [],
+      "kpis": [],
+      "tags": [],
+      "published": false
     }
   ],
   "solutions": [
     {
       "id": "sol-001",
       "type": "solution",
-      "name": {
-        "de": "Agentur-Betriebssystem auf Zoho",
-        "en": "Agency Operating System on Zoho"
-      },
+      "name": { "de": "Agentur-Betriebssystem auf Zoho", "en": "Agency Operating System on Zoho" },
       "tagline": {
         "de": "CRM, Projektmanagement und Buchhaltung — vollständig integriert für Agenturen",
         "en": "CRM, project management and accounting — fully integrated for agencies"
       },
       "target": {
-        "audience": {
-          "de": "Agenturen und Beratungsunternehmen mit 5–50 Mitarbeitern, die ihre Prozesse von Akquise über Projektdurchführung bis zur Rechnungsstellung vereinheitlichen möchten.",
-          "en": "Agencies and consulting firms with 5–50 employees who want to unify their processes from acquisition through project delivery to invoicing."
-        },
-        "problem": {
-          "de": "Die meisten Agenturen arbeiten mit fragmentierten Tools: Leads werden in einem System verwaltet, Projekte in einem anderen, die Buchhaltung läuft separat. Daten werden mehrfach eingegeben, Übergaben sind fehleranfällig, und der Überblick über Profitabilität und Auslastung fehlt.",
-          "en": "Most agencies work with fragmented tools: leads are managed in one system, projects in another, accounting runs separately. Data is entered multiple times, handovers are error-prone, and there is no overview of profitability and capacity."
-        }
+        "audience": { "de": "", "en": "" },
+        "problem": { "de": "", "en": "" }
       },
       "architecture": {
-        "summary": {
-          "de": "Drei Zoho-Apps bilden ein geschlossenes System — vom ersten Kundenkontakt bis zur bezahlten Rechnung.",
-          "en": "Three Zoho apps form a closed system — from the first client contact to the paid invoice."
-        },
-        "components": [
-          {
-            "name": "Zoho CRM",
-            "role": {
-              "de": "Zentraler Datenhub: Leads, Kontakte, Unternehmen, Angebote und Verträge werden hier verwaltet. CRM ist die Single Source of Truth für alle Kundendaten.",
-              "en": "Central data hub: leads, contacts, companies, proposals and contracts are managed here. CRM is the single source of truth for all client data."
-            }
-          },
-          {
-            "name": "Zoho Projects",
-            "role": {
-              "de": "Projektdurchführung: Wird automatisch aus dem CRM heraus angelegt, sobald ein Auftrag gewonnen ist. Stunden, Meilensteine und Deliverables werden direkt am Projekt erfasst.",
-              "en": "Project execution: automatically created from CRM once a deal is won. Hours, milestones and deliverables are tracked directly on the project."
-            }
-          },
-          {
-            "name": "Zoho Books",
-            "role": {
-              "de": "Buchhaltung: Rechnungen werden automatisch auf Basis der Projektdaten erstellt. Zahlungseingänge, Mahnwesen und Steuerberichte laufen vollständig in Books.",
-              "en": "Accounting: invoices are generated automatically based on project data. Payments, dunning and tax reports run entirely in Books."
-            }
-          }
-        ],
-        "description": {
-          "de": "Ein neuer Lead wird im CRM qualifiziert und ein Angebot erstellt. Bei Auftragserteilung öffnet sich automatisch ein verknüpftes Projekt in Zoho Projects — mit allen relevanten Kundendaten übertragen. Das Projektteam erfasst Zeiten und schließt Meilensteine ab. Bei Projektabschluss generiert Zoho Flow automatisch eine Rechnung in Zoho Books, die auf den erfassten Leistungen basiert. Alle drei Systeme teilen Kundenstammdaten, sodass jede Änderung im CRM sofort überall gilt.",
-          "en": "A new lead is qualified in CRM and a proposal is created. Upon winning the deal, a linked project automatically opens in Zoho Projects — with all relevant client data transferred. The project team logs hours and completes milestones. On project completion, Zoho Flow automatically generates an invoice in Zoho Books based on the recorded services. All three systems share master client data, so any change in CRM instantly applies everywhere."
-        }
+        "summary": { "de": "", "en": "" },
+        "components": [],
+        "description": { "de": "", "en": "" }
       },
-      "deliverables": [
-        {
-          "de": "Eingerichtetes Zoho CRM mit agenturspezifischer Pipeline (Lead → Angebot → Auftrag)",
-          "en": "Configured Zoho CRM with agency-specific pipeline (Lead → Proposal → Deal)"
-        },
-        {
-          "de": "Zoho Projects Integration mit automatischer Projekterstellung bei Auftragsgewinn",
-          "en": "Zoho Projects integration with automatic project creation on deal win"
-        },
-        {
-          "de": "Zoho Books Konfiguration mit DATEV-kompatibler Buchungslogik",
-          "en": "Zoho Books configuration with DATEV-compatible accounting logic"
-        },
-        {
-          "de": "Automatisierter Rechnungsfluss von Projektabschluss zu Rechnungsversand",
-          "en": "Automated invoice flow from project completion to invoice dispatch"
-        },
-        {
-          "de": "Einheitliches Kundenstammdaten-Management über alle drei Systeme",
-          "en": "Unified client master data management across all three systems"
-        },
-        {
-          "de": "Dashboard für Auslastung, offene Posten und Umsatz in Echtzeit",
-          "en": "Real-time dashboard for capacity utilisation, open items and revenue"
-        },
-        {
-          "de": "Dokumentierte Prozesse und Schulung des Teams",
-          "en": "Documented processes and team training"
-        }
-      ],
-      "tags": [
-        "Zoho CRM",
-        "Zoho Projects",
-        "Zoho Books",
-        "Agenturen",
-        "Zoho One"
-      ],
-      "published": true
+      "deliverables": [],
+      "tags": ["Zoho CRM", "Zoho Projects", "Zoho Books"],
+      "published": false
+    },
+    {
+      "id": "sol-002",
+      "type": "solution",
+      "name": { "de": "", "en": "" },
+      "tagline": { "de": "", "en": "" },
+      "target": { "audience": { "de": "", "en": "" }, "problem": { "de": "", "en": "" } },
+      "architecture": { "summary": { "de": "", "en": "" }, "components": [], "description": { "de": "", "en": "" } },
+      "deliverables": [],
+      "tags": [],
+      "published": false
     }
   ],
   "products": [
     {
-      "id": "prod-001",
+      "id": "prod-tau-agent",
       "type": "product",
-      "name": {
-        "de": "Lead Enrichment Agent",
-        "en": "Lead Enrichment Agent"
-      },
+      "name": { "de": "Tau Zoho Agent", "en": "Tau Zoho Agent" },
       "tagline": {
-        "de": "Automatische Anreicherung eingehender CRM-Leads mit Unternehmensdaten und KI-Qualifizierung",
-        "en": "Automatic enrichment of incoming CRM leads with company data and AI qualification"
+        "de": "Der KI-Agent für dein Zoho CRM — Lead-Scoring, Deal-Automation und Reporting auf Autopilot.",
+        "en": "The AI agent for your Zoho CRM — lead scoring, deal automation and reporting on autopilot."
       },
       "problem": {
-        "de": "Vertriebsteams verbringen 30–40 % ihrer Zeit mit manueller Lead-Recherche vor dem Erstkontakt — Zeit, die sie eigentlich für den Verkauf nutzen sollten. Die meisten CRMs sind voller unvollständiger Datensätze, die wöchentlich stundenlange Recherche erfordern.",
-        "en": "Sales teams spend 30–40% of their time on manual lead research before making first contact — time that should be spent selling. Most CRMs are filled with incomplete records that require hours of research per week."
+        "de": "Vertriebsteams verbringen täglich 45 Minuten mit manueller Lead-Zuweisung, 30 % der Leads erhalten keinen Follow-up, und CRM-Berichte werden wöchentlich manuell erstellt.",
+        "en": "Sales teams spend 45 minutes daily on manual lead routing, 30% of leads get no follow-up, and CRM reports are compiled manually every week."
       },
       "description": {
-        "de": "Ein sofort einsatzbereiter KI-Agent, der direkt in dein Zoho CRM integriert wird. Jeder neue Lead wird automatisch mit firmografischen Daten, LinkedIn-Kontext und einem KI-generierten Qualifizierungsscore angereichert. Dein Team sieht eine priorisierte, kontextreiche Queue — keine Liste leerer Namen.",
-        "en": "A ready-to-deploy AI agent that integrates directly into your Zoho CRM. Every new lead is automatically enriched with firmographic data, LinkedIn context, and an AI-generated qualification score. Your team sees a prioritised, context-rich queue — not a list of empty names."
+        "de": "Tau Zoho Agent verbindet sich per OAuth mit deinem Zoho CRM und übernimmt automatisch Lead-Scoring, Deal-Pipeline-Pflege, Support-Ticket-Eskalation und Reporting — ohne Deluge-Scripting.",
+        "en": "Tau Zoho Agent connects via OAuth to your Zoho CRM and automatically handles lead scoring, deal pipeline management, support ticket escalation and reporting — no Deluge scripting required."
       },
       "showcase": {
         "type": "image",
-        "url": "/products/lead-enrichment-screenshot.png",
-        "alt": {
-          "de": "Lead Enrichment Agent zeigt angereicherte Lead-Profile mit Qualifizierungsscores in Zoho CRM",
-          "en": "Lead Enrichment Agent showing enriched lead profiles with qualification scores in Zoho CRM"
-        }
+        "url": "",
+        "alt": { "de": "", "en": "" }
       },
       "results": [
-        {
-          "metric": {
-            "de": "Lead-Datenvollständigkeit",
-            "en": "Lead data completeness"
-          },
-          "improvement": "+70%"
-        },
-        {
-          "metric": {
-            "de": "Zeit bis zum Erstkontakt",
-            "en": "Time to first contact"
-          },
-          "improvement": "-60%"
-        },
-        {
-          "metric": {
-            "de": "Lead-zu-Opportunity-Rate",
-            "en": "Lead-to-opportunity rate"
-          },
-          "improvement": "+75%"
-        }
+        { "metric": { "de": "Manuelle Lead-Zuweisung", "en": "Manual lead routing" }, "improvement": "→ 0 min" },
+        { "metric": { "de": "Automatische Follow-ups", "en": "Automated follow-ups" }, "improvement": "100%" },
+        { "metric": { "de": "Echtzeit-Reporting", "en": "Real-time reporting" }, "improvement": "24/7" }
       ],
       "pricing": {
-        "model": "monthly",
-        "price": 149,
+        "model": "beta",
+        "price": 0,
         "currency": "EUR",
-        "label": "149 € / month"
+        "label": "Beta Phase"
       },
       "cta": {
-        "label": {
-          "de": "Implementierung anfragen",
-          "en": "Request Implementation"
-        },
-        "href": "mailto:info@tauprocess.de?subject=Lead%20Enrichment%20Agent"
+        "label": { "de": "Alle Agent-Features ansehen", "en": "See full Agent features" },
+        "href": "/tau-zoho-agent"
       },
-      "tags": [
-        "AI",
-        "Zoho CRM",
-        "Lead Management"
-      ],
+      "tags": ["AI", "Zoho CRM", "Automation"],
       "published": true
+    },
+    {
+      "id": "prod-001",
+      "type": "product",
+      "name": { "de": "Lead Enrichment Agent", "en": "Lead Enrichment Agent" },
+      "tagline": {
+        "de": "Automatische Anreicherung eingehender CRM-Leads",
+        "en": "Automatic enrichment of incoming CRM leads"
+      },
+      "problem": { "de": "", "en": "" },
+      "description": { "de": "", "en": "" },
+      "showcase": { "type": "image", "url": "", "alt": { "de": "", "en": "" } },
+      "results": [],
+      "pricing": { "model": "monthly", "price": 149, "currency": "EUR", "label": "149 € / month" },
+      "cta": { "label": { "de": "", "en": "" }, "href": "" },
+      "tags": ["AI", "Zoho CRM"],
+      "published": false
     },
     {
       "id": "prod-002",
       "type": "product",
-      "name": {
-        "de": "Document Automation Suite",
-        "en": "Document Automation Suite"
-      },
-      "tagline": {
-        "de": "Angebote, Verträge und Rechnungen automatisch aus deinen Zoho-Daten generieren",
-        "en": "Generate proposals, contracts, and invoices automatically from your Zoho data"
-      },
-      "problem": {
-        "de": "Geschäftsdokumente manuell zu erstellen ist repetitiv, fehleranfällig und langsam. Die Daten existieren bereits in deinem CRM und ERP — werden aber trotzdem jedes Mal von Hand in Word-Vorlagen kopiert.",
-        "en": "Creating business documents manually is repetitive, error-prone, and slow. The data already exists in your CRM and ERP — but still gets copy-pasted into Word templates by hand, every single time."
-      },
-      "description": {
-        "de": "Eine Zoho-native Dokumentenautomatisierungslösung, die professionelle PDFs — Angebote, Verträge, Rechnungen und Projektberichte — direkt aus deinen Zoho CRM- und Books-Daten generiert. Ausgelöst per Klick, durch ein Workflow-Ereignis oder zeitgesteuert. Dokumente werden automatisch an Kunden übermittelt.",
-        "en": "A Zoho-native document automation suite that generates professional PDFs — proposals, contracts, invoices, and project reports — directly from your Zoho CRM and Books data. Triggered manually by a single click, by a workflow event, or on a schedule. Documents are delivered to clients automatically."
-      },
-      "showcase": {
-        "type": "image",
-        "url": "/products/document-automation-screenshot.png",
-        "alt": {
-          "de": "Document Automation Suite zeigt ein generiertes Angebots-PDF mit Live-Daten aus Zoho CRM",
-          "en": "Document Automation Suite showing a generated proposal PDF with live Zoho CRM data"
-        }
-      },
-      "results": [
-        {
-          "metric": {
-            "de": "Dokumenterstellungszeit",
-            "en": "Document creation time"
-          },
-          "improvement": "-95%"
-        },
-        {
-          "metric": {
-            "de": "Formatierungsfehler",
-            "en": "Formatting errors"
-          },
-          "improvement": "-100%"
-        },
-        {
-          "metric": {
-            "de": "Zeit bis zum Angebotsversand",
-            "en": "Time to send proposal"
-          },
-          "improvement": "-90%"
-        }
-      ],
-      "pricing": {
-        "model": "monthly",
-        "price": 99,
-        "currency": "EUR",
-        "label": "99 € / month"
-      },
-      "cta": {
-        "label": {
-          "de": "Implementierung anfragen",
-          "en": "Request Implementation"
-        },
-        "href": "mailto:info@tauprocess.de?subject=Document%20Automation%20Suite"
-      },
-      "tags": [
-        "Zoho CRM",
-        "Zoho Books",
-        "Document Generation",
-        "Automation"
-      ],
-      "published": true
+      "name": { "de": "Document Automation Suite", "en": "Document Automation Suite" },
+      "tagline": { "de": "", "en": "" },
+      "problem": { "de": "", "en": "" },
+      "description": { "de": "", "en": "" },
+      "showcase": { "type": "image", "url": "", "alt": { "de": "", "en": "" } },
+      "results": [],
+      "pricing": { "model": "monthly", "price": 99, "currency": "EUR", "label": "99 € / month" },
+      "cta": { "label": { "de": "", "en": "" }, "href": "" },
+      "tags": [],
+      "published": false
+    },
+    {
+      "id": "prod-003",
+      "type": "product",
+      "name": { "de": "Ticket Triage AI Agent", "en": "Ticket Triage AI Agent" },
+      "tagline": { "de": "", "en": "" },
+      "problem": { "de": "", "en": "" },
+      "description": { "de": "", "en": "" },
+      "showcase": { "type": "image", "url": "", "alt": { "de": "", "en": "" } },
+      "results": [],
+      "pricing": { "model": "monthly", "price": 0, "currency": "EUR", "label": "" },
+      "cta": { "label": { "de": "", "en": "" }, "href": "" },
+      "tags": [],
+      "published": false
     }
   ]
 }
