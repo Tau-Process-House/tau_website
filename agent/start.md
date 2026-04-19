@@ -79,3 +79,17 @@ Nach jeder Änderung am System:
 | `log/website-improvements.md` | Bug behoben oder neu entdeckt |
 | `konzepte/konzept.md` | Konzept-Punkt umgesetzt |
 | `zoho-check/overview.md` | Änderung am Zoho-Check-Feature |
+
+---
+
+## Verknüpfte Repos
+
+| Repo | Pfad | Zweck |
+|---|---|---|
+| Zoho Automations | `C:\Users\frimb\Documents\Arbeit\Tau Process House\Zoho Automations` | Python Service Launcher, Zoho AI Agent Projekt |
+
+### Zoho AI Agent — Landing Page
+Dieses Website-Repo enthält (geplant) die Landing Page für den **Zoho AI Agent**, ein neues SaaS-Produkt von Tau Process House.
+- Produktkonzept & Business Plan: `Zoho Automations/agent/` (oder Obsidian-Notes)
+- Obsidian Vault: `C:\Users\frimb\Documents\Arbeit\Tau Process House\knowledge_base\vault\Projects\ZohoAIAgent\`
+- Relevante Konzepte: `zoho-ai-agent-overview.md`, `zoho-ai-agent-launch-strategy.md`, `zoho-ai-agent-pricing.md`

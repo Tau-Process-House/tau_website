@@ -11,6 +11,11 @@ const config: Config = {
       colors: {
         'primary': '#000000',
         'secondary': '#ffffff',
+        'gold': {
+          DEFAULT: '#C8962E',
+          light: '#E8B84A',
+          dark: '#A67A1E',
+        },
       },
       spacing: {
         'section': '100vh',

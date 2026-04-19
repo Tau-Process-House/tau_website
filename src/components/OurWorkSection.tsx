@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import workData from '@/data/work.json';
 import type { CaseStudy, KPI, LocalizedString, Product, Solution, WorkItem } from '@/types/work';
 
@@ -298,7 +299,7 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
             </p>
           </div>
 
-          {!imgError ? (
+          {!imgError && item.showcase.url ? (
             <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-black/10 bg-black/5">
               <Image
                 src={item.showcase.url}
@@ -351,13 +352,13 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
                 {item.pricing.label}
               </div>
             </div>
-            <a
+            <Link
               href={item.cta.href}
               className="inline-block bg-black text-white font-semibold px-5 py-3 rounded-lg text-center hover:bg-black/80 transition-colors"
               style={{ fontSize: '15px', fontFamily: FONT }}
             >
               {loc(item.cta.label)} →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -535,12 +536,15 @@ export default function OurWorkSection() {
     setSelectedItem((prev) => (prev?.id === item.id ? null : item));
   };
 
-  const filters: { key: FilterType; label: string }[] = [
-    { key: 'all', label: 'All' },
-    { key: 'solution', label: 'Solutions' },
-    { key: 'caseStudy', label: 'Case Studies' },
-    { key: 'product', label: 'Products' },
-  ];
+  const publishedTypes = useMemo(() => new Set(allItems.map((i) => i.type)), [allItems]);
+
+  const filters = useMemo(() => {
+    const result: { key: FilterType; label: string }[] = [{ key: 'all', label: 'All' }];
+    if (publishedTypes.has('solution')) result.push({ key: 'solution', label: 'Solutions' });
+    if (publishedTypes.has('caseStudy')) result.push({ key: 'caseStudy', label: 'Case Studies' });
+    if (publishedTypes.has('product')) result.push({ key: 'product', label: 'Products' });
+    return result;
+  }, [publishedTypes]);
 
   return (
     <section
@@ -560,23 +564,25 @@ export default function OurWorkSection() {
           Our Work
         </h2>
 
-        {/* Filter buttons */}
-        <div className="flex justify-center gap-2 mb-6">
-          {filters.map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => handleFilterChange(key)}
-              className={`px-4 py-1.5 rounded-full border transition-all ${
-                activeFilter === key
-                  ? 'bg-black text-white border-black'
-                  : 'bg-white text-black border-black/20 hover:border-black/50'
-              }`}
-              style={{ fontSize: '14px', fontFamily: FONT }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        {/* Filter buttons — only rendered when multiple types have published entries */}
+        {filters.length > 1 && (
+          <div className="flex justify-center gap-2 mb-6">
+            {filters.map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => handleFilterChange(key)}
+                className={`px-4 py-1.5 rounded-full border transition-all ${
+                  activeFilter === key
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-black border-black/20 hover:border-black/50'
+                }`}
+                style={{ fontSize: '14px', fontFamily: FONT }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Card grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -599,7 +605,7 @@ export default function OurWorkSection() {
           </AnimatePresence>
         </div>
 
-        {/* Pagination */}
+        {/* Pagination — only rendered when there is more than one page */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-4">
             <button
