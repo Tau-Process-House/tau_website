@@ -1,50 +1,128 @@
-[
-  {
-    "id": "kosten-zoho-freelancer",
-    "question": "Was kostet ein Zoho Freelancer?",
-    "answer": "Die Stundensätze für einen Zoho-Spezialisten liegen in Deutschland zwischen 80 und 120 € pro Stunde — je nachdem, wie viele Stunden pro Monat beauftragt werden. Bei Tau Process House arbeitet Felix Rimbakowsky auf Stundenbasis, ohne Retainer-Zwang. Kleinere Projekte starten typisch ab 10–20 Stunden pro Monat; umfangreichere Implementierungen können 40–80+ Stunden umfassen. Im Vergleich zu einer Zoho-Agentur entfällt der Overhead für Account Management und Projektleitung — der Stundensatz geht direkt in Fachexpertise.",
-    "published": true
+{
+  "page": {
+    "title": {
+      "de": "Häufige Fragen",
+      "en": "Frequently Asked Questions"
+    },
+    "subtitle": {
+      "de": "Zoho One, CRM-Implementierung, Kosten und Zusammenarbeit mit Felix Rimbakowsky.",
+      "en": "Zoho One, CRM implementation, costs and working with Felix Rimbakowsky."
+    },
+    "backLink": {
+      "de": "← tauprocess.de",
+      "en": "← tauprocess.de"
+    },
+    "ctaTitle": {
+      "de": "Noch eine Frage?",
+      "en": "Another question?"
+    },
+    "ctaText": {
+      "de": "Felix antwortet persönlich — in der Regel innerhalb eines Werktags.",
+      "en": "Felix answers personally — usually within one business day."
+    },
+    "ctaEmail": "info@tauprocess.de",
+    "footerLinks": {
+      "home":    { "de": "Startseite",  "en": "Home" },
+      "imprint": { "de": "Impressum",   "en": "Imprint" },
+      "privacy": { "de": "Datenschutz", "en": "Privacy Policy" }
+    }
   },
-  {
-    "id": "zoho-freelancer-vs-agentur",
-    "question": "Was ist der Unterschied zwischen einem Zoho-Freelancer und einer Zoho-Agentur?",
-    "answer": "Bei einer Agentur bezahlst du oft für mehrere Zwischenstufen: Vertrieb, Account Management, Projektleitung — bevor die eigentliche Arbeit beginnt. Ein Zoho-Freelancer wie Felix Rimbakowsky arbeitet direkt mit dir zusammen. Du kommunizierst mit dem Experten, nicht mit einem Vermittler. Das spart Overhead-Kosten, beschleunigt Entscheidungen und sorgt für mehr Kontinuität im Projekt. Tau Process House bietet zusätzlich Zugang zu einem Zoho Premium Partner und damit zu Zoho Premium Support — ein Vorteil, der sonst nur größeren Agenturen vorbehalten ist.",
-    "published": true
-  },
-  {
-    "id": "zoho-one-implementierung-dauer",
-    "question": "Wie lange dauert eine Zoho One Implementierung?",
-    "answer": "Das hängt stark vom Umfang ab. Eine einfache Zoho CRM-Einführung mit grundlegendem Setup und Datenmigration ist in 2–4 Wochen realisierbar. Eine vollständige Zoho One Implementierung — CRM, Projekte, Abrechnung, Automatisierungen — dauert in der Regel 2–4 Monate, je nach Komplexität der bestehenden Prozesse. Tau Process House arbeitet in iterativen Sprints: erst die Grundarchitektur, dann ein vollständiger End-to-End-Prozess (z.B. Lead → Angebot → Projekt → Rechnung), dann Automatisierung der einzelnen Schritte.",
-    "published": true
-  },
-  {
-    "id": "zoho-crm-migration",
-    "question": "Kann Tau Process House eine Migration von einem anderen CRM zu Zoho durchführen?",
-    "answer": "Ja. Felix Rimbakowsky hat Erfahrung mit Migrationen von verschiedenen Systemen zu Zoho CRM und Zoho One — darunter Salesforce, HubSpot, Excel-basierte Lösungen und andere CRM-Plattformen. Der Prozess umfasst: Ist-Analyse und Datenmapping, Aufbau der Zielarchitektur in Zoho, Testmigration in einer Sandbox-Umgebung, Produktiv-Migration mit Validierung und anschließende Rollout-Begleitung. Dabei wird auf vollständige Datenintegrität und minimale Betriebsunterbrechung geachtet.",
-    "published": true
-  },
-  {
-    "id": "zoho-premium-support",
-    "question": "Bietet Tau Process House Zoho Premium Support?",
-    "answer": "Tau Process House arbeitet eng mit einem offiziellen Zoho Premium Partner zusammen. Dadurch haben Kunden von Felix Rimbakowsky Zugang zu Zoho Premium Support — schnellere Reaktionszeiten, direkte Eskalationsmöglichkeiten und priorisierte Bearbeitung von Zoho-seitigen Problemen. Dieser Zugang ist in der normalen Zoho-Lizenz nicht enthalten und ist sonst nur über große Partnerunternehmen verfügbar.",
-    "published": true
-  },
-  {
-    "id": "fuer-wen-geeignet",
-    "question": "Für welche Unternehmen ist die Zusammenarbeit mit Tau Process House geeignet?",
-    "answer": "Tau Process House richtet sich primär an kleine und mittelständische Unternehmen (KMU) in Deutschland — insbesondere in Berlin und Hannover, aber auch remote deutschlandweit. Besonders gut passt die Zusammenarbeit für Unternehmen, die: (1) Zoho One oder einzelne Zoho-Apps einführen möchten, (2) bestehende CRM- oder ERP-Systeme zu Zoho migrieren wollen, (3) ihre Geschäftsprozesse (Vertrieb, Projekte, Abrechnung) automatisieren möchten, oder (4) mit ihrem bestehenden Zoho-Setup nicht zufrieden sind und Optimierungsbedarf sehen.",
-    "published": true
-  },
-  {
-    "id": "zoho-one-was-ist-das",
-    "question": "Was ist Zoho One und wofür wird es eingesetzt?",
-    "answer": "Zoho One ist eine All-in-One Business-Plattform mit über 45 integrierten Anwendungen für alle Unternehmensbereiche: CRM (Kundenmanagement), Zoho Projects (Projektmanagement), Zoho Books (Buchhaltung & Abrechnung), Zoho Flow (Prozessautomatisierung), Zoho Desk (Kundensupport) und viele mehr. Alle Apps sind nativ integriert und teilen dieselbe Datenbasis. Für KMU ist Zoho One eine kosteneffiziente Alternative zu Einzellösungen wie Salesforce, Microsoft Dynamics oder SAP — bei vergleichbarem Funktionsumfang zu einem Bruchteil der Kosten.",
-    "published": true
-  },
-  {
-    "id": "zusammenarbeit-ablauf",
-    "question": "Wie läuft eine Zusammenarbeit mit Felix Rimbakowsky / Tau Process House ab?",
-    "answer": "Der typische Ablauf: (1) Erstes Gespräch zur Bedarfsanalyse — kostenlos, ca. 30–60 Minuten. (2) Angebot mit geschätztem Stundenrahmen und Zeitplan. (3) Implementierung in Sprints, mit regelmäßigen Abstimmungen. (4) Training der Mitarbeitenden. (5) Go-Live und Begleitung danach. Für laufende Weiterentwicklung und Support kann ein monatliches Stundenkontingent vereinbart werden. Kontaktaufnahme per E-Mail an info@tauprocess.de oder über die Website tauprocess.de.",
-    "published": true
-  }
-]
+  "items": [
+    {
+      "id": "kosten-zoho-freelancer",
+      "question": {
+        "de": "Was kostet ein Zoho Freelancer?",
+        "en": "How much does a Zoho freelancer cost?"
+      },
+      "answer": {
+        "de": "Die Stundensätze für einen Zoho-Spezialisten liegen in Deutschland zwischen 80 und 120 € pro Stunde — je nachdem, wie viele Stunden pro Monat beauftragt werden. Bei Tau Process House arbeitet Felix Rimbakowsky auf Stundenbasis, ohne Retainer-Zwang. Kleinere Projekte starten typisch ab 10–20 Stunden pro Monat; umfangreichere Implementierungen können 40–80+ Stunden umfassen. Im Vergleich zu einer Zoho-Agentur entfällt der Overhead für Account Management und Projektleitung — der Stundensatz geht direkt in Fachexpertise.",
+        "en": "Hourly rates for a Zoho specialist in Germany range between €80 and €120 per hour — depending on how many hours per month are commissioned. At Tau Process House, Felix Rimbakowsky works on an hourly basis, without any retainer obligation. Smaller projects typically start at 10–20 hours per month; more extensive implementations can encompass 40–80+ hours. Compared to a Zoho agency, there is no overhead for account management and project leadership — the hourly rate goes directly into domain expertise."
+      },
+      "published": true
+    },
+    {
+      "id": "zoho-freelancer-vs-agentur",
+      "question": {
+        "de": "Was ist der Unterschied zwischen einem Zoho-Freelancer und einer Zoho-Agentur?",
+        "en": "What is the difference between a Zoho freelancer and a Zoho agency?"
+      },
+      "answer": {
+        "de": "Bei einer Agentur bezahlst du oft für mehrere Zwischenstufen: Vertrieb, Account Management, Projektleitung — bevor die eigentliche Arbeit beginnt. Ein Zoho-Freelancer wie Felix Rimbakowsky arbeitet direkt mit dir zusammen. Du kommunizierst mit dem Experten, nicht mit einem Vermittler. Das spart Overhead-Kosten, beschleunigt Entscheidungen und sorgt für mehr Kontinuität im Projekt. Tau Process House bietet zusätzlich Zugang zu einem Zoho Premium Partner und damit zu Zoho Premium Support — ein Vorteil, der sonst nur größeren Agenturen vorbehalten ist.",
+        "en": "With an agency, you often pay for multiple intermediate layers: sales, account management, project leadership — before the actual work begins. A Zoho freelancer like Felix Rimbakowsky works directly with you. You communicate with the expert, not an intermediary. This saves overhead costs, speeds up decisions, and ensures more continuity in the project. Tau Process House also provides access to a Zoho Premium Partner and thus Zoho Premium Support — an advantage otherwise reserved for larger agencies."
+      },
+      "published": true
+    },
+    {
+      "id": "zoho-one-implementierung-dauer",
+      "question": {
+        "de": "Wie lange dauert eine Zoho One Implementierung?",
+        "en": "How long does a Zoho One implementation take?"
+      },
+      "answer": {
+        "de": "Das hängt stark vom Umfang ab. Eine einfache Zoho CRM-Einführung mit grundlegendem Setup und Datenmigration ist in 2–4 Wochen realisierbar. Eine vollständige Zoho One Implementierung — CRM, Projekte, Abrechnung, Automatisierungen — dauert in der Regel 2–4 Monate, je nach Komplexität der bestehenden Prozesse. Tau Process House arbeitet in iterativen Sprints: erst die Grundarchitektur, dann ein vollständiger End-to-End-Prozess (z.B. Lead → Angebot → Projekt → Rechnung), dann Automatisierung der einzelnen Schritte.",
+        "en": "It strongly depends on the scope. A simple Zoho CRM introduction with basic setup and data migration can be completed in 2–4 weeks. A complete Zoho One implementation — CRM, Projects, Billing, Automations — typically takes 2–4 months, depending on the complexity of existing processes. Tau Process House works in iterative sprints: first the basic architecture, then a complete end-to-end process (e.g. lead → quote → project → invoice), then automation of individual steps."
+      },
+      "published": true
+    },
+    {
+      "id": "zoho-crm-migration",
+      "question": {
+        "de": "Kann Tau Process House eine Migration von einem anderen CRM zu Zoho durchführen?",
+        "en": "Can Tau Process House perform a migration from another CRM to Zoho?"
+      },
+      "answer": {
+        "de": "Ja. Felix Rimbakowsky hat Erfahrung mit Migrationen von verschiedenen Systemen zu Zoho CRM und Zoho One — darunter Salesforce, HubSpot, Excel-basierte Lösungen und andere CRM-Plattformen. Der Prozess umfasst: Ist-Analyse und Datenmapping, Aufbau der Zielarchitektur in Zoho, Testmigration in einer Sandbox-Umgebung, Produktiv-Migration mit Validierung und anschließende Rollout-Begleitung. Dabei wird auf vollständige Datenintegrität und minimale Betriebsunterbrechung geachtet.",
+        "en": "Yes. Felix Rimbakowsky has experience with migrations from various systems to Zoho CRM and Zoho One — including Salesforce, HubSpot, Excel-based solutions, and other CRM platforms. The process includes: as-is analysis and data mapping, building the target architecture in Zoho, test migration in a sandbox environment, production migration with validation, and subsequent rollout support. Full data integrity and minimal business disruption are always ensured."
+      },
+      "published": true
+    },
+    {
+      "id": "zoho-premium-support",
+      "question": {
+        "de": "Bietet Tau Process House Zoho Premium Support?",
+        "en": "Does Tau Process House offer Zoho Premium Support?"
+      },
+      "answer": {
+        "de": "Tau Process House arbeitet eng mit einem offiziellen Zoho Premium Partner zusammen. Dadurch haben Kunden von Felix Rimbakowsky Zugang zu Zoho Premium Support — schnellere Reaktionszeiten, direkte Eskalationsmöglichkeiten und priorisierte Bearbeitung von Zoho-seitigen Problemen. Dieser Zugang ist in der normalen Zoho-Lizenz nicht enthalten und ist sonst nur über große Partnerunternehmen verfügbar.",
+        "en": "Tau Process House works closely with an official Zoho Premium Partner. This gives clients of Felix Rimbakowsky access to Zoho Premium Support — faster response times, direct escalation options, and prioritized handling of Zoho-side issues. This access is not included in a standard Zoho license and is otherwise only available through large partner companies."
+      },
+      "published": true
+    },
+    {
+      "id": "fuer-wen-geeignet",
+      "question": {
+        "de": "Für welche Unternehmen ist die Zusammenarbeit mit Tau Process House geeignet?",
+        "en": "Which companies are a good fit for working with Tau Process House?"
+      },
+      "answer": {
+        "de": "Tau Process House richtet sich primär an kleine und mittelständische Unternehmen (KMU) in Deutschland — insbesondere in Berlin und Hannover, aber auch remote deutschlandweit. Besonders gut passt die Zusammenarbeit für Unternehmen, die: (1) Zoho One oder einzelne Zoho-Apps einführen möchten, (2) bestehende CRM- oder ERP-Systeme zu Zoho migrieren wollen, (3) ihre Geschäftsprozesse (Vertrieb, Projekte, Abrechnung) automatisieren möchten, oder (4) mit ihrem bestehenden Zoho-Setup nicht zufrieden sind und Optimierungsbedarf sehen.",
+        "en": "Tau Process House primarily targets small and medium-sized businesses (SMEs) in Germany — particularly in Berlin and Hannover, but also remotely nationwide. The collaboration is especially well-suited for companies that: (1) want to introduce Zoho One or individual Zoho apps, (2) want to migrate existing CRM or ERP systems to Zoho, (3) want to automate their business processes (sales, projects, billing), or (4) are not satisfied with their existing Zoho setup and see room for optimization."
+      },
+      "published": true
+    },
+    {
+      "id": "zoho-one-was-ist-das",
+      "question": {
+        "de": "Was ist Zoho One und wofür wird es eingesetzt?",
+        "en": "What is Zoho One and what is it used for?"
+      },
+      "answer": {
+        "de": "Zoho One ist eine All-in-One Business-Plattform mit über 45 integrierten Anwendungen für alle Unternehmensbereiche: CRM (Kundenmanagement), Zoho Projects (Projektmanagement), Zoho Books (Buchhaltung & Abrechnung), Zoho Flow (Prozessautomatisierung), Zoho Desk (Kundensupport) und viele mehr. Alle Apps sind nativ integriert und teilen dieselbe Datenbasis. Für KMU ist Zoho One eine kosteneffiziente Alternative zu Einzellösungen wie Salesforce, Microsoft Dynamics oder SAP — bei vergleichbarem Funktionsumfang zu einem Bruchteil der Kosten.",
+        "en": "Zoho One is an all-in-one business platform with over 45 integrated applications for all business areas: CRM (customer management), Zoho Projects (project management), Zoho Books (accounting & billing), Zoho Flow (process automation), Zoho Desk (customer support), and many more. All apps are natively integrated and share the same data basis. For SMEs, Zoho One is a cost-effective alternative to single solutions like Salesforce, Microsoft Dynamics, or SAP — with comparable functionality at a fraction of the cost."
+      },
+      "published": true
+    },
+    {
+      "id": "zusammenarbeit-ablauf",
+      "question": {
+        "de": "Wie läuft eine Zusammenarbeit mit Felix Rimbakowsky / Tau Process House ab?",
+        "en": "How does a collaboration with Felix Rimbakowsky / Tau Process House work?"
+      },
+      "answer": {
+        "de": "Der typische Ablauf: (1) Erstes Gespräch zur Bedarfsanalyse — kostenlos, ca. 30–60 Minuten. (2) Angebot mit geschätztem Stundenrahmen und Zeitplan. (3) Implementierung in Sprints, mit regelmäßigen Abstimmungen. (4) Training der Mitarbeitenden. (5) Go-Live und Begleitung danach. Für laufende Weiterentwicklung und Support kann ein monatliches Stundenkontingent vereinbart werden. Kontaktaufnahme per E-Mail an info@tauprocess.de oder über die Website tauprocess.de.",
+        "en": "The typical process: (1) Initial meeting for needs analysis — free of charge, approx. 30–60 minutes. (2) Proposal with estimated hours and timeline. (3) Implementation in sprints, with regular check-ins. (4) Training of team members. (5) Go-live and ongoing support. For continuous development and support, a monthly hour contingent can be agreed upon. Contact via email at info@tauprocess.de or through the website tauprocess.de."
+      },
+      "published": true
+    }
+  ]
+}
