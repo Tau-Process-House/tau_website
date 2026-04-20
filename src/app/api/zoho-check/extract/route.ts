@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { parse } from 'node-html-parser';
-import { classifyModule, buildModuleAnalysisText } from '@/lib/zoho-check/module-classifier';
+import { classifyModule } from '@/lib/zoho-check/module-classifier';
 import { MODULE_PARSING_PROMPT } from '@/lib/zoho-check/prompts';
 import { ZohoModule, CompanyInfo, ExtractionResult } from '@/types/zoho-check';
 
@@ -159,7 +159,7 @@ async function parseModulesWithAI(rawText: string): Promise<ZohoModule[] | null>
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, website, licenseType, moduleList } = body;
+    const { email, website, moduleList } = body;
 
     if (!email || !moduleList) {
       return NextResponse.json({ error: 'E-Mail und Modulliste sind erforderlich.' }, { status: 400 });

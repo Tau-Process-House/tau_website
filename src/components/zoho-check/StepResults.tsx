@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { AnalysisResult, ExtractionResult } from '@/types/zoho-check';
 import PdfEmailModal from './PdfEmailModal';
@@ -308,12 +309,12 @@ export default function StepResults({ analysis, extraction, email }: Props) {
             </a>
           </div>
 
-          <a
+          <Link
             href="/"
             className="text-sm text-gray-500 hover:text-black transition-colors underline"
           >
             ← Zurück zur Hauptseite
-          </a>
+          </Link>
         </div>
       </section>
     </section>

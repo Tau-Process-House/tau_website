@@ -9,8 +9,6 @@ export default function LanguageToggle() {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const switchTo = locale === 'de' ? 'en' : 'de';
-
   const handleSwitch = (targetLocale: 'de' | 'en') => {
     if (targetLocale === locale) return;
     startTransition(() => {
