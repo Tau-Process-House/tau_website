@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useLocalized } from '@/lib/use-localized';
-import kpiData from '@/data/kpi.json';
-import type { KpiContent } from '@/types/content';
-
-const kpiContent = kpiData as KpiContent;
 
 const FONT = 'Arial, Helvetica, sans-serif';
+
+const kpis = [
+  { target: 5,  suffix: '+', label: 'Jahre Zoho Erfahrung' },
+  { target: 25, suffix: '+', label: 'Implementierungen' },
+];
 
 function useCountUp(target: number, duration = 800, started: boolean) {
   const [count, setCount] = useState(0);
@@ -54,7 +54,6 @@ function KpiItem({ target, suffix, label, started }: {
 }
 
 export default function KpiSection() {
-  const loc = useLocalized();
   const ref = useRef<HTMLElement>(null);
   const [started, setStarted] = useState(false);
 
@@ -70,14 +69,8 @@ export default function KpiSection() {
   return (
     <section ref={ref} className="section section-white">
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-32">
-        {kpiContent.items.map((kpi) => (
-          <KpiItem
-            key={kpi.label.de}
-            target={kpi.target}
-            suffix={kpi.suffix}
-            label={loc(kpi.label)}
-            started={started}
-          />
+        {kpis.map((kpi) => (
+          <KpiItem key={kpi.label} {...kpi} started={started} />
         ))}
       </div>
     </section>

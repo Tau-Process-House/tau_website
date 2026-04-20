@@ -2,22 +2,12 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
 import workData from '@/data/work.json';
-import type { CaseStudy, KPI, LocalizedString, Product, Solution, WorkItem } from '@/types/work';
+import type { CaseStudy, KPI, Product, WorkItem } from '@/types/work';
 
-type FilterType = 'all' | 'caseStudy' | 'product' | 'solution';
+type FilterType = 'all' | 'caseStudy' | 'product';
 const ITEMS_PER_PAGE = 3;
 const FONT = 'Arial, Helvetica, sans-serif';
-
-// ─── Localisation helper ──────────────────────────────────────────────────────
-
-function useLoc() {
-  const locale = useLocale();
-  return (field: LocalizedString): string =>
-    (field as Record<string, string>)[locale] ?? field.de;
-}
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
@@ -41,17 +31,9 @@ function WorkCard({
   isSelected: boolean;
   onClick: () => void;
 }) {
-  const loc = useLoc();
   const isCaseStudy = item.type === 'caseStudy';
-  const isProduct = item.type === 'product';
-  const isSolution = item.type === 'solution';
   const cs = item as CaseStudy;
   const pr = item as Product;
-  const sl = item as Solution;
-
-  const typeLabel = isCaseStudy ? 'Case Study' : isProduct ? 'Product' : 'Solution';
-  const headline = isCaseStudy ? loc(cs.headline) : isProduct ? loc(pr.name) : loc(sl.name);
-  const tagline = isCaseStudy ? loc(cs.tagline) : isProduct ? loc(pr.tagline) : loc(sl.tagline);
 
   return (
     <button
@@ -68,18 +50,18 @@ function WorkCard({
         }`}
         style={{ fontSize: '12px', fontFamily: FONT }}
       >
-        {typeLabel}
+        {isCaseStudy ? 'Case Study' : 'Product'}
       </span>
 
       <div>
         <p className="font-bold leading-snug" style={{ fontSize: '16px', fontFamily: FONT }}>
-          {headline}
+          {isCaseStudy ? cs.headline : pr.name}
         </p>
         <p
           className={`mt-1 line-clamp-2 ${isSelected ? 'text-white/60' : 'text-black/50'}`}
           style={{ fontSize: '14px', fontFamily: FONT }}
         >
-          {tagline}
+          {isCaseStudy ? cs.tagline : pr.tagline}
         </p>
       </div>
 
@@ -95,33 +77,17 @@ function WorkCard({
               >
                 <span>{kpi.improvement}</span>
                 <span className={isSelected ? 'text-white/50 font-normal' : 'text-black/40 font-normal'}>
-                  {loc(kpi.metric)}
+                  {kpi.metric}
                 </span>
               </span>
             ))
-          : isProduct
-          ? (
+          : (
             <span
               className={`font-semibold ${isSelected ? 'text-white' : 'text-black'}`}
               style={{ fontSize: '14px', fontFamily: FONT }}
             >
               {pr.pricing.label}
             </span>
-          )
-          : (
-            <div className="flex flex-wrap gap-1">
-              {sl.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className={`inline-block rounded-full px-2 py-0.5 ${
-                    isSelected ? 'bg-white/15 text-white/70' : 'bg-black/5 text-black/50'
-                  }`}
-                  style={{ fontSize: '12px', fontFamily: FONT }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           )}
       </div>
     </button>
@@ -129,8 +95,6 @@ function WorkCard({
 }
 
 function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => void }) {
-  const loc = useLoc();
-
   return (
     <div className="w-full max-w-6xl mx-auto px-8 py-6">
       <div className="flex items-start justify-between gap-4 mb-6">
@@ -139,10 +103,10 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
             className="font-mono tracking-widest text-black/35 uppercase"
             style={{ fontSize: '12px', fontFamily: FONT }}
           >
-            Case Study · {loc(item.industry)}
+            Case Study · {item.industry}
           </span>
           <h3 className="font-bold mt-1" style={{ fontSize: '24px', fontFamily: FONT }}>
-            {loc(item.headline)}
+            {item.headline}
           </h3>
           <p className="text-black/60 mt-1" style={{ fontSize: '20px', fontFamily: FONT }}>
             {item.client}
@@ -167,8 +131,8 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
             >
               Challenge
             </h4>
-            <p className="leading-relaxed text-black/80" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.challenge)}
+            <p className="leading-relaxed text-black/80" style={{ fontSize: '20px', fontFamily: FONT }}>
+              {item.challenge}
             </p>
           </div>
 
@@ -179,16 +143,16 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
             >
               Solution
             </h4>
-            <p className="leading-relaxed text-black/80 mb-3" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.solution.summary)}
+            <p className="leading-relaxed text-black/80 mb-3" style={{ fontSize: '20px', fontFamily: FONT }}>
+              {item.solution.summary}
             </p>
             <div className="flex flex-wrap gap-1 mb-3">
               {item.solution.apps.map((app) => (
                 <AppBadge key={app} name={app} />
               ))}
             </div>
-            <p className="leading-relaxed text-black/60" style={{ fontSize: '14px', fontFamily: FONT }}>
-              {loc(item.solution.description)}
+            <p className="leading-relaxed text-black/60" style={{ fontSize: '20px', fontFamily: FONT }}>
+              {item.solution.description}
             </p>
           </div>
 
@@ -200,13 +164,13 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
               Deliverables
             </h4>
             <ul className="space-y-1">
-              {item.artifacts.map((a, i) => (
+              {item.artifacts.map((a) => (
                 <li
-                  key={i}
+                  key={a}
                   className="text-black/70 flex items-center gap-2"
-                  style={{ fontSize: '14px', fontFamily: FONT }}
+                  style={{ fontSize: '20px', fontFamily: FONT }}
                 >
-                  <span className="text-black/25">→</span> {loc(a)}
+                  <span className="text-black/25">→</span> {a}
                 </li>
               ))}
             </ul>
@@ -226,8 +190,8 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
                 <div className="font-bold" style={{ fontSize: '2rem', fontFamily: FONT }}>
                   {kpi.improvement}
                 </div>
-                <div className="font-semibold mt-1" style={{ fontSize: '15px', fontFamily: FONT }}>
-                  {loc(kpi.metric)}
+                <div className="font-semibold mt-1" style={{ fontSize: '20px', fontFamily: FONT }}>
+                  {kpi.metric}
                 </div>
                 {kpi.before && kpi.after && (
                   <div className="text-black/40 mt-1" style={{ fontSize: '14px', fontFamily: FONT }}>
@@ -244,7 +208,6 @@ function CaseStudyDetail({ item, onClose }: { item: CaseStudy; onClose: () => vo
 }
 
 function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }) {
-  const loc = useLoc();
   const [imgError, setImgError] = useState(false);
 
   return (
@@ -258,10 +221,10 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
             Product
           </span>
           <h3 className="font-bold mt-1" style={{ fontSize: '24px', fontFamily: FONT }}>
-            {loc(item.name)}
+            {item.name}
           </h3>
-          <p className="text-black/60 mt-1" style={{ fontSize: '16px', fontFamily: FONT }}>
-            {loc(item.tagline)}
+          <p className="text-black/60 mt-1" style={{ fontSize: '20px', fontFamily: FONT }}>
+            {item.tagline}
           </p>
         </div>
         <button
@@ -282,8 +245,8 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
             >
               Problem
             </h4>
-            <p className="leading-relaxed text-black/80" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.problem)}
+            <p className="leading-relaxed text-black/80" style={{ fontSize: '20px', fontFamily: FONT }}>
+              {item.problem}
             </p>
           </div>
 
@@ -294,16 +257,16 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
             >
               How it works
             </h4>
-            <p className="leading-relaxed text-black/80" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.description)}
+            <p className="leading-relaxed text-black/80" style={{ fontSize: '20px', fontFamily: FONT }}>
+              {item.description}
             </p>
           </div>
 
-          {!imgError && item.showcase.url ? (
+          {!imgError ? (
             <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-black/10 bg-black/5">
               <Image
                 src={item.showcase.url}
-                alt={loc(item.showcase.alt)}
+                alt={item.showcase.alt}
                 fill
                 className="object-cover"
                 onError={() => setImgError(true)}
@@ -332,8 +295,8 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
                   <div className="font-bold" style={{ fontSize: '2rem', fontFamily: FONT }}>
                     {kpi.improvement}
                   </div>
-                  <div className="font-semibold mt-1" style={{ fontSize: '15px', fontFamily: FONT }}>
-                    {loc(kpi.metric)}
+                  <div className="font-semibold mt-1" style={{ fontSize: '20px', fontFamily: FONT }}>
+                    {kpi.metric}
                   </div>
                 </div>
               ))}
@@ -352,134 +315,14 @@ function ProductDetail({ item, onClose }: { item: Product; onClose: () => void }
                 {item.pricing.label}
               </div>
             </div>
-            <Link
+            <a
               href={item.cta.href}
               className="inline-block bg-black text-white font-semibold px-5 py-3 rounded-lg text-center hover:bg-black/80 transition-colors"
-              style={{ fontSize: '15px', fontFamily: FONT }}
+              style={{ fontSize: '20px', fontFamily: FONT }}
             >
-              {loc(item.cta.label)} →
-            </Link>
+              {item.cta.label} →
+            </a>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SolutionDetail({ item, onClose }: { item: Solution; onClose: () => void }) {
-  const loc = useLoc();
-
-  return (
-    <div className="w-full max-w-6xl mx-auto px-8 py-6">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <span
-            className="font-mono tracking-widest text-black/35 uppercase"
-            style={{ fontSize: '12px', fontFamily: FONT }}
-          >
-            Solution
-          </span>
-          <h3 className="font-bold mt-1" style={{ fontSize: '24px', fontFamily: FONT }}>
-            {loc(item.name)}
-          </h3>
-          <p className="text-black/60 mt-1" style={{ fontSize: '16px', fontFamily: FONT }}>
-            {loc(item.tagline)}
-          </p>
-        </div>
-        <button
-          onClick={onClose}
-          className="shrink-0 w-8 h-8 rounded-full border border-black/20 flex items-center justify-center text-black/50 hover:border-black hover:text-black transition-colors"
-          aria-label="Close detail"
-        >
-          ✕
-        </button>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Left column: Für wen + Wie */}
-        <div className="flex flex-col gap-6">
-          {/* Block 1: Für wen */}
-          <div>
-            <h4
-              className="font-mono tracking-widest text-black/35 uppercase mb-2"
-              style={{ fontSize: '12px', fontFamily: FONT }}
-            >
-              Für wen
-            </h4>
-            <p className="leading-relaxed text-black/80 mb-4" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.target.audience)}
-            </p>
-            <h4
-              className="font-mono tracking-widest text-black/35 uppercase mb-2"
-              style={{ fontSize: '12px', fontFamily: FONT }}
-            >
-              Das Problem
-            </h4>
-            <p className="leading-relaxed text-black/60" style={{ fontSize: '14px', fontFamily: FONT }}>
-              {loc(item.target.problem)}
-            </p>
-          </div>
-
-          {/* Block 2: Die Lösung */}
-          <div>
-            <h4
-              className="font-mono tracking-widest text-black/35 uppercase mb-2"
-              style={{ fontSize: '12px', fontFamily: FONT }}
-            >
-              Die Lösung
-            </h4>
-            <p className="leading-relaxed text-black/80 mb-4" style={{ fontSize: '15px', fontFamily: FONT }}>
-              {loc(item.architecture.summary)}
-            </p>
-            {/* Components */}
-            <div className="flex flex-col gap-3 mb-4">
-              {item.architecture.components.map((comp) => (
-                <div key={comp.name} className="border border-black/10 rounded-lg p-4">
-                  <div className="font-semibold mb-1" style={{ fontSize: '14px', fontFamily: FONT }}>
-                    {comp.name}
-                  </div>
-                  <div className="text-black/60 leading-relaxed" style={{ fontSize: '13px', fontFamily: FONT }}>
-                    {loc(comp.role)}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="leading-relaxed text-black/60" style={{ fontSize: '13px', fontFamily: FONT }}>
-              {loc(item.architecture.description)}
-            </p>
-          </div>
-        </div>
-
-        {/* Right column: Was erhält der Kunde */}
-        <div>
-          <h4
-            className="font-mono tracking-widest text-black/35 uppercase mb-4"
-            style={{ fontSize: '12px', fontFamily: FONT }}
-          >
-            Was der Kunde erhält
-          </h4>
-          <ul className="flex flex-col gap-3">
-            {item.deliverables.map((deliverable, i) => (
-              <li
-                key={i}
-                className="border border-black/10 rounded-lg p-4 flex items-start gap-3"
-              >
-                <span
-                  className="text-black/25 shrink-0 mt-0.5"
-                  style={{ fontSize: '14px', fontFamily: FONT }}
-                >
-                  →
-                </span>
-                <span
-                  className="text-black/80 leading-relaxed"
-                  style={{ fontSize: '14px', fontFamily: FONT }}
-                >
-                  {loc(deliverable)}
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
@@ -492,10 +335,10 @@ export default function OurWorkSection() {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedItem, setSelectedItem] = useState<WorkItem | null>(null);
-  // Tracks layout mode independently so it stays in column mode during exit animation
+  // Tracks layout mode independently so it stays in column mode during exit animation (Fix 7)
   const [isDetailVisible, setIsDetailVisible] = useState(false);
 
-  // When a new item is selected, make detail layout active
+  // When a new item is selected, make detail layout active (Fix 7)
   useEffect(() => {
     if (selectedItem !== null) {
       setIsDetailVisible(true);
@@ -505,11 +348,9 @@ export default function OurWorkSection() {
   const allItems = useMemo<WorkItem[]>(() => {
     const cases = (workData.caseStudies as unknown as CaseStudy[]).filter((c) => c.published);
     const products = (workData.products as unknown as Product[]).filter((p) => p.published);
-    const solutions = (workData.solutions as unknown as Solution[]).filter((s) => s.published);
     const result: WorkItem[] = [];
-    const maxLen = Math.max(cases.length, products.length, solutions.length);
+    const maxLen = Math.max(cases.length, products.length);
     for (let i = 0; i < maxLen; i++) {
-      if (i < solutions.length) result.push(solutions[i]);
       if (i < cases.length) result.push(cases[i]);
       if (i < products.length) result.push(products[i]);
     }
@@ -527,6 +368,7 @@ export default function OurWorkSection() {
     (currentPage + 1) * ITEMS_PER_PAGE
   );
 
+  // Fix 5: filter change does NOT close the open detail panel
   const handleFilterChange = (filter: FilterType) => {
     setActiveFilter(filter);
     setCurrentPage(0);
@@ -536,19 +378,16 @@ export default function OurWorkSection() {
     setSelectedItem((prev) => (prev?.id === item.id ? null : item));
   };
 
-  const publishedTypes = useMemo(() => new Set(allItems.map((i) => i.type)), [allItems]);
-
-  const filters = useMemo(() => {
-    const result: { key: FilterType; label: string }[] = [{ key: 'all', label: 'All' }];
-    if (publishedTypes.has('solution')) result.push({ key: 'solution', label: 'Solutions' });
-    if (publishedTypes.has('caseStudy')) result.push({ key: 'caseStudy', label: 'Case Studies' });
-    if (publishedTypes.has('product')) result.push({ key: 'product', label: 'Products' });
-    return result;
-  }, [publishedTypes]);
+  const filters: { key: FilterType; label: string }[] = [
+    { key: 'all', label: 'All' },
+    { key: 'caseStudy', label: 'Case Studies' },
+    { key: 'product', label: 'Products' },
+  ];
 
   return (
     <section
       className="section section-white"
+      // Fix 7: use isDetailVisible (not selectedItem) so layout stays stable during exit animation
       style={
         isDetailVisible
           ? { flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch' }
@@ -564,27 +403,25 @@ export default function OurWorkSection() {
           Our Work
         </h2>
 
-        {/* Filter buttons — only rendered when multiple types have published entries */}
-        {filters.length > 1 && (
-          <div className="flex justify-center gap-2 mb-6">
-            {filters.map(({ key, label }) => (
-              <button
-                key={key}
-                onClick={() => handleFilterChange(key)}
-                className={`px-4 py-1.5 rounded-full border transition-all ${
-                  activeFilter === key
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white text-black border-black/20 hover:border-black/50'
-                }`}
-                style={{ fontSize: '14px', fontFamily: FONT }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* Filter buttons */}
+        <div className="flex justify-center gap-2 mb-6">
+          {filters.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => handleFilterChange(key)}
+              className={`px-4 py-1.5 rounded-full border transition-all ${
+                activeFilter === key
+                  ? 'bg-black text-white border-black'
+                  : 'bg-white text-black border-black/20 hover:border-black/50'
+              }`}
+              style={{ fontSize: '20px', fontFamily: FONT }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
-        {/* Card grid */}
+        {/* Card grid — Fix 6: pure opacity fade, no scale/layout shift */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <AnimatePresence mode="sync">
             {pageItems.map((item) => (
@@ -605,7 +442,7 @@ export default function OurWorkSection() {
           </AnimatePresence>
         </div>
 
-        {/* Pagination — only rendered when there is more than one page */}
+        {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-4">
             <button
@@ -616,7 +453,7 @@ export default function OurWorkSection() {
             >
               ←
             </button>
-            <span className="text-black/50" style={{ fontSize: '14px', fontFamily: FONT }}>
+            <span className="text-black/50" style={{ fontSize: '20px', fontFamily: FONT }}>
               {currentPage + 1} / {totalPages}
             </span>
             <button
@@ -631,7 +468,7 @@ export default function OurWorkSection() {
         )}
       </div>
 
-      {/* Detail panel */}
+      {/* Detail panel — fixed key so switching items doesn't re-trigger enter/exit animation */}
       <AnimatePresence onExitComplete={() => setIsDetailVisible(false)}>
         {selectedItem && (
           <motion.div
@@ -647,14 +484,9 @@ export default function OurWorkSection() {
                 item={selectedItem as CaseStudy}
                 onClose={() => setSelectedItem(null)}
               />
-            ) : selectedItem.type === 'product' ? (
+            ) : (
               <ProductDetail
                 item={selectedItem as Product}
-                onClose={() => setSelectedItem(null)}
-              />
-            ) : (
-              <SolutionDetail
-                item={selectedItem as Solution}
                 onClose={() => setSelectedItem(null)}
               />
             )}
