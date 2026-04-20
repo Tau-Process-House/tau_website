@@ -3,10 +3,9 @@ import { Resend } from 'resend';
 import { generateCrmAnalysisPdf } from '@/lib/zoho-check/pdf-generator';
 import { AnalysisResult, ExtractionResult } from '@/types/zoho-check';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
     const { email, analysis, extraction, optIn }: {
       email: string;
