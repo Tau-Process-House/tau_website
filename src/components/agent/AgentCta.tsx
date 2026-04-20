@@ -41,9 +41,11 @@ export default function AgentCta({
 
       if (parts.length === 3) el.scrollIntoView();
       if (el.style.height !== newHeight) {
-        parts.length === 3
-          ? setTimeout(() => { el.style.height = newHeight; }, 500)
-          : (el.style.height = newHeight);
+        if (parts.length === 3) {
+          setTimeout(() => { el.style.height = newHeight; }, 500);
+        } else {
+          el.style.height = newHeight;
+        }
       }
     };
 

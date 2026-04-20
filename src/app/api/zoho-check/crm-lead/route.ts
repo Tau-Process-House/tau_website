@@ -115,10 +115,9 @@ async function getZohoAccessToken(): Promise<string> {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, licenseType, moduleList, analysis, extraction, website }: {
+    const { email, licenseType, analysis, extraction, website }: {
       email: string;
       licenseType: string;
-      moduleList: string;
       analysis: AnalysisResult;
       extraction: ExtractionResult;
       website?: string;

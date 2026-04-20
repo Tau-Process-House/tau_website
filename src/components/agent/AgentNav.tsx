@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { useTransition } from 'react';
+import Link from 'next/link';
 
 const FONT = 'Arial, Helvetica, sans-serif';
 
@@ -79,7 +80,7 @@ export default function AgentNav({ backLabel, ctaLabel, ctaHref, links }: AgentN
         height: '100%', display: 'flex', alignItems: 'center', gap: '2rem',
       }}>
         {/* Logo / back link */}
-        <a
+        <Link
           href="/"
           style={{
             color: 'rgba(255,255,255,0.55)', textDecoration: 'none',
@@ -90,7 +91,7 @@ export default function AgentNav({ backLabel, ctaLabel, ctaHref, links }: AgentN
           onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
         >
           {backLabel}
-        </a>
+        </Link>
 
         <div style={{
           width: 1, height: 16, backgroundColor: 'rgba(255,255,255,0.15)', flexShrink: 0,

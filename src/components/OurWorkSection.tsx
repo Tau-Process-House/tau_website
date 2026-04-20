@@ -44,7 +44,6 @@ function WorkCard({
   const loc = useLoc();
   const isCaseStudy = item.type === 'caseStudy';
   const isProduct = item.type === 'product';
-  const isSolution = item.type === 'solution';
   const cs = item as CaseStudy;
   const pr = item as Product;
   const sl = item as Solution;
