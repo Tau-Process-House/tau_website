@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import Script from 'next/script';
 import ConditionalLanguageToggle from '@/components/ConditionalLanguageToggle';
+import GlobalDotNav from '@/components/GlobalDotNav';
 import metaData from '@/data/metadata.json';
 import type { MetadataContent } from '@/types/content';
 import '../globals.css';
@@ -155,6 +156,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <ConditionalLanguageToggle />
+          <GlobalDotNav />
           {children}
         </NextIntlClientProvider>
         <Script

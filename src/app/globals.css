@@ -64,6 +64,23 @@ body {
   display: none;
 }
 
+.agent-scroll-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.agent-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .global-dot-nav {
+    display: none !important;
+  }
+}
+
 .section-white {
   background-color: white;
   color: black;

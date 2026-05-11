@@ -61,8 +61,9 @@ tau-process-house/
 │   │   ├── HeroSection.tsx            ← useTranslations('hero')
 │   │   ├── WhatSection.tsx            ← useTranslations('philosophy')
 │   │   ├── OurServicesSection.tsx     ← useTranslations('services')
-│   │   ├── KpiSection.tsx             ← useTranslations('kpi')
-│   │   ├── OurWorkSection.tsx         ← aktiv; Anzeige via NEXT_PUBLIC_SHOW_OUR_WORK steuern
+│   │   ├── TauAgentTeaserSection.tsx  ← Slide 4: Split-Layout Agent-Teaser → /tau-zoho-agent
+│   │   ├── KpiSection.tsx             ← nicht in page.tsx eingebunden (für späteren Wiedereinsatz)
+│   │   ├── OurWorkSection.tsx         ← nicht in page.tsx eingebunden
 │   │   ├── TeamCarousel.tsx           ← useTranslations('team')
 │   │   ├── ContactSection.tsx         ← useTranslations('contact')
 │   │   ├── LanguageToggle.tsx         ← DE/EN Umschalter (fixed top-right)
@@ -78,7 +79,8 @@ tau-process-house/
 │   │   ├── hero.json           ← Titel, Tagline, Logo-Pfad
 │   │   ├── philosophy.json     ← Abschnitt "Unsere Philosophie": Texte, Venn-Labels
 │   │   ├── services.json       ← Leistungen: Titel, Zoho-Banner, 4 Steps
-│   │   ├── kpi.json            ← KPI-Zahlen, Suffixe, Labels
+│   │   ├── agent-teaser.json   ← Inhalte der TauAgentTeaserSection (bilingual)
+│   │   ├── kpi.json            ← KPI-Zahlen, Suffixe, Labels (nicht aktiv in page.tsx)
 │   │   ├── team.json           ← Team-Mitglieder (visible-Flag zum Ein-/Ausblenden)
 │   │   ├── contact.json        ← E-Mail, Jobportal-URL, Footer-Links
 │   │   ├── imprint.json        ← Adresse, Kontakt, USt-ID, Labels
@@ -123,7 +125,7 @@ tau-process-house/
 
 ## 3. Seitenstruktur (One-Pager)
 
-Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y mandatory`). Aktuell **5 aktive Sektionen** in `page.tsx`.
+Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y mandatory`). Aktuell **6 aktive Sektionen** in `page.tsx`.
 
 ```
 ┌─────────────────────────────────┐
@@ -132,7 +134,7 @@ Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y m
 │  1 — HeroSection                │  schwarz
 │  Logo + "Process House"         │
 ├─────────────────────────────────┤
-│  2 — OurPhilosophySection       │  weiß
+│  2 — WhatSection                │  weiß
 │  "Our Philosophy"               │
 │  Venn: strategy ∩ technology    │
 ├─────────────────────────────────┤
@@ -141,9 +143,10 @@ Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y m
 │  Zoho-Banner (Logo + Text)      │
 │  4 Journey-Karten (Hover-Flip)  │
 ├─────────────────────────────────┤
-│  4 — KpiSection                 │  weiß
-│  "5+ Jahre · 25+ Impl."         │
-│  Count-up Animation (0.8s)      │
+│  4 — TauAgentTeaserSection      │  split: schwarz (40%) | weiß (60%)
+│  τ-Symbol + Beta-Pill (links)   │
+│  Headline + Bullets + CTA →     │
+│  /tau-zoho-agent (rechts)       │
 ├─────────────────────────────────┤
 │  5 — TeamCarousel               │  schwarz
 │  "Who we are"                   │
@@ -155,13 +158,12 @@ Vertikaler Full-Screen-One-Pager mit **CSS Scroll-Snap** (`scroll-snap-type: y m
 └─────────────────────────────────┘
 
 Separate Routen (jeweils /de/ und /en/):
-  /[locale]/faq          → FAQ-Seite (bilingual, mit FAQPage JSON-LD)
-  /[locale]/imprint      → Impressum
-  /[locale]/privacy      → Datenschutzerklärung
-  /[locale]/zoho-check   → CRM-Check-Funnel (eigenständige Seite)
+  /[locale]/faq              → FAQ-Seite (bilingual, mit FAQPage JSON-LD)
+  /[locale]/imprint          → Impressum
+  /[locale]/privacy          → Datenschutzerklärung
+  /[locale]/zoho-check       → CRM-Check-Funnel (eigenständige Seite)
+  /[locale]/tau-zoho-agent   → Tau Zoho Agent Landing Page
 ```
-
-> **Hinweis:** `OurWorkSection` ist aktiv eingebunden. Die Anzeige wird via `NEXT_PUBLIC_SHOW_OUR_WORK` in `.env.local` gesteuert. Default: `false` → KpiSection wird gezeigt. Auf `true` setzen, um OurWorkSection anzuzeigen.
 
 ---
 
