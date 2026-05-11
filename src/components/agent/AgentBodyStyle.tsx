@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 
 export default function AgentBodyStyle() {
   useEffect(() => {
-    document.body.style.overflowY = 'auto';
-    return () => { document.body.style.overflowY = ''; };
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
   }, []);
   return null;
 }

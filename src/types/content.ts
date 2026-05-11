@@ -139,6 +139,19 @@ export interface FaqPageContent {
   items: FaqItem[];
 }
 
+// ─── Agent Teaser ──────────────────────────────────────────────────────────
+export interface AgentTeaserContent {
+  betaPill: LocalizedString;
+  visual: string;
+  wordmark: string;
+  preLabel: LocalizedString;
+  headline: LocalizedString[];
+  subtitle: LocalizedString;
+  bullets: LocalizedString[];
+  cta: LocalizedString;
+  chatScenarioId?: string;
+}
+
 // ─── Metadata ──────────────────────────────────────────────────────────────
 export interface MetadataContent {
   site: {

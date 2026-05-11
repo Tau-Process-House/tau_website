@@ -1,0 +1,6 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OpenAI">
+  <g fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="32,7 53,19 53,45 32,57 11,45 11,19"/>
+    <path d="M32 7 L32 57 M11 19 L53 45 M53 19 L11 45"/>
+  </g>
+</svg>

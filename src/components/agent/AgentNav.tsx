@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { useTransition } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 
 const FONT = 'Arial, Helvetica, sans-serif';
 
 interface NavLink { label: string; href: string; }
 
 interface AgentNavProps {
-  backLabel: string;
   ctaLabel: string;
   ctaHref: string;
   links: NavLink[];
@@ -56,13 +56,15 @@ function LanguageSwitcher() {
   );
 }
 
-export default function AgentNav({ backLabel, ctaLabel, ctaHref, links }: AgentNavProps) {
+export default function AgentNav({ ctaLabel, ctaHref, links }: AgentNavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const container = document.getElementById('agent-scroll');
+    if (!container) return;
+    const onScroll = () => setScrolled(container.scrollTop > 20);
+    container.addEventListener('scroll', onScroll, { passive: true });
+    return () => container.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
@@ -79,18 +81,19 @@ export default function AgentNav({ backLabel, ctaLabel, ctaHref, links }: AgentN
         maxWidth: 1200, margin: '0 auto', padding: '0 2rem',
         height: '100%', display: 'flex', alignItems: 'center', gap: '2rem',
       }}>
-        {/* Logo / back link */}
+        {/* Back link */}
         <Link
-          href="/"
+          href={{ pathname: '/', query: { to: 'agent' } }}
           style={{
+            display: 'flex', alignItems: 'center', gap: '0.4rem',
             color: 'rgba(255,255,255,0.55)', textDecoration: 'none',
-            fontSize: 13, whiteSpace: 'nowrap', flexShrink: 0,
-            transition: 'color 0.2s',
+            flexShrink: 0, transition: 'color 0.2s',
           }}
           onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
           onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
         >
-          {backLabel}
+          <span style={{ fontSize: 16, lineHeight: 1 }}>←</span>
+          <Image src="/img/logo.webp" alt="Tau Process House" width={22} height={22} />
         </Link>
 
         <div style={{

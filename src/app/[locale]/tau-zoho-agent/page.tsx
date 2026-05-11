@@ -1,15 +1,14 @@
 import agentData from '@/data/agent.json';
 import AgentNav from '@/components/agent/AgentNav';
-import AgentDotNav from '@/components/agent/AgentDotNav';
 import AgentHero from '@/components/agent/AgentHero';
 import AgentCompare from '@/components/agent/AgentCompare';
-import AgentCapabilities from '@/components/agent/AgentCapabilities';
-import AgentHowItWorks from '@/components/agent/AgentHowItWorks';
-import AgentEcosystem from '@/components/agent/AgentEcosystem';
+import AgentSolution from '@/components/agent/AgentSolution';
+import AgentPricing from '@/components/agent/AgentPricing';
 import AgentFaq from '@/components/agent/AgentFaq';
 import AgentCta from '@/components/agent/AgentCta';
 import AgentFooter from '@/components/agent/AgentFooter';
 import AgentBodyStyle from '@/components/agent/AgentBodyStyle';
+// AgentDotNav replaced by GlobalDotNav in layout
 
 export default async function TauZohoAgentPage({
   params,
@@ -27,13 +26,11 @@ export default async function TauZohoAgentPage({
     <>
       <AgentBodyStyle />
       <AgentNav
-        backLabel={loc(d.nav.backLabel)}
         ctaLabel={loc(d.nav.ctaLabel)}
         ctaHref={d.nav.ctaHref}
         links={d.nav.links.map((l) => ({ label: loc(l.label), href: l.href }))}
       />
-      <AgentDotNav />
-      <main style={{ backgroundColor: '#000' }}>
+      <main id="agent-scroll" className="agent-scroll-container" style={{ backgroundColor: '#000' }}>
         <AgentHero
           pill={{ text: loc(d.hero.pill.text), tag: d.hero.pill.tag }}
           titleLine1={loc(d.hero.titleLine1)}
@@ -43,20 +40,27 @@ export default async function TauZohoAgentPage({
           primaryCta={{ label: loc(d.hero.primaryCta.label), href: d.hero.primaryCta.href }}
           secondaryCta={{ label: loc(d.hero.secondaryCta.label), href: d.hero.secondaryCta.href }}
           meta={d.hero.meta.map(loc)}
-          chat={{
-            title: d.hero.chat.title,
-            envPill: d.hero.chat.envPill,
-            userPrompt: d.hero.chat.userPrompt,
-            userTime: d.hero.chat.userTime,
-            toolCall: d.hero.chat.toolCall,
-            assistantTime: d.hero.chat.assistantTime,
-            replyIntro: d.hero.chat.replyIntro,
-            leadFields: d.hero.chat.leadFields,
-            replyFooterBold: d.hero.chat.replyFooterBold,
-            replyFooterSuffix: d.hero.chat.replyFooterSuffix,
-            nextPrompt: d.hero.chat.nextPrompt,
-            inputPlaceholder: loc(d.hero.chat.inputPlaceholder),
-            chips: d.hero.chat.chips,
+          chatDemo={{
+            agentTitle: d.hero.chatDemo.agentTitle,
+            inputPlaceholder: loc(d.hero.chatDemo.inputPlaceholder),
+            langBadge: d.hero.chatDemo.langBadge,
+            scenario: {
+              id: d.hero.chatDemo.scenarios[0].id,
+              crmModule: d.hero.chatDemo.scenarios[0].crmModule,
+              crmBreadcrumb: d.hero.chatDemo.scenarios[0].crmBreadcrumb,
+              crmEmail: d.hero.chatDemo.scenarios[0].crmEmail,
+              crmFields: d.hero.chatDemo.scenarios[0].crmFields,
+              updatedCrmFields: (d.hero.chatDemo.scenarios[0] as { updatedCrmFields?: { label: string; value: string; isNew?: boolean }[] }).updatedCrmFields,
+              steps: (d.hero.chatDemo.scenarios[0].steps as Array<{
+                type: string;
+                text?: { de: string; en: string };
+                timestamp?: string;
+              }>).map(step => ({
+                type: step.type as 'user' | 'thinking' | 'agent',
+                text: step.text ? loc(step.text) : undefined,
+                timestamp: step.timestamp,
+              })),
+            },
           }}
         />
 
@@ -80,39 +84,51 @@ export default async function TauZohoAgentPage({
           }}
         />
 
-        <AgentCapabilities
-          sectionLabel={loc(d.capabilities.label)}
-          titlePart1={loc(d.capabilities.titlePart1)}
-          titleGold={loc(d.capabilities.titleGold)}
-          subtitle={loc(d.capabilities.subtitle)}
-          items={d.capabilities.items.map((item) => ({
-            icon: item.icon,
-            title: loc(item.title),
-            desc: loc(item.desc),
-            tags: item.tags,
-          }))}
+        <AgentSolution
+          sectionLabel={loc(d.solution.label)}
+          titleLine1={loc(d.solution.titleLine1)}
+          titleLine2={loc(d.solution.titleLine2)}
+          subtitle={loc(d.solution.subtitle)}
+          modelsCaption={loc(d.solution.modelsCaption)}
+          models={d.solution.models}
+          zohoApps={{
+            title: loc(d.solution.zohoApps.title),
+            caption: loc(d.solution.zohoApps.caption),
+            logos: d.solution.zohoApps.logos,
+          }}
+          connector={{
+            title: loc(d.solution.connector.title),
+            caption: loc(d.solution.connector.caption),
+          }}
+          chat={{
+            title: loc(d.solution.chat.title),
+            caption: loc(d.solution.chat.caption),
+            userMessage: loc(d.solution.chat.userMessage),
+            agentMessage: loc(d.solution.chat.agentMessage),
+          }}
         />
 
-        <AgentHowItWorks
-          sectionLabel={loc(d.how.label)}
-          title={loc(d.how.title)}
-          subtitle={loc(d.how.subtitle)}
-          steps={d.how.steps.map((step) => ({
-            num: step.num,
-            stepLabel: loc(step.stepLabel),
-            title: loc(step.title),
-            desc: loc(step.desc),
-            demoLines: step.demoLines,
+        <AgentPricing
+          sectionLabel={loc(d.pricing.label)}
+          titleLine1={loc(d.pricing.titleLine1)}
+          titleLine2={loc(d.pricing.titleLine2)}
+          subtitle={loc(d.pricing.subtitle)}
+          perUserMonth={loc(d.pricing.perUserMonth)}
+          vatNote={loc(d.pricing.vatNote)}
+          onRequest={loc(d.pricing.onRequest)}
+          comingSoonLabel={loc(d.pricing.comingSoonLabel)}
+          ctaAvailableLabel={loc(d.pricing.ctaAvailableLabel)}
+          ctaHref={d.pricing.ctaHref}
+          tiers={d.pricing.tiers.map((t) => ({
+            id: t.id,
+            name: t.name,
+            price: (t as { price?: string }).price,
+            currency: (t as { currency?: string }).currency,
+            available: t.available,
+            highlight: (t as { highlight?: boolean }).highlight,
+            tagline: loc(t.tagline),
+            features: t.features.map(loc),
           }))}
-        />
-
-        <AgentEcosystem
-          sectionLabel={loc(d.ecosystem.label)}
-          titlePart1={loc(d.ecosystem.titlePart1)}
-          titleGold={loc(d.ecosystem.titleGold)}
-          subtitle={loc(d.ecosystem.subtitle)}
-          hub={d.ecosystem.hub}
-          orbit={d.ecosystem.orbit}
         />
 
         <AgentFaq
@@ -125,21 +141,27 @@ export default async function TauZohoAgentPage({
           }))}
         />
 
-        <AgentCta
-          sectionLabel={loc(d.finalCta.label)}
-          titleLine1={loc(d.finalCta.titleLine1)}
-          titleLine2Pre={loc(d.finalCta.titleLine2Pre)}
-          titleLine2Gold={loc(d.finalCta.titleLine2Gold)}
-          subtitle={loc(d.finalCta.subtitle)}
-          footnote={loc(d.finalCta.footnote)}
-        />
+        <div style={{
+          scrollSnapAlign: 'start',
+          minHeight: '100dvh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <AgentCta
+            sectionLabel={loc(d.finalCta.label)}
+            titleLine1={loc(d.finalCta.titleLine1)}
+            titleLine2Pre={loc(d.finalCta.titleLine2Pre)}
+            titleLine2Gold={loc(d.finalCta.titleLine2Gold)}
+            subtitle={loc(d.finalCta.subtitle)}
+            footnote={loc(d.finalCta.footnote)}
+          />
+          <AgentFooter
+            brandSuffix={loc(d.footer.brandSuffix)}
+            copyright={d.footer.copyright}
+            links={d.footer.links.map((l) => ({ label: loc(l.label), href: l.href }))}
+          />
+        </div>
       </main>
-
-      <AgentFooter
-        brandSuffix={loc(d.footer.brandSuffix)}
-        copyright={d.footer.copyright}
-        links={d.footer.links.map((l) => ({ label: loc(l.label), href: l.href }))}
-      />
     </>
   );
 }

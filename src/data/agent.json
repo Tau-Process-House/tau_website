@@ -11,9 +11,8 @@
     "ctaHref": "#cta",
     "backLabel": { "de": "← tauprocess.de", "en": "← tauprocess.de" },
     "links": [
-      { "label": { "de": "Funktionen", "en": "Capabilities" }, "href": "#capabilities" },
-      { "label": { "de": "So funktioniert es", "en": "How it works" }, "href": "#how" },
-      { "label": { "de": "Zoho-Stack", "en": "Zoho stack" }, "href": "#ecosystem" },
+      { "label": { "de": "Die Lösung", "en": "The Solution" }, "href": "#solution" },
+      { "label": { "de": "Preise", "en": "Pricing" }, "href": "#pricing" },
       { "label": { "de": "FAQ", "en": "FAQ" }, "href": "#faq" }
     ]
   },
@@ -59,6 +58,61 @@
         { "icon": "↑", "text": "Answered in 1.2s · 1 tool call" },
         { "icon": "✓", "text": "Routed to Sarah Neumann" }
       ]
+    },
+    "chatDemo": {
+      "agentTitle": "Tau Agent",
+      "inputPlaceholder": { "de": "Frag irgendetwas...", "en": "Ask anything..." },
+      "langBadge": "DE",
+      "scenarios": [
+        {
+          "id": "lead-research",
+          "crmModule": "Leads",
+          "crmBreadcrumb": "rimbas.itb · Solarenergie ohne Eigeninvestition",
+          "crmEmail": "rimbas@gmail.com",
+          "crmFields": [
+            { "label": "Email",   "value": "rimbas@gmail.com" },
+            { "label": "Company", "value": "Solarenergie GmbH" },
+            { "label": "Source",  "value": "Web" },
+            { "label": "Status",  "value": "New" }
+          ],
+          "updatedCrmFields": [
+            { "label": "Contact", "value": "Thomas Müller",                       "isNew": true },
+            { "label": "Email",   "value": "t.mueller@solarenergie-gmbh.de",      "isNew": true },
+            { "label": "Mobile",  "value": "+49 151 2345 6789",                   "isNew": true },
+            { "label": "Company", "value": "Solarenergie GmbH" },
+            { "label": "Branche", "value": "Photovoltaik / Solar",                "isNew": true },
+            { "label": "Status",  "value": "Qualified",                           "isNew": true }
+          ],
+          "steps": [
+            {
+              "type": "user",
+              "text": { "de": "Bitte recherchiere diesen Lead", "en": "Please research this lead" }
+            },
+            { "type": "thinking" },
+            {
+              "type": "agent",
+              "timestamp": "17:21:46",
+              "text": {
+                "de": "Recherche abgeschlossen:\n\n👤 Thomas Müller (Geschäftsführer)\n✉ t.mueller@solarenergie-gmbh.de\n📱 +49 151 2345 6789\n\nBayerischer Mittelständler (~50 MA), spezialisiert auf PV-Contracting für KMU ohne Eigeninvestition.\n\nSoll ich den Lead damit aktualisieren?",
+                "en": "Research complete:\n\n👤 Thomas Müller (Managing Director)\n✉ t.mueller@solarenergie-gmbh.de\n📱 +49 151 2345 6789\n\nBavarian mid-size company (~50 employees), specializing in PV contracting for SMEs with zero upfront investment.\n\nShould I update the lead with this information?"
+              }
+            },
+            {
+              "type": "user",
+              "text": { "de": "Ja", "en": "Yes" }
+            },
+            { "type": "thinking" },
+            {
+              "type": "agent",
+              "timestamp": "17:21:53",
+              "text": {
+                "de": "✓ Lead erfolgreich aktualisiert.",
+                "en": "✓ Lead updated successfully."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   "compare": {
@@ -83,6 +137,115 @@
         { "number": { "de": "Immer", "en": "Always" },          "desc": { "de": "Pipeline spiegelt den aktuellen Stand jedes Deals wider", "en": "Pipeline reflects the current state of every deal" } }
       ]
     }
+  },
+  "solution": {
+    "label": { "de": "Die Lösung", "en": "The Solution" },
+    "titleLine1": { "de": "Ein Connector. Jedes Modell.", "en": "One connector. Every model." },
+    "titleLine2": { "de": "Direkt in deinem Zoho.", "en": "Inside your Zoho." },
+    "subtitle": {
+      "de": "Wir verbinden mit unserem proprietären Tau-Connector State-of-the-art-Modelle mit deinem Zoho-Stack — direkt nutzbar in deiner Zoho-Applikation.",
+      "en": "Our proprietary Tau connector links state-of-the-art models with your Zoho stack — usable directly inside your Zoho applications."
+    },
+    "models": [
+      { "id": "claude", "name": "Claude", "logo": "/logos/llms/Claude.svg" },
+      { "id": "openai", "name": "ChatGPT", "logo": "/logos/llms/chatGPT.png" },
+      { "id": "gemini", "name": "Gemini", "logo": "/logos/llms/gemini.webp" }
+    ],
+    "modelsCaption": { "de": "State-of-the-art Modelle", "en": "State-of-the-art models" },
+    "zohoApps": {
+      "title": { "de": "Dein Zoho-Stack", "en": "Your Zoho stack" },
+      "caption": { "de": "Zugriff auf all deine Zoho-Applikationen.", "en": "Access to all your Zoho applications." },
+      "logos": [
+        { "src": "/logos/analytics-96.png", "alt": "Zoho Analytics" },
+        { "src": "/logos/books-96.png", "alt": "Zoho Books" },
+        { "src": "/logos/campaigns-96.png", "alt": "Zoho Campaigns" },
+        { "src": "/logos/desk-96.png", "alt": "Zoho Desk" },
+        { "src": "/logos/inventory-96.png", "alt": "Zoho Inventory" },
+        { "src": "/logos/projects-96.png", "alt": "Zoho Projects" },
+        { "src": "/logos/salesiq-96.png", "alt": "Zoho SalesIQ" },
+        { "src": "/logos/sign-96.png", "alt": "Zoho Sign" }
+      ]
+    },
+    "connector": {
+      "title": { "de": "Tau-Connector", "en": "Tau Connector" },
+      "caption": { "de": "Der proprietäre Tau-Connector.", "en": "The proprietary Tau connector." }
+    },
+    "chat": {
+      "title": { "de": "Chat im CRM", "en": "Chat in CRM" },
+      "caption": { "de": "Direkt integriert in dein CRM.", "en": "Directly integrated into your CRM." },
+      "userMessage": { "de": "Recherchiere diesen Lead.", "en": "Please research this lead." },
+      "agentMessage": { "de": "Recherche abgeschlossen — Felder im Lead aktualisiert.", "en": "Research complete — lead fields updated." }
+    }
+  },
+  "pricing": {
+    "label": { "de": "Preise", "en": "Pricing" },
+    "titleLine1": { "de": "Transparent. Fair.", "en": "Transparent. Fair." },
+    "titleLine2": { "de": "Made in DACH.", "en": "Made in Europe." },
+    "subtitle": {
+      "de": "Drei Pläne für jede Reifestufe. Der Chat-Plan ist heute buchbar — Pro und Enterprise folgen.",
+      "en": "Three plans for every maturity stage. Chat is available now — Pro and Enterprise are on the way."
+    },
+    "perUserMonth": { "de": "/User · Monat", "en": "/user · month" },
+    "vatNote": { "de": "zzgl. MwSt.", "en": "excl. VAT" },
+    "onRequest": { "de": "Auf Anfrage", "en": "On request" },
+    "comingSoonLabel": { "de": "Coming Soon", "en": "Coming Soon" },
+    "ctaAvailableLabel": { "de": "Zugang anfragen →", "en": "Request access →" },
+    "ctaHref": "#cta",
+    "tiers": [
+      {
+        "id": "chat",
+        "name": "Chat",
+        "price": "29",
+        "currency": "€",
+        "available": true,
+        "highlight": true,
+        "tagline": {
+          "de": "Für Teams, die ihrem CRM endlich eine Stimme geben wollen.",
+          "en": "For teams that finally want to give their CRM a voice."
+        },
+        "features": [
+          { "de": "Chat-Interface mit allen führenden Modellen (Claude, OpenAI, Gemini)", "en": "Chat interface with all leading models (Claude, OpenAI, Gemini)" },
+          { "de": "Zoho-Anbindung via proprietärem Tau-Connector", "en": "Zoho integration via the proprietary Tau connector" },
+          { "de": "12 € inkludiertes Token-Guthaben pro User", "en": "12 € of included token credit per user" },
+          { "de": "AI-Safe-Log, anonymisiert, Hosting in Deutschland", "en": "AI-safe log, anonymized, hosted in Germany" },
+          { "de": "E-Mail-Support mit 48h-SLA", "en": "Email support with 48h SLA" }
+        ]
+      },
+      {
+        "id": "pro",
+        "name": "Pro",
+        "available": false,
+        "highlight": false,
+        "tagline": {
+          "de": "Wenn Chat nicht reicht — automatisiere ganze Workflows.",
+          "en": "When chat isn't enough — automate full workflows."
+        },
+        "features": [
+          { "de": "Alles aus Chat", "en": "Everything in Chat" },
+          { "de": "Automatisierte Workflows (Trigger, Schedules, Webhooks)", "en": "Automated workflows (triggers, schedules, webhooks)" },
+          { "de": "Workflow-Builder für Power-User", "en": "Workflow builder for power users" },
+          { "de": "Höheres Token-Guthaben", "en": "Higher token credit" },
+          { "de": "Priorisierter Support", "en": "Priority support" }
+        ]
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "available": false,
+        "highlight": false,
+        "tagline": {
+          "de": "Für komplexe System-Landschaften und individuelle Anforderungen.",
+          "en": "For complex system landscapes and bespoke requirements."
+        },
+        "features": [
+          { "de": "Alles aus Pro", "en": "Everything in Pro" },
+          { "de": "Custom Tau-Adapter für Drittsysteme", "en": "Custom Tau adapters for third-party systems" },
+          { "de": "Agentic Workflows über alle Systeme hinweg", "en": "Agentic workflows across all systems" },
+          { "de": "Hosting-Optionen: Shared, Dedicated, On-Prem", "en": "Hosting options: shared, dedicated, on-prem" },
+          { "de": "Account Manager + dedizierter SLA", "en": "Dedicated account manager + SLA" }
+        ]
+      }
+    ]
   },
   "capabilities": {
     "label": { "de": "Funktionen", "en": "Capabilities" },

@@ -14,11 +14,12 @@ interface AgentCompareProps {
 export default function AgentCompare({ sectionLabel, titleLine1, titleLine2, before, after }: AgentCompareProps) {
   return (
     <section id="problem" style={{
+      scrollSnapAlign: 'start',
       backgroundColor: '#000', color: '#fff', padding: '6rem 0',
-      minHeight: '100dvh', display: 'flex', alignItems: 'center',
+      height: '100dvh', display: 'flex', flexDirection: 'column', overflowY: 'auto',
       borderTop: '1px solid rgba(255,255,255,0.07)', fontFamily: FONT,
     }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem', width: '100%' }}>
+      <div style={{ maxWidth: 1200, margin: 'auto', padding: '0 2rem', width: '100%' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{ color: '#C8962E', fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 12 }}>
             {sectionLabel}

@@ -1,0 +1,24 @@
+{
+  "betaPill": { "de": "Beta · Neu", "en": "Beta · New" },
+  "visual": "τ",
+  "wordmark": "TAU ZOHO AGENT",
+  "preLabel": { "de": "NEUES PRODUKT", "en": "NEW PRODUCT" },
+  "headline": [
+    { "de": "Dein Zoho CRM,", "en": "Your Zoho CRM," },
+    { "de": "auf Autopilot.", "en": "on autopilot." }
+  ],
+  "subtitle": {
+    "de": "Der KI-Agent, der Leads, Deals, Support und Berichte übernimmt — damit dein Vertrieb abschließt, statt zu klicken.",
+    "en": "The AI agent that handles leads, deals, support and reporting — so your sales team closes, not clicks."
+  },
+  "bullets": [
+    { "de": "Lead-Scoring & Enrichment in Echtzeit", "en": "Real-time lead scoring & routing" },
+    { "de": "Zusammenfassungen von Kundenaktivitäten", "en": "Customer activity summaries" },
+    { "de": "Natürlichsprachliche CRM-Befehle", "en": "Natural-language CRM commands" }
+  ],
+  "cta": {
+    "de": "Mehr über Tau Agent erfahren →",
+    "en": "What can the Tau Agent do for you →"
+  },
+  "chatScenarioId": "lead-research"
+}

@@ -22,17 +22,19 @@ export default function AgentEcosystem({
     <section
       id="ecosystem"
       style={{
+        scrollSnapAlign: 'start',
         backgroundColor: '#000',
         color: '#fff',
         padding: '6rem 0',
-        minHeight: '100dvh',
+        height: '100dvh',
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: 'column',
+        overflowY: 'auto',
         borderTop: '1px solid rgba(255,255,255,0.07)',
         fontFamily: FONT,
       }}
     >
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem', width: '100%' }}>
+      <div style={{ maxWidth: 1200, margin: 'auto', padding: '0 2rem', width: '100%' }}>
         <div
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}
           className="agent-eco-grid"

@@ -27,6 +27,13 @@
 /.npm-tmp
 /.venv
 
+# dev / testing artifacts
+/.claude
+/.playwright-mcp
+/Website_Concepts
+/screenshots
+/lighthouse-report.*
+
 # misc
 .DS_Store
 *.pem

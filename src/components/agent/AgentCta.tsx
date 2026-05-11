@@ -56,10 +56,10 @@ export default function AgentCta({
   return (
     <section id="cta" style={{
       backgroundColor: '#000', color: '#fff', padding: '6rem 0',
-      minHeight: '100dvh', display: 'flex', alignItems: 'center',
+      flex: '1 1 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center',
       borderTop: '1px solid rgba(255,255,255,0.07)', fontFamily: FONT, textAlign: 'center',
     }}>
-      <div style={{ maxWidth: 640, margin: '0 auto', padding: '0 2rem', width: '100%' }}>
+      <div style={{ maxWidth: 640, margin: 'auto', padding: '0 2rem', width: '100%' }}>
         <div style={{ color: '#C8962E', fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>
           {sectionLabel}
         </div>

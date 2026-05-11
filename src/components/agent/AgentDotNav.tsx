@@ -7,8 +7,10 @@ export default function AgentDotNav() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    const container = document.getElementById('agent-scroll');
+    if (!container) return;
     const update = () => {
-      const threshold = window.scrollY + window.innerHeight * 0.4;
+      const threshold = container.scrollTop + container.clientHeight * 0.4;
       let current = 0;
       for (let i = 0; i < SECTIONS.length; i++) {
         const el = document.getElementById(SECTIONS[i]);
@@ -16,9 +18,9 @@ export default function AgentDotNav() {
       }
       setActive(current);
     };
-    window.addEventListener('scroll', update, { passive: true });
+    container.addEventListener('scroll', update, { passive: true });
     update();
-    return () => window.removeEventListener('scroll', update);
+    return () => container.removeEventListener('scroll', update);
   }, []);
 
   const scrollTo = (id: string) => {
