@@ -52,6 +52,18 @@ export default async function AgentLayout({
       '@type': 'Offer',
       price: '29',
       priceCurrency: 'EUR',
+      category: 'subscription',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '29',
+        priceCurrency: 'EUR',
+        unitText: loc({ de: 'User/Monat', en: 'user/month' }),
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: 1,
+          unitCode: 'MON',
+        },
+      },
       description: loc({
         de: '14 Tage kostenlos testen, 10 Mio. Tokens inklusive. Danach 29 €/User pro Monat.',
         en: '14-day free trial, 10M tokens included. Then €29/user per month.',
