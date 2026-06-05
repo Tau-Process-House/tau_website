@@ -37,6 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Localized home pages
     ...localizedEntry('', 'monthly', 1, now),
+    // Tau Zoho Agent (Produktseite — hohe Priorität)
+    ...localizedEntry('/tau-zoho-agent', 'weekly', 0.9, now),
     // Localized sub-pages
     ...localizedEntry('/faq', 'monthly', 0.8, now),
     ...localizedEntry('/imprint', 'yearly', 0.2, now),
