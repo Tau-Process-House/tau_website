@@ -184,15 +184,15 @@
     "titleLine1": { "de": "Transparent. Fair.", "en": "Transparent. Fair." },
     "titleLine2": { "de": "Made in DACH.", "en": "Made in Europe." },
     "subtitle": {
-      "de": "Drei Pläne für jede Reifestufe. Der Chat-Plan ist heute buchbar — Pro und Enterprise folgen.",
-      "en": "Three plans for every maturity stage. Chat is available now — Pro and Enterprise are on the way."
+      "de": "Starte mit 14 Tagen kostenlos und 10 Mio. Tokens. Danach 29 €/User pro Monat — Pro und Enterprise folgen.",
+      "en": "Start free for 14 days with 10M tokens. Then €29/user per month — Pro and Enterprise are on the way."
     },
     "perUserMonth": { "de": "/User · Monat", "en": "/user · month" },
     "vatNote": { "de": "zzgl. MwSt.", "en": "excl. VAT" },
     "onRequest": { "de": "Auf Anfrage", "en": "On request" },
     "comingSoonLabel": { "de": "Coming Soon", "en": "Coming Soon" },
-    "ctaAvailableLabel": { "de": "Zugang anfragen →", "en": "Request access →" },
-    "ctaHref": "#cta",
+    "ctaAvailableLabel": { "de": "Jetzt installieren →", "en": "Install now →" },
+    "ctaHref": "https://crm.zoho.eu/market/installPrivatePlugin.do?portalName=felixrim98&nameSpace=tauzohoagent&versionIndex=4498495000000318002",
     "tiers": [
       {
         "id": "chat",
@@ -207,8 +207,9 @@
         },
         "features": [
           { "de": "Chat-Interface mit allen führenden Modellen (Claude, OpenAI, Gemini)", "en": "Chat interface with all leading models (Claude, OpenAI, Gemini)" },
+          { "de": "Modelle inklusive — kein eigener API-Key nötig", "en": "Models included — no API key of your own required" },
           { "de": "Zoho-Anbindung via proprietärem Tau-Connector", "en": "Zoho integration via the proprietary Tau connector" },
-          { "de": "12 € inkludiertes Token-Guthaben pro User", "en": "12 € of included token credit per user" },
+          { "de": "~24 Mio. Tokens pro User & Monat inklusive", "en": "~24M tokens per user & month included" },
           { "de": "AI-Safe-Log, anonymisiert, Hosting in Deutschland", "en": "AI-safe log, anonymized, hosted in Germany" },
           { "de": "E-Mail-Support mit 48h-SLA", "en": "Email support with 48h SLA" }
         ]
@@ -395,11 +396,11 @@
     ]
   },
   "finalCta": {
-    "label": { "de": "Früher Zugang", "en": "Early access" },
+    "label": { "de": "Jetzt starten", "en": "Get started" },
     "titleLine1": { "de": "Hör auf, durch dein CRM zu klicken.", "en": "Stop clicking through your CRM." },
     "titleLine2Pre": { "de": "Lass es", "en": "Start letting it" },
     "titleLine2Gold": { "de": "sich selbst steuern.", "en": "run itself." },
-    "subtitle": { "de": "Plätze für den frühen Zugang sind begrenzt — Launch Q2 2026.", "en": "Early access spots are limited — launching Q2 2026." },
+    "subtitle": { "de": "In 5 Minuten installiert. 14 Tage kostenlos, 10 Mio. Tokens inklusive, keine Kreditkarte.", "en": "Installed in 5 minutes. 14 days free, 10M tokens included, no credit card." },
     "footnote": { "de": "Entwickelt von Zoho-Experten der Tau Process House GmbH", "en": "Built by Zoho experts at Tau Process House" },
     "formPlaceholder": "you@company.com",
     "formButton": { "de": "Anmelden", "en": "Join" }
