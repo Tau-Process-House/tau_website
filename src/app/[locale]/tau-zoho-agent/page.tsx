@@ -154,6 +154,11 @@ export default async function TauZohoAgentPage({
             titleLine2Gold={loc(d.finalCta.titleLine2Gold)}
             subtitle={loc(d.finalCta.subtitle)}
             footnote={loc(d.finalCta.footnote)}
+            installUrl={d.installUrl}
+            installLabel={loc(d.finalCta.installLabel)}
+            installHint={loc(d.finalCta.installHint)}
+            steps={d.finalCta.steps.map(loc)}
+            secondaryLabel={loc(d.finalCta.secondaryLabel)}
           />
           <AgentFooter
             brandSuffix={loc(d.footer.brandSuffix)}

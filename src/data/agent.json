@@ -403,7 +403,15 @@
     "subtitle": { "de": "In 5 Minuten installiert. 14 Tage kostenlos, 10 Mio. Tokens inklusive, keine Kreditkarte.", "en": "Installed in 5 minutes. 14 days free, 10M tokens included, no credit card." },
     "footnote": { "de": "Entwickelt von Zoho-Experten der Tau Process House GmbH", "en": "Built by Zoho experts at Tau Process House" },
     "formPlaceholder": "you@company.com",
-    "formButton": { "de": "Anmelden", "en": "Join" }
+    "formButton": { "de": "Anmelden", "en": "Join" },
+    "installLabel": { "de": "Im Zoho Marketplace installieren →", "en": "Install on the Zoho Marketplace →" },
+    "installHint": { "de": "Installation durch einen Zoho-Admin. Danach melden sich alle Nutzer per SSO direkt im CRM an.", "en": "Installed by a Zoho admin. After that, every user signs in via SSO directly inside the CRM." },
+    "steps": [
+      { "de": "Admin installiert das Plugin aus dem Marketplace", "en": "Admin installs the plugin from the Marketplace" },
+      { "de": "Nutzer melden sich per Single Sign-On im CRM an", "en": "Users sign in via single sign-on inside the CRM" },
+      { "de": "14 Tage kostenlos testen — 10 Mio. Tokens inklusive", "en": "Try it free for 14 days — 10M tokens included" }
+    ],
+    "secondaryLabel": { "de": "Lieber zuerst Fragen klären? Demo anfragen.", "en": "Prefer to ask questions first? Request a demo." }
   },
   "footer": {
     "brandSuffix": { "de": "· von Tau Process House GmbH", "en": "· by Tau Process House GmbH" },

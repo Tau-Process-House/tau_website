@@ -12,10 +12,16 @@ interface AgentCtaProps {
   titleLine2Gold: string;
   subtitle: string;
   footnote: string;
+  installUrl: string;
+  installLabel: string;
+  installHint: string;
+  steps: string[];
+  secondaryLabel: string;
 }
 
 export default function AgentCta({
   sectionLabel, titleLine1, titleLine2Pre, titleLine2Gold, subtitle, footnote,
+  installUrl, installLabel, installHint, steps, secondaryLabel,
 }: AgentCtaProps) {
   useEffect(() => {
     const container = document.getElementById(ZOHO_DIV_ID);
@@ -69,11 +75,49 @@ export default function AgentCta({
           {titleLine2Pre} <span style={{ color: '#C8962E' }}>{titleLine2Gold}</span>
         </h2>
 
-        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 36 }}>
+        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 28 }}>
           {subtitle}
         </p>
 
-        <div id={ZOHO_DIV_ID} style={{ width: '100%' }} />
+        <ol style={{
+          listStyle: 'none', padding: 0, margin: '0 auto 32px', maxWidth: 460,
+          display: 'flex', flexDirection: 'column', gap: 10, textAlign: 'left',
+        }}>
+          {steps.map((s, i) => (
+            <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>
+              <span style={{
+                flexShrink: 0, width: 22, height: 22, borderRadius: 999,
+                backgroundColor: 'rgba(200,150,46,0.15)', color: '#C8962E',
+                fontSize: 12, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>{i + 1}</span>
+              <span>{s}</span>
+            </li>
+          ))}
+        </ol>
+
+        <a
+          href={installUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block', backgroundColor: '#C8962E', color: '#000',
+            fontWeight: 700, fontSize: 16, padding: '0.9rem 2rem',
+            borderRadius: 8, textDecoration: 'none',
+          }}
+        >
+          {installLabel}
+        </a>
+
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 16, maxWidth: 460, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.5 }}>
+          {installHint}
+        </p>
+
+        <details style={{ marginTop: 32 }}>
+          <summary style={{ cursor: 'pointer', fontSize: 13, color: 'rgba(255,255,255,0.55)', listStyle: 'none' }}>
+            {secondaryLabel}
+          </summary>
+          <div id={ZOHO_DIV_ID} style={{ width: '100%', marginTop: 20 }} />
+        </details>
 
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 24 }}>
           {footnote}
