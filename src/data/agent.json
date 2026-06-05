@@ -6,9 +6,10 @@
       "en": "The AI agent that handles leads, deals, support and reporting inside your Zoho CRM — so your sales team closes, not clicks."
     }
   },
+  "installUrl": "https://crm.zoho.eu/market/installPrivatePlugin.do?portalName=felixrim98&nameSpace=tauzohoagent&versionIndex=4498495000000318002",
   "nav": {
-    "ctaLabel": { "de": "Zugang anfragen →", "en": "Request access →" },
-    "ctaHref": "#cta",
+    "ctaLabel": { "de": "Kostenlos installieren →", "en": "Install free →" },
+    "ctaHref": "https://crm.zoho.eu/market/installPrivatePlugin.do?portalName=felixrim98&nameSpace=tauzohoagent&versionIndex=4498495000000318002",
     "backLabel": { "de": "← tauprocess.de", "en": "← tauprocess.de" },
     "links": [
       { "label": { "de": "Die Lösung", "en": "The Solution" }, "href": "#solution" },
@@ -18,7 +19,7 @@
   },
   "hero": {
     "pill": {
-      "text": { "de": "Beta-Programm beitreten", "en": "Join the Beta Program" },
+      "text": { "de": "Jetzt live im Zoho Marketplace", "en": "Now live on the Zoho Marketplace" },
       "tag": "Beta"
     },
     "titleLine1": { "de": "Dein Zoho CRM,", "en": "Your Zoho CRM," },
@@ -28,11 +29,12 @@
       "de": "Der KI-Agent, der Leads, Deals, Support und Berichte in deinem Zoho CRM übernimmt — damit dein Vertrieb abschließt, statt zu klicken.",
       "en": "The AI agent that handles leads, deals, support and reporting inside your Zoho CRM — so your sales team closes, not clicks."
     },
-    "primaryCta": { "label": { "de": "Zugang anfragen →", "en": "Request access →" }, "href": "#cta" },
-    "secondaryCta": { "label": { "de": "90-Sek. Demo ansehen", "en": "Watch a 90-sec demo" }, "href": "#how" },
+    "primaryCta": { "label": { "de": "14 Tage kostenlos testen →", "en": "Start a 14-day free trial →" }, "href": "https://crm.zoho.eu/market/installPrivatePlugin.do?portalName=felixrim98&nameSpace=tauzohoagent&versionIndex=4498495000000318002" },
+    "secondaryCta": { "label": { "de": "90-Sek. Demo ansehen", "en": "Watch a 90-sec demo" }, "href": "#solution" },
     "meta": [
-      { "de": "Nur OAuth-Zugang zu Zoho", "en": "OAuth-only Zoho access" },
-      { "de": "Zugang zu neuesten LLM-Modellen", "en": "Access to newest LLM models" }
+      { "de": "10 Mio. Tokens inklusive", "en": "10M tokens included" },
+      { "de": "Keine Kreditkarte nötig", "en": "No credit card required" },
+      { "de": "Anmeldung per SSO im CRM", "en": "Single sign-on inside your CRM" }
     ],
     "chat": {
       "title": "Tau Agent",
