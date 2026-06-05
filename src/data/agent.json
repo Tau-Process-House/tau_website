@@ -364,9 +364,24 @@
     "title": { "de": "Häufige Fragen.", "en": "Common questions." },
     "items": [
       {
+        "q": { "de": "Wie installiere ich Tau Agent?", "en": "How do I install Tau Agent?" },
+        "a": { "de": "Ein Zoho-Admin installiert das Plugin mit einem Klick aus dem Zoho Marketplace. Danach melden sich alle Nutzer per Single Sign-On direkt im CRM an — keine separate Anmeldung, kein eigener API-Key. Die 14-tägige Testphase startet sofort.", "en": "A Zoho admin installs the plugin from the Zoho Marketplace with one click. After that, all users sign in via single sign-on directly inside the CRM — no separate login, no API key of your own. The 14-day trial starts immediately." },
+        "open": true
+      },
+      {
+        "q": { "de": "Was kostet die Testphase?", "en": "How much is the trial?" },
+        "a": { "de": "Die Testphase ist 14 Tage kostenlos und enthält 10 Mio. Tokens — ohne Kreditkarte. Danach kostet der Chat-Plan 29 €/User pro Monat mit rund 24 Mio. inkludierten Tokens monatlich.", "en": "The trial is free for 14 days and includes 10M tokens — no credit card. After that the Chat plan is €29/user per month with roughly 24M tokens included each month." },
+        "open": false
+      },
+      {
+        "q": { "de": "Brauche ich einen eigenen OpenAI- oder Claude-Key?", "en": "Do I need my own OpenAI or Claude key?" },
+        "a": { "de": "Nein. Der Zugang zu allen führenden Modellen (Claude, ChatGPT, Gemini) ist im Plan inklusive — abgerechnet über dein inkludiertes Token-Kontingent. Du musst nichts separat einrichten.", "en": "No. Access to all leading models (Claude, ChatGPT, Gemini) is included in the plan — billed against your included token allowance. There is nothing to set up separately." },
+        "open": false
+      },
+      {
         "q": { "de": "Wie unterscheidet sich das von Zohos eingebauten Workflows?", "en": "How is this different from Zoho's built-in workflows?" },
         "a": { "de": "Zohos Workflows sind regelbasiert — du baust explizite Wenn/Dann-Trigger. Tau Agent ist eine KI, die Absichten versteht, kontextuelle Entscheidungen trifft und sich anpasst. Du beschreibst, was du möchtest — der Agent übernimmt Implementierung und laufende Ausführung.", "en": "Zoho's workflows are rule-based — you build explicit if/then triggers. Tau Agent is an AI that understands intent, makes contextual decisions, and adapts. You describe what you want in plain English, and the agent handles the implementation and ongoing execution." },
-        "open": true
+        "open": false
       },
       {
         "q": { "de": "Ersetzt Tau Agent Deluge-Scripting?", "en": "Does Tau Agent replace Deluge scripting?" },
