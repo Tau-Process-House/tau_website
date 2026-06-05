@@ -79,7 +79,7 @@ export default function AgentCta({
           {subtitle}
         </p>
 
-        <ol style={{
+        <ol role="list" style={{
           listStyle: 'none', padding: 0, margin: '0 auto 32px', maxWidth: 460,
           display: 'flex', flexDirection: 'column', gap: 10, textAlign: 'left',
         }}>
@@ -113,8 +113,9 @@ export default function AgentCta({
         </p>
 
         <details style={{ marginTop: 32 }}>
-          <summary style={{ cursor: 'pointer', fontSize: 13, color: 'rgba(255,255,255,0.55)', listStyle: 'none' }}>
+          <summary style={{ cursor: 'pointer', fontSize: 13, color: 'rgba(255,255,255,0.55)', listStyle: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
             {secondaryLabel}
+            <span style={{ fontSize: 11, opacity: 0.6 }}>▾</span>
           </summary>
           <div id={ZOHO_DIV_ID} style={{ width: '100%', marginTop: 20 }} />
         </details>
