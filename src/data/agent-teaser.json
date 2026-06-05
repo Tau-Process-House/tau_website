@@ -1,5 +1,5 @@
 {
-  "betaPill": { "de": "Beta · Neu", "en": "Beta · New" },
+  "betaPill": { "de": "Jetzt live", "en": "Now live" },
   "visual": "τ",
   "wordmark": "TAU ZOHO AGENT",
   "preLabel": { "de": "NEUES PRODUKT", "en": "NEW PRODUCT" },
@@ -12,8 +12,8 @@
     "en": "The AI agent that handles leads, deals, support and reporting — so your sales team closes, not clicks."
   },
   "bullets": [
-    { "de": "Lead-Scoring & Enrichment in Echtzeit", "en": "Real-time lead scoring & routing" },
-    { "de": "Zusammenfassungen von Kundenaktivitäten", "en": "Customer activity summaries" },
+    { "de": "Direkt im CRM — Claude, ChatGPT & Gemini inklusive", "en": "Right inside your CRM — Claude, ChatGPT & Gemini included" },
+    { "de": "Lead-Scoring & Enrichment in Echtzeit", "en": "Real-time lead scoring & enrichment" },
     { "de": "Natürlichsprachliche CRM-Befehle", "en": "Natural-language CRM commands" }
   ],
   "cta": {
