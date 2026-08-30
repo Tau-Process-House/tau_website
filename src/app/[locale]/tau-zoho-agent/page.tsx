@@ -3,6 +3,8 @@ import AgentNav from '@/components/agent/AgentNav';
 import AgentHero from '@/components/agent/AgentHero';
 import AgentCompare from '@/components/agent/AgentCompare';
 import AgentSolution from '@/components/agent/AgentSolution';
+import AgentCapabilities from '@/components/agent/AgentCapabilities';
+import AgentHowItWorks from '@/components/agent/AgentHowItWorks';
 import AgentPricing from '@/components/agent/AgentPricing';
 import AgentFaq from '@/components/agent/AgentFaq';
 import AgentCta from '@/components/agent/AgentCta';
@@ -32,7 +34,7 @@ export default async function TauZohoAgentPage({
       />
       <main id="agent-scroll" className="agent-scroll-container" style={{ backgroundColor: '#000' }}>
         <AgentHero
-          pill={{ text: loc(d.hero.pill.text), tag: d.hero.pill.tag }}
+          pill={{ text: loc(d.hero.pill.text) }}
           titleLine1={loc(d.hero.titleLine1)}
           titlePre={loc(d.hero.titlePre)}
           titleGold={loc(d.hero.titleGold)}
@@ -84,6 +86,19 @@ export default async function TauZohoAgentPage({
           }}
         />
 
+        <AgentCapabilities
+          sectionLabel={loc(d.capabilities.label)}
+          titlePart1={loc(d.capabilities.titlePart1)}
+          titleGold={loc(d.capabilities.titleGold)}
+          subtitle={loc(d.capabilities.subtitle)}
+          items={d.capabilities.items.map((item) => ({
+            icon: item.icon,
+            title: loc(item.title),
+            desc: loc(item.desc),
+            tags: item.tags,
+          }))}
+        />
+
         <AgentSolution
           sectionLabel={loc(d.solution.label)}
           titleLine1={loc(d.solution.titleLine1)}
@@ -108,6 +123,22 @@ export default async function TauZohoAgentPage({
           }}
         />
 
+        <AgentHowItWorks
+          sectionLabel={loc(d.how.label)}
+          title={loc(d.how.title)}
+          subtitle={loc(d.how.subtitle)}
+          steps={d.how.steps.map((step) => ({
+            num: step.num,
+            stepLabel: loc(step.stepLabel),
+            title: loc(step.title),
+            desc: loc(step.desc),
+            demoLines: step.demoLines.map((line) => ({
+              type: line.type,
+              text: locStr(line.text),
+            })),
+          }))}
+        />
+
         <AgentPricing
           sectionLabel={loc(d.pricing.label)}
           titleLine1={loc(d.pricing.titleLine1)}
@@ -128,6 +159,10 @@ export default async function TauZohoAgentPage({
             highlight: (t as { highlight?: boolean }).highlight,
             tagline: loc(t.tagline),
             features: t.features.map(loc),
+            ctaLabel: (t as { ctaLabel?: { de: string; en: string } }).ctaLabel
+              ? loc((t as { ctaLabel: { de: string; en: string } }).ctaLabel)
+              : undefined,
+            ctaHref: (t as { ctaHref?: string }).ctaHref,
           }))}
         />
 
@@ -154,6 +189,11 @@ export default async function TauZohoAgentPage({
             titleLine2Gold={loc(d.finalCta.titleLine2Gold)}
             subtitle={loc(d.finalCta.subtitle)}
             footnote={loc(d.finalCta.footnote)}
+            installUrl={d.installUrl}
+            installLabel={loc(d.finalCta.installLabel)}
+            installHint={loc(d.finalCta.installHint)}
+            steps={d.finalCta.steps.map(loc)}
+            secondaryLabel={loc(d.finalCta.secondaryLabel)}
           />
           <AgentFooter
             brandSuffix={loc(d.footer.brandSuffix)}

@@ -175,7 +175,7 @@ export default function AgentSolution({
             {sectionLabel}
           </div>
           <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: 16 }}>
-            {titleLine1}<br />{titleLine2}
+            {titleLine1}<br /><span style={{ color: GOLD }}>{titleLine2}</span>
           </h2>
           <p style={{
             fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)',

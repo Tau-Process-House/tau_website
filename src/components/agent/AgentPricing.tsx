@@ -12,6 +12,8 @@ interface PricingTier {
   highlight?: boolean;
   tagline: string;
   features: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 interface AgentPricingProps {
@@ -73,7 +75,7 @@ export default function AgentPricing({
         {/* Tier cards */}
         <div className="agent-pricing-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '1.5rem',
           alignItems: 'stretch',
         }}>
@@ -212,7 +214,7 @@ export default function AgentPricing({
                 {/* CTA */}
                 {tier.available ? (
                   <a
-                    href={ctaHref}
+                    href={tier.ctaHref ?? ctaHref}
                     style={{
                       display: 'inline-block',
                       textAlign: 'center',
@@ -228,7 +230,7 @@ export default function AgentPricing({
                       border: `1px solid ${GOLD}`,
                     }}
                   >
-                    {ctaAvailableLabel}
+                    {tier.ctaLabel ?? ctaAvailableLabel}
                   </a>
                 ) : (
                   <div

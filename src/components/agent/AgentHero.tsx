@@ -5,7 +5,7 @@ import ZohoChatPreview, { ZohoChatPreviewProps } from './ZohoChatPreview';
 const FONT = 'Arial, Helvetica, sans-serif';
 
 interface AgentHeroProps {
-  pill: { text: string; tag: string };
+  pill: { text: string; tag?: string };
   titleLine1: string;
   titlePre: string;
   titleGold: string;
@@ -51,12 +51,14 @@ export default function AgentHero({
             }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#C8962E' }} />
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13 }}>{pill.text}</span>
-              <span style={{
-                backgroundColor: '#C8962E', color: '#000', fontWeight: 700,
-                fontSize: 10, padding: '2px 7px', borderRadius: 999, letterSpacing: '0.05em',
-              }}>
-                {pill.tag}
-              </span>
+              {pill.tag && (
+                <span style={{
+                  backgroundColor: '#C8962E', color: '#000', fontWeight: 700,
+                  fontSize: 10, padding: '2px 7px', borderRadius: 999, letterSpacing: '0.05em',
+                }}>
+                  {pill.tag}
+                </span>
+              )}
             </div>
 
             <h1 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.25rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: 20 }}>
