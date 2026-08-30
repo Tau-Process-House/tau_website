@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": {
-      "de": "Tau Zoho Agent — das KI-Abo für Teams, die mit Zoho arbeiten",
-      "en": "Tau Zoho Agent — the AI subscription for teams working with Zoho"
+      "de": "Tau Zoho Agent - das KI-Abo für Teams, die mit Zoho arbeiten",
+      "en": "Tau Zoho Agent - the AI subscription for teams working with Zoho"
     },
     "description": {
-      "de": "KI-Chat für Zoho: Daten lesen, Einträge anlegen, Auswertungen ziehen — direkt im CRM, für das ganze Team, zentral verwaltet. 29 € pro Nutzer und Monat, 14 Tage kostenlos.",
-      "en": "AI chat for Zoho: read data, create records, pull reports — right inside your CRM, for the whole team, centrally managed. EUR 29 per user per month, 14 days free."
+      "de": "KI-Chat für Zoho: Daten lesen, Einträge anlegen, Auswertungen ziehen - direkt im CRM, für das ganze Team, zentral verwaltet. 29 € pro Nutzer und Monat, 14 Tage kostenlos.",
+      "en": "AI chat for Zoho: read data, create records, pull reports - right inside your CRM, for the whole team, centrally managed. EUR 29 per user per month, 14 days free."
     }
   },
   "installUrl": "https://crm.zoho.eu/market/installPrivatePlugin.do?portalName=felixrim98&nameSpace=tauzohoagent&versionIndex=4498495000000318002",
@@ -78,8 +78,8 @@
       "en": "Zoho."
     },
     "subtitle": {
-      "de": "Kostet wie ChatGPT Team oder Claude Team — nur dass diese KI in eurem Zoho arbeitet: Daten lesen, Einträge anlegen, Auswertungen ziehen. Direkt im CRM, für das ganze Team.",
-      "en": "Costs the same as ChatGPT Team or Claude Team — except this AI works inside your Zoho: read data, create records, pull reports. Right in your CRM, for the whole team."
+      "de": "Auf der Suche nach der richtigen KI für euer Unternehmen und euer Zoho-Ökosystem? Der Tau Agent vereint das Beste aus beiden Welten - Zugriff auf die Modelle aller führenden Anbieter, mit einer tiefen Integration in euer Zoho-System.",
+      "en": "Looking for the right AI for your company and your Zoho ecosystem? Tau Agent combines the best of both worlds - access to the models of all leading providers, with deep integration into your Zoho system."
     },
     "primaryCta": {
       "label": {
@@ -304,8 +304,8 @@
             "en": "Copy & paste"
           },
           "desc": {
-            "de": "So kommen eure CRM-Daten in den Chat — von Hand, jedes Mal",
-            "en": "How your CRM data gets into the chat — manually, every time"
+            "de": "So kommen eure CRM-Daten in den Chat - von Hand, jedes Mal",
+            "en": "How your CRM data gets into the chat - manually, every time"
           }
         },
         {
@@ -324,8 +324,8 @@
             "en": "Private"
           },
           "desc": {
-            "de": "Jeder Zugang gehört dem Mitarbeiter — nicht dem Unternehmen",
-            "en": "Each account belongs to the employee — not to the company"
+            "de": "Jeder Zugang gehört dem Mitarbeiter - nicht dem Unternehmen",
+            "en": "Each account belongs to the employee - not to the company"
           }
         }
       ]
@@ -342,8 +342,8 @@
             "en": "€29"
           },
           "desc": {
-            "de": "Pro Nutzer und Monat — mit denselben führenden Modellen",
-            "en": "Per user per month — with the same leading models"
+            "de": "Pro Nutzer und Monat - mit denselben führenden Modellen",
+            "en": "Per user per month - with the same leading models"
           }
         },
         {
@@ -362,8 +362,8 @@
             "en": "In your CRM"
           },
           "desc": {
-            "de": "Da, wo euer Team ohnehin arbeitet — nicht in einem zweiten Tab",
-            "en": "Where your team already works — not in a second tab"
+            "de": "Da, wo euer Team ohnehin arbeitet - nicht in einem zweiten Tab",
+            "en": "Where your team already works - not in a second tab"
           }
         },
         {
@@ -372,8 +372,8 @@
             "en": "Central"
           },
           "desc": {
-            "de": "Zugriff erteilen, entziehen und nachvollziehen — durch die Firma",
-            "en": "Grant, revoke and audit access — as a company"
+            "de": "Zugriff erteilen, entziehen und nachvollziehen - durch die Firma",
+            "en": "Grant, revoke and audit access - as a company"
           }
         }
       ]
@@ -393,14 +393,19 @@
       "en": "Tailored to Zoho."
     },
     "subtitle": {
-      "de": "Der Unterschied zu einem KI-Chat, den ihr euch selbst an Zoho steckt: Unser Connector ist für Zoho gebaut. Er kennt die Werkzeuge eurer Zoho-Anwendungen, wählt für jede Frage die passenden aus und liefert dem Modell den Kontext, den es braucht — statt es raten zu lassen.",
-      "en": "The difference to an AI chat you wire up to Zoho yourself: our connector is built for Zoho. It knows the tools of your Zoho applications, picks the right ones for each question and gives the model the context it needs — instead of letting it guess."
+      "de": "Der Unterschied zu einem KI-Chat, den ihr euch selbst an Zoho steckt: Unser Connector ist für Zoho gebaut. Er kennt die Werkzeuge eurer Zoho-Anwendungen, wählt für jede Frage die passenden aus und liefert dem Modell den Kontext, den es braucht.",
+      "en": "The difference to an AI chat you wire up to Zoho yourself: our connector is built for Zoho. It knows the tools of your Zoho applications, picks the right ones for each question and gives the model the context it needs."
     },
     "models": [
       {
         "id": "claude",
         "name": "Claude",
         "logo": "/logos/llms/Claude.svg"
+      },
+      {
+        "id": "openai",
+        "name": "ChatGPT",
+        "logo": "/logos/llms/chatGPT.png"
       },
       {
         "id": "gemini",
@@ -414,7 +419,7 @@
     },
     "zohoApps": {
       "title": {
-        "de": "Dein Zoho-Stack",
+        "de": "Euer Zoho-Stack",
         "en": "Your Zoho stack"
       },
       "caption": {
@@ -480,8 +485,8 @@
         "en": "Please research this lead."
       },
       "agentMessage": {
-        "de": "Recherche abgeschlossen — Felder im Lead aktualisiert.",
-        "en": "Research complete — lead fields updated."
+        "de": "Recherche abgeschlossen - Felder im Lead aktualisiert.",
+        "en": "Research complete - lead fields updated."
       }
     }
   },
@@ -491,16 +496,16 @@
       "en": "Pricing"
     },
     "titleLine1": {
-      "de": "Ein Preis. Wie ein KI-Abo.",
-      "en": "One price. Like an AI subscription."
+      "de": "Euer Zoho-KI-Abo",
+      "en": "Your Zoho AI subscription"
     },
     "titleLine2": {
-      "de": "Nur eben mit eurem Zoho.",
-      "en": "Except it knows your Zoho."
+      "de": "zum Flatrate-Preis.",
+      "en": "at a flat rate."
     },
     "subtitle": {
-      "de": "14 Tage kostenlos testen. Danach 29 € pro Nutzer und Monat — im Rahmen dessen, was ein Team ohnehin für ein KI-Abo zahlt.",
-      "en": "Free for 14 days. After that €29 per user per month — in the range a team pays for an AI subscription anyway."
+      "de": "14 Tage kostenlos testen. Danach 29 € pro Nutzer und Monat.",
+      "en": "Free for 14 days. After that €29 per user per month."
     },
     "perUserMonth": {
       "de": "/User · Monat",
@@ -537,8 +542,8 @@
         },
         "features": [
           {
-            "de": "Chat auf euren freigegebenen Zoho-Anwendungen — lesen und schreiben",
-            "en": "Chat across the Zoho applications you grant — read and write"
+            "de": "Chat auf euren freigegebenen Zoho-Anwendungen - lesen und schreiben",
+            "en": "Chat across the Zoho applications you grant - read and write"
           },
           {
             "de": "Führende Modelle inklusive, ohne eigenen API-Key",
@@ -599,7 +604,7 @@
           "de": "Einrichtung anfragen →",
           "en": "Request setup →"
         },
-        "ctaHref": "#cta"
+        "ctaHref": "#demo"
       }
     ]
   },
@@ -609,16 +614,16 @@
       "en": "Examples"
     },
     "titlePart1": {
-      "de": "Fragen, die euer Zoho",
-      "en": "Questions your Zoho"
+      "de": "Fragen, die eure KI",
+      "en": "Questions your AI"
     },
     "titleGold": {
       "de": "allein nicht beantwortet.",
       "en": "cannot answer on its own."
     },
     "subtitle": {
-      "de": "Der Agent arbeitet auf den Zoho-Anwendungen, die ihr ihm freigebt — CRM, Books, Desk, Projects und mehr. Alles in normaler Sprache, ohne Report-Builder.",
-      "en": "The agent works on whichever Zoho applications you grant it — CRM, Books, Desk, Projects and more. All in plain language, no report builder."
+      "de": "Der Agent arbeitet auf den Zoho-Anwendungen, die ihr ihm freigebt - CRM, Books, Desk, Projects und mehr. Alles in normaler Sprache, ohne Reports.",
+      "en": "The agent works on whichever Zoho applications you grant it - CRM, Books, Desk, Projects and more. All in plain language, no reports."
     },
     "items": [
       {
@@ -643,8 +648,8 @@
           "en": "Follow up instead of searching"
         },
         "desc": {
-          "de": "„Welche Angebote aus dem letzten Monat sind noch offen?“ — Antwort im Chat, statt einen Report zu bauen.",
-          "en": "“Which quotes from last month are still open?” — answered in chat instead of building a report."
+          "de": "„Welche Angebote aus dem letzten Monat sind noch offen?“ - Antwort im Chat, statt einen Report zu bauen.",
+          "en": "“Which quotes from last month are still open?” - answered in chat instead of building a report."
         },
         "tags": [
           "CRM",
@@ -683,12 +688,12 @@
       {
         "icon": "◈",
         "title": {
-          "de": "Auswertungen ohne Report-Builder",
-          "en": "Reports without the report builder"
+          "de": "Auswertungen ohne Reports",
+          "en": "Insights without reports"
         },
         "desc": {
-          "de": "„Wie verteilt sich unsere Pipeline auf das Vertriebsteam?“ — gefragt, statt geklickt.",
-          "en": "“How is our pipeline distributed across the team?” — asked instead of clicked."
+          "de": "„Wie verteilt sich unsere Pipeline auf das Vertriebsteam?“ - gefragt, statt geklickt.",
+          "en": "“How is our pipeline distributed across the team?” - asked instead of clicked."
         },
         "tags": [
           "CRM",
@@ -702,8 +707,8 @@
           "en": "You decide the scope"
         },
         "desc": {
-          "de": "Welche Zoho-Anwendungen und Module der Agent sehen darf, legt ihr fest — nicht wir.",
-          "en": "You define which Zoho applications and modules the agent may see — not us."
+          "de": "Welche Zoho-Anwendungen und Module der Agent sehen darf, legt ihr fest - nicht wir.",
+          "en": "You define which Zoho applications and modules the agent may see - not us."
         },
         "tags": [
           "Kontrolle"
@@ -722,7 +727,7 @@
     },
     "subtitle": {
       "de": "Einmal einrichten, danach meldet sich jeder im Team nur noch an.",
-      "en": "Set up once — after that everyone on the team simply signs in."
+      "en": "Set up once - after that everyone on the team simply signs in."
     },
     "steps": [
       {
@@ -794,12 +799,12 @@
           "en": "Start"
         },
         "title": {
-          "de": "Fragen — auf Deutsch",
-          "en": "Ask — in plain language"
+          "de": "Fragen - auf Deutsch",
+          "en": "Ask - in plain language"
         },
         "desc": {
-          "de": "Jeder im Team meldet sich per SSO an und fragt los. Keine Skripte, keine Formeln, kein Report-Builder.",
-          "en": "Everyone signs in via SSO and starts asking. No scripts, no formulas, no report builder."
+          "de": "Jeder im Team meldet sich per SSO an und fragt los. Keine Skripte, keine Formeln, keine Reports.",
+          "en": "Everyone signs in via SSO and starts asking. No scripts, no formulas, no reports."
         },
         "demoLines": [
           {
@@ -826,7 +831,7 @@
       "en": "The Zoho ecosystem"
     },
     "titlePart1": {
-      "de": "Tiefe Integration über deinen",
+      "de": "Tiefe Integration über euren",
       "en": "Deep integration across your"
     },
     "titleGold": {
@@ -834,8 +839,8 @@
       "en": "entire Zoho stack."
     },
     "subtitle": {
-      "de": "Tau Agent läuft direkt in Zoho. Kein allgemeiner Connector — eine auf Zoho zugeschnittene Schicht über euren Anwendungen, die deren Werkzeuge kennt und für jede Frage die passenden auswählt.",
-      "en": "Tau Agent lives natively inside Zoho. Not a shallow connector — a deep, intelligent layer on top of your CRM that understands how Books, Desk, Projects and the rest fit together."
+      "de": "Tau Agent läuft direkt in Zoho. Kein allgemeiner Connector - eine auf Zoho zugeschnittene Schicht über euren Anwendungen, die deren Werkzeuge kennt und für jede Frage die passenden auswählt.",
+      "en": "Tau Agent runs directly inside Zoho. Not a generic connector - a layer tailored to Zoho on top of your applications that knows their tools and picks the right ones for each question."
     },
     "ctaLabel": {
       "de": "App nicht dabei? Sag uns →",
@@ -897,8 +902,8 @@
           "en": "How is this different from ChatGPT or Claude?"
         },
         "a": {
-          "de": "Es sind dieselben führenden Modelle — der Unterschied ist die Anbindung. Tau Agent arbeitet direkt auf euren Zoho-Daten und läuft im CRM, statt in einem zweiten Tab. Und der Zugang gehört dem Unternehmen, nicht dem einzelnen Mitarbeiter.",
-          "en": "They are the same leading models — the difference is the connection. Tau Agent works directly on your Zoho data and runs inside your CRM instead of a second tab. And access belongs to the company, not to the individual employee."
+          "de": "Es sind dieselben führenden Modelle - der Unterschied ist die Anbindung. Tau Agent arbeitet direkt auf euren Zoho-Daten und läuft im CRM, statt in einem zweiten Tab. Und der Zugang gehört dem Unternehmen, nicht dem einzelnen Mitarbeiter.",
+          "en": "They are the same leading models - the difference is the connection. Tau Agent works directly on your Zoho data and runs inside your CRM instead of a second tab. And access belongs to the company, not to the individual employee."
         },
         "open": true
       },
@@ -908,8 +913,8 @@
           "en": "Why not just connect an AI to Zoho ourselves?"
         },
         "a": {
-          "de": "Für eine einzelne Person ist das machbar. Für ein Team heißt es: ein eigenes Abo pro Person, eine eigene Einrichtung pro Person — und beim Austritt gibt es keinen Schalter, der den Zugriff wieder entzieht. Genau das nimmt euch Tau Agent ab.",
-          "en": "For a single person that is doable. For a team it means one subscription per person, one setup per person — and when somebody leaves there is no switch to revoke access. That is exactly what Tau Agent takes care of."
+          "de": "Für eine einzelne Person ist das machbar. Für ein Team heißt es: ein eigenes Abo pro Person, eine eigene Einrichtung pro Person - und beim Austritt gibt es keinen Schalter, der den Zugriff wieder entzieht. Genau das nimmt euch Tau Agent ab.",
+          "en": "For a single person that is doable. For a team it means one subscription per person, one setup per person - and when somebody leaves there is no switch to revoke access. That is exactly what Tau Agent takes care of."
         }
       },
       {
@@ -918,8 +923,8 @@
           "en": "Which Zoho applications are supported?"
         },
         "a": {
-          "de": "Ihr entscheidet, worauf der Agent zugreifen darf — zum Beispiel CRM, Books, Projects oder Desk. Der Umfang wird bei der Einrichtung festgelegt und lässt sich jederzeit ändern.",
-          "en": "You decide what the agent may access — for example CRM, Books, Projects or Desk. The scope is set during setup and can be changed at any time."
+          "de": "Ihr entscheidet, worauf der Agent zugreifen darf - zum Beispiel CRM, Books, Projects oder Desk. Der Umfang wird bei der Einrichtung festgelegt und lässt sich jederzeit ändern.",
+          "en": "You decide what the agent may access - for example CRM, Books, Projects or Desk. The scope is set during setup and can be changed at any time."
         }
       },
       {
@@ -928,8 +933,8 @@
           "en": "Which models are included?"
         },
         "a": {
-          "de": "Aktuell Google Gemini und Anthropic Claude in mehreren Ausbaustufen — enthalten, ohne eigenen API-Key. Die Auswahl wird laufend erweitert.",
-          "en": "Currently Google Gemini and Anthropic Claude in several tiers — included, with no API key of your own. The selection is being extended continuously."
+          "de": "Aktuell die führenden Modelle von OpenAI (ChatGPT), Anthropic (Claude) und Google (Gemini) in mehreren Ausbaustufen - enthalten, ohne eigenen API-Key. Die Auswahl wird laufend erweitert.",
+          "en": "Currently the leading models from OpenAI (ChatGPT), Anthropic (Claude) and Google (Gemini) in several tiers - included, with no API key of your own. The selection is being extended continuously."
         }
       },
       {
@@ -990,16 +995,16 @@
       "en": "Get started"
     },
     "titleLine1": {
-      "de": "Ihr zahlt ohnehin für KI.",
-      "en": "You are paying for AI anyway."
+      "de": "Die richtige KI für euer Unternehmen wählen,",
+      "en": "Choose the right AI for your company,"
     },
     "titleLine2Pre": {
-      "de": "Gebt ihr",
-      "en": "Give it"
+      "de": "mit Zugriff auf",
+      "en": "with access to"
     },
     "titleLine2Gold": {
-      "de": "Zugriff auf euer Zoho.",
-      "en": "access to your Zoho."
+      "de": "euer Zoho.",
+      "en": "your Zoho."
     },
     "subtitle": {
       "de": "14 Tage kostenlos, keine Kreditkarte. Anmeldung per Zoho-SSO.",

@@ -23,6 +23,20 @@ export default function AgentCta({
   sectionLabel, titleLine1, titleLine2Pre, titleLine2Gold, subtitle, footnote,
   installUrl, installLabel, installHint, steps, secondaryLabel,
 }: AgentCtaProps) {
+  // Aufklappen, wenn die Seite mit #demo angesteuert wird (z. B. aus der Preissektion)
+  useEffect(() => {
+    const openIfTargeted = () => {
+      if (window.location.hash !== '#demo') return;
+      const el = document.getElementById('demo') as HTMLDetailsElement | null;
+      if (!el) return;
+      el.open = true;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+    openIfTargeted();
+    window.addEventListener('hashchange', openIfTargeted);
+    return () => window.removeEventListener('hashchange', openIfTargeted);
+  }, []);
+
   useEffect(() => {
     const container = document.getElementById(ZOHO_DIV_ID);
     if (!container || container.querySelector('iframe')) return;
@@ -112,7 +126,7 @@ export default function AgentCta({
           {installHint}
         </p>
 
-        <details style={{ marginTop: 32 }}>
+        <details id="demo" style={{ marginTop: 32 }}>
           <summary style={{ cursor: 'pointer', fontSize: 13, color: 'rgba(255,255,255,0.55)', listStyle: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
             {secondaryLabel}
             <span style={{ fontSize: 11, opacity: 0.6 }}>▾</span>
