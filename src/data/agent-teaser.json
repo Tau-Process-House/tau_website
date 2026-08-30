@@ -1,20 +1,41 @@
 {
-  "betaPill": { "de": "Jetzt live", "en": "Now live" },
+  "betaPill": {
+    "de": "Jetzt live",
+    "en": "Now live"
+  },
   "visual": "τ",
   "wordmark": "TAU ZOHO AGENT",
-  "preLabel": { "de": "NEUES PRODUKT", "en": "NEW PRODUCT" },
+  "preLabel": {
+    "de": "NEUES PRODUKT",
+    "en": "NEW PRODUCT"
+  },
   "headline": [
-    { "de": "Dein Zoho CRM,", "en": "Your Zoho CRM," },
-    { "de": "auf Autopilot.", "en": "on autopilot." }
+    {
+      "de": "Das KI-Abo für Teams",
+      "en": "The AI subscription"
+    },
+    {
+      "de": "mit Zoho.",
+      "en": "for teams on Zoho."
+    }
   ],
   "subtitle": {
-    "de": "Der KI-Agent, der Leads, Deals, Support und Berichte übernimmt — damit dein Vertrieb abschließt, statt zu klicken.",
-    "en": "The AI agent that handles leads, deals, support and reporting — so your sales team closes, not clicks."
+    "de": "Zugriff auf die Modelle aller führenden Anbieter - mit einer tiefen Integration in euer Zoho-System. Direkt im CRM, für das ganze Team.",
+    "en": "Access to the models of all leading providers - with deep integration into your Zoho system. Right inside your CRM, for the whole team."
   },
   "bullets": [
-    { "de": "Direkt im CRM — Claude, ChatGPT & Gemini inklusive", "en": "Right inside your CRM — Claude, ChatGPT & Gemini included" },
-    { "de": "Lead-Scoring & Enrichment in Echtzeit", "en": "Real-time lead scoring & enrichment" },
-    { "de": "Natürlichsprachliche CRM-Befehle", "en": "Natural-language CRM commands" }
+    {
+      "de": "Direkt im CRM - Claude, ChatGPT & Gemini inklusive",
+      "en": "Right inside your CRM - Claude, ChatGPT & Gemini included"
+    },
+    {
+      "de": "Fragen an CRM, Buchhaltung und Projekte in normaler Sprache",
+      "en": "Ask CRM, accounting and projects in plain language"
+    },
+    {
+      "de": "Zugriff zentral erteilen, entziehen und nachvollziehen",
+      "en": "Grant, revoke and audit access centrally"
+    }
   ],
   "cta": {
     "de": "Mehr über Tau Agent erfahren →",
