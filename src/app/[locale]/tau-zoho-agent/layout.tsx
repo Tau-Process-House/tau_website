@@ -65,13 +65,13 @@ export default async function AgentLayout({
         },
       },
       description: loc({
-        de: '14 Tage kostenlos testen, 10 Mio. Tokens inklusive. Danach 29 €/User pro Monat.',
-        en: '14-day free trial, 10M tokens included. Then €29/user per month.',
+        de: '14 Tage kostenlos testen, ohne Kreditkarte. Danach 29 €/User pro Monat.',
+        en: '14-day free trial, no credit card. Then €29/user per month.',
       }),
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Tau Process House GmbH',
+      name: 'Tau Process House',
       url: siteUrl,
     },
   };

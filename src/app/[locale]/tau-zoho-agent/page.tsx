@@ -3,6 +3,8 @@ import AgentNav from '@/components/agent/AgentNav';
 import AgentHero from '@/components/agent/AgentHero';
 import AgentCompare from '@/components/agent/AgentCompare';
 import AgentSolution from '@/components/agent/AgentSolution';
+import AgentCapabilities from '@/components/agent/AgentCapabilities';
+import AgentHowItWorks from '@/components/agent/AgentHowItWorks';
 import AgentPricing from '@/components/agent/AgentPricing';
 import AgentFaq from '@/components/agent/AgentFaq';
 import AgentCta from '@/components/agent/AgentCta';
@@ -32,7 +34,7 @@ export default async function TauZohoAgentPage({
       />
       <main id="agent-scroll" className="agent-scroll-container" style={{ backgroundColor: '#000' }}>
         <AgentHero
-          pill={{ text: loc(d.hero.pill.text), tag: d.hero.pill.tag }}
+          pill={{ text: loc(d.hero.pill.text) }}
           titleLine1={loc(d.hero.titleLine1)}
           titlePre={loc(d.hero.titlePre)}
           titleGold={loc(d.hero.titleGold)}
@@ -84,6 +86,19 @@ export default async function TauZohoAgentPage({
           }}
         />
 
+        <AgentCapabilities
+          sectionLabel={loc(d.capabilities.label)}
+          titlePart1={loc(d.capabilities.titlePart1)}
+          titleGold={loc(d.capabilities.titleGold)}
+          subtitle={loc(d.capabilities.subtitle)}
+          items={d.capabilities.items.map((item) => ({
+            icon: item.icon,
+            title: loc(item.title),
+            desc: loc(item.desc),
+            tags: item.tags,
+          }))}
+        />
+
         <AgentSolution
           sectionLabel={loc(d.solution.label)}
           titleLine1={loc(d.solution.titleLine1)}
@@ -106,6 +121,22 @@ export default async function TauZohoAgentPage({
             userMessage: loc(d.solution.chat.userMessage),
             agentMessage: loc(d.solution.chat.agentMessage),
           }}
+        />
+
+        <AgentHowItWorks
+          sectionLabel={loc(d.how.label)}
+          title={loc(d.how.title)}
+          subtitle={loc(d.how.subtitle)}
+          steps={d.how.steps.map((step) => ({
+            num: step.num,
+            stepLabel: loc(step.stepLabel),
+            title: loc(step.title),
+            desc: loc(step.desc),
+            demoLines: step.demoLines.map((line) => ({
+              type: line.type,
+              text: locStr(line.text),
+            })),
+          }))}
         />
 
         <AgentPricing
