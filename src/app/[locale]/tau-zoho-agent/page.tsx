@@ -159,6 +159,10 @@ export default async function TauZohoAgentPage({
             highlight: (t as { highlight?: boolean }).highlight,
             tagline: loc(t.tagline),
             features: t.features.map(loc),
+            ctaLabel: (t as { ctaLabel?: { de: string; en: string } }).ctaLabel
+              ? loc((t as { ctaLabel: { de: string; en: string } }).ctaLabel)
+              : undefined,
+            ctaHref: (t as { ctaHref?: string }).ctaHref,
           }))}
         />
 

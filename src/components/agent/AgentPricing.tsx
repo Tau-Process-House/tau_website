@@ -12,6 +12,8 @@ interface PricingTier {
   highlight?: boolean;
   tagline: string;
   features: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 interface AgentPricingProps {
@@ -212,7 +214,7 @@ export default function AgentPricing({
                 {/* CTA */}
                 {tier.available ? (
                   <a
-                    href={ctaHref}
+                    href={tier.ctaHref ?? ctaHref}
                     style={{
                       display: 'inline-block',
                       textAlign: 'center',
@@ -228,7 +230,7 @@ export default function AgentPricing({
                       border: `1px solid ${GOLD}`,
                     }}
                   >
-                    {ctaAvailableLabel}
+                    {tier.ctaLabel ?? ctaAvailableLabel}
                   </a>
                 ) : (
                   <div

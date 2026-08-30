@@ -66,15 +66,15 @@
       }
     },
     "titleLine1": {
-      "de": "Das KI-Abo für Teams,",
-      "en": "The AI subscription for teams"
+      "de": "Das KI-Abo für",
+      "en": "The AI subscription"
     },
     "titlePre": {
-      "de": "die mit",
-      "en": "that work with"
+      "de": "Teams mit",
+      "en": "for teams on"
     },
     "titleGold": {
-      "de": "Zoho arbeiten.",
+      "de": "Zoho.",
       "en": "Zoho."
     },
     "subtitle": {
@@ -418,7 +418,7 @@
         "en": "Your Zoho stack"
       },
       "caption": {
-        "de": "Zugriff auf all deine Zoho-Applikationen.",
+        "de": "Zugriff auf all eure Zoho-Applikationen.",
         "en": "Access to all your Zoho applications."
       },
       "logos": [
@@ -472,7 +472,7 @@
         "en": "Chat in CRM"
       },
       "caption": {
-        "de": "Direkt integriert in dein CRM.",
+        "de": "Direkt integriert in euer CRM.",
         "en": "Directly integrated into your CRM."
       },
       "userMessage": {
@@ -594,7 +594,12 @@
             "de": "Fester Ansprechpartner, deutschsprachig",
             "en": "A named contact, German-speaking"
           }
-        ]
+        ],
+        "ctaLabel": {
+          "de": "Einrichtung anfragen →",
+          "en": "Request setup →"
+        },
+        "ctaHref": "#cta"
       }
     ]
   },
@@ -623,7 +628,7 @@
           "en": "Before a customer call"
         },
         "desc": {
-          "de": "„Fass mir zusammen, was bei diesem Kunden zuletzt gelaufen ist.“ Der Agent kennt den Datensatz, den du gerade offen hast.",
+          "de": "„Fass mir zusammen, was bei diesem Kunden zuletzt gelaufen ist.“ Der Agent kennt den Datensatz, den ihr gerade offen habt.",
           "en": "“Summarise what happened with this customer recently.” The agent knows the record you currently have open."
         },
         "tags": [
@@ -829,7 +834,7 @@
       "en": "entire Zoho stack."
     },
     "subtitle": {
-      "de": "Tau Agent lebt nativ in Zoho. Kein oberflächlicher Connector — eine intelligente Schicht über deinem CRM, die versteht, wie Books, Desk, Projects und der Rest zusammenarbeiten.",
+      "de": "Tau Agent läuft direkt in Zoho. Kein allgemeiner Connector — eine auf Zoho zugeschnittene Schicht über euren Anwendungen, die deren Werkzeuge kennt und für jede Frage die passenden auswählt.",
       "en": "Tau Agent lives natively inside Zoho. Not a shallow connector — a deep, intelligent layer on top of your CRM that understands how Books, Desk, Projects and the rest fit together."
     },
     "ctaLabel": {
