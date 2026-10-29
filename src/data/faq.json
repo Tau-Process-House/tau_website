@@ -47,8 +47,8 @@
         "en": "What is the difference between a Zoho freelancer and a Zoho agency?"
       },
       "answer": {
-        "de": "Bei einer Agentur bezahlst du oft für mehrere Zwischenstufen: Vertrieb, Account Management, Projektleitung — bevor die eigentliche Arbeit beginnt. Ein Zoho-Freelancer wie Felix Rimbakowsky arbeitet direkt mit dir zusammen. Du kommunizierst mit dem Experten, nicht mit einem Vermittler. Das spart Overhead-Kosten, beschleunigt Entscheidungen und sorgt für mehr Kontinuität im Projekt. Tau Process House bietet zusätzlich Zugang zu einem Zoho Premium Partner und damit zu Zoho Premium Support — ein Vorteil, der sonst nur größeren Agenturen vorbehalten ist.",
-        "en": "With an agency, you often pay for multiple intermediate layers: sales, account management, project leadership — before the actual work begins. A Zoho freelancer like Felix Rimbakowsky works directly with you. You communicate with the expert, not an intermediary. This saves overhead costs, speeds up decisions, and ensures more continuity in the project. Tau Process House also provides access to a Zoho Premium Partner and thus Zoho Premium Support — an advantage otherwise reserved for larger agencies."
+        "de": "Bei einer Agentur bezahlst du oft für mehrere Zwischenstufen: Vertrieb, Account Management, Projektleitung — bevor die eigentliche Arbeit beginnt. Ein Zoho-Freelancer wie Felix Rimbakowsky arbeitet direkt mit dir zusammen. Du kommunizierst mit dem Experten, nicht mit einem Vermittler. Das spart Overhead-Kosten, beschleunigt Entscheidungen und sorgt für mehr Kontinuität im Projekt.",
+        "en": "With an agency, you often pay for multiple intermediate layers: sales, account management, project leadership — before the actual work begins. A Zoho freelancer like Felix Rimbakowsky works directly with you. You communicate with the expert, not an intermediary. This saves overhead costs, speeds up decisions, and ensures more continuity in the project."
       },
       "published": true
     },
@@ -73,18 +73,6 @@
       "answer": {
         "de": "Ja. Felix Rimbakowsky hat Erfahrung mit Migrationen von verschiedenen Systemen zu Zoho CRM und Zoho One — darunter Salesforce, HubSpot, Excel-basierte Lösungen und andere CRM-Plattformen. Der Prozess umfasst: Ist-Analyse und Datenmapping, Aufbau der Zielarchitektur in Zoho, Testmigration in einer Sandbox-Umgebung, Produktiv-Migration mit Validierung und anschließende Rollout-Begleitung. Dabei wird auf vollständige Datenintegrität und minimale Betriebsunterbrechung geachtet.",
         "en": "Yes. Felix Rimbakowsky has experience with migrations from various systems to Zoho CRM and Zoho One — including Salesforce, HubSpot, Excel-based solutions, and other CRM platforms. The process includes: as-is analysis and data mapping, building the target architecture in Zoho, test migration in a sandbox environment, production migration with validation, and subsequent rollout support. Full data integrity and minimal business disruption are always ensured."
-      },
-      "published": true
-    },
-    {
-      "id": "zoho-premium-support",
-      "question": {
-        "de": "Bietet Tau Process House Zoho Premium Support?",
-        "en": "Does Tau Process House offer Zoho Premium Support?"
-      },
-      "answer": {
-        "de": "Tau Process House arbeitet eng mit einem offiziellen Zoho Premium Partner zusammen. Dadurch haben Kunden von Felix Rimbakowsky Zugang zu Zoho Premium Support — schnellere Reaktionszeiten, direkte Eskalationsmöglichkeiten und priorisierte Bearbeitung von Zoho-seitigen Problemen. Dieser Zugang ist in der normalen Zoho-Lizenz nicht enthalten und ist sonst nur über große Partnerunternehmen verfügbar.",
-        "en": "Tau Process House works closely with an official Zoho Premium Partner. This gives clients of Felix Rimbakowsky access to Zoho Premium Support — faster response times, direct escalation options, and prioritized handling of Zoho-side issues. This access is not included in a standard Zoho license and is otherwise only available through large partner companies."
       },
       "published": true
     },
