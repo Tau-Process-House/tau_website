@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
     return [
       { source: '/tau-zoho-agent/:path*', destination: '/', permanent: false },
       { source: '/:locale(de|en)/tau-zoho-agent/:path*', destination: '/:locale', permanent: false },
+      // CRM-Check offline (Datenschutz): Seite und API entfernt, Weiterleitung auf Startseite
+      { source: '/zoho-check/:path*', destination: '/', permanent: false },
+      { source: '/:locale(de|en)/zoho-check/:path*', destination: '/:locale', permanent: false },
     ];
   },
   images: {
