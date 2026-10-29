@@ -86,45 +86,6 @@
   ],
   "products": [
     {
-      "id": "prod-tau-agent",
-      "type": "product",
-      "name": { "de": "Tau Zoho Agent", "en": "Tau Zoho Agent" },
-      "tagline": {
-        "de": "Der KI-Agent für dein Zoho CRM — Lead-Scoring, Deal-Automation und Reporting auf Autopilot.",
-        "en": "The AI agent for your Zoho CRM — lead scoring, deal automation and reporting on autopilot."
-      },
-      "problem": {
-        "de": "Vertriebsteams verbringen täglich 45 Minuten mit manueller Lead-Zuweisung, 30 % der Leads erhalten keinen Follow-up, und CRM-Berichte werden wöchentlich manuell erstellt.",
-        "en": "Sales teams spend 45 minutes daily on manual lead routing, 30% of leads get no follow-up, and CRM reports are compiled manually every week."
-      },
-      "description": {
-        "de": "Tau Zoho Agent verbindet sich per OAuth mit deinem Zoho CRM und übernimmt automatisch Lead-Scoring, Deal-Pipeline-Pflege, Support-Ticket-Eskalation und Reporting — ohne Deluge-Scripting.",
-        "en": "Tau Zoho Agent connects via OAuth to your Zoho CRM and automatically handles lead scoring, deal pipeline management, support ticket escalation and reporting — no Deluge scripting required."
-      },
-      "showcase": {
-        "type": "image",
-        "url": "",
-        "alt": { "de": "", "en": "" }
-      },
-      "results": [
-        { "metric": { "de": "Manuelle Lead-Zuweisung", "en": "Manual lead routing" }, "improvement": "→ 0 min" },
-        { "metric": { "de": "Automatische Follow-ups", "en": "Automated follow-ups" }, "improvement": "100%" },
-        { "metric": { "de": "Echtzeit-Reporting", "en": "Real-time reporting" }, "improvement": "24/7" }
-      ],
-      "pricing": {
-        "model": "beta",
-        "price": 0,
-        "currency": "EUR",
-        "label": "Beta Phase"
-      },
-      "cta": {
-        "label": { "de": "Alle Agent-Features ansehen", "en": "See full Agent features" },
-        "href": "/tau-zoho-agent"
-      },
-      "tags": ["AI", "Zoho CRM", "Automation"],
-      "published": true
-    },
-    {
       "id": "prod-001",
       "type": "product",
       "name": { "de": "Lead Enrichment Agent", "en": "Lead Enrichment Agent" },

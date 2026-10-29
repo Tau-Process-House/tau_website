@@ -26,8 +26,8 @@
 | 16 | `<html lang>` dynamisch | `lang={locale}` statt hardcodiert `"de"` |
 | 17 | hreflang-Tags | `alternates.languages` in Metadata für alle Seiten |
 | 18 | imprint `'use client'` entfernt | Imprint ist jetzt Server Component via `getTranslations()` |
-| 19 | Zoho-Logos entfernt (29.10.2026) | Startseite „Unsere Leistungen“: Zoho-Schriftzug raus, Text zentriert (`services.json` ohne `logo`). Tau-Agent-Karte „Euer Zoho-Stack“: App-Icons durch Textkacheln ersetzt (`agent.json` → `zohoApps.apps`). Bilddateien liegen noch in `public/` |
-| 20 | Tau-Agent-Seite offline (29.10.2026) | Temporärer Redirect 307 `/(de|en/)tau-zoho-agent` → Startseite in `next.config.ts`; Sitemap-Eintrag und Startseiten-Teaser entfernt, `MAIN_COUNT` 6→5. Seiten- und Teaser-Code bleiben erhalten — Reaktivierung: Redirect löschen, Teaser + Sitemap-Eintrag zurück, `MAIN_COUNT` 6 |
+| 19 | Fremdlogos entfernt (29.10.2026) | Zoho-Schriftzug auf der Startseite („Unsere Leistungen“) entfernt, Text zentriert. Alle Zoho-App-Icons sowie Claude-/OpenAI-/Gemini-Logos aus `public/` gelöscht (Markenrechte) |
+| 20 | Tau-Agent-Seite entfernt (29.10.2026) | Route `/tau-zoho-agent`, `components/agent/`, `TauAgentTeaserSection`, `agent.json`, `agent-teaser.json` und Agent-Eintrag in `work.json` gelöscht; Agent-Logik aus `GlobalDotNav`/`ConditionalLanguageToggle`/`globals.css` entfernt. Alte URLs leiten per 307 auf die Startseite (`next.config.ts`). Wiederherstellung nur über Git-Historie |
 
 ---
 
