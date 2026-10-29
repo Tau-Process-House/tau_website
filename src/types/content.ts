@@ -33,7 +33,6 @@ export interface ServicesContent {
   title: LocalizedString;
   platform: {
     name: string;
-    logo: string;
     description: LocalizedString;
   };
   mobileHint: LocalizedString;

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from '@/i18n/navigation';
 
-const MAIN_COUNT = 6;
+const MAIN_COUNT = 5;
 const AGENT_SECTIONS = ['top', 'problem', 'solution', 'pricing', 'faq', 'cta'];
 
 export default function GlobalDotNav() {

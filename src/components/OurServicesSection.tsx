@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { motion, PanInfo } from 'framer-motion';
-import Image from 'next/image';
 import { useLocalized } from '@/lib/use-localized';
 import servicesData from '@/data/services.json';
 import type { ServicesContent } from '@/types/content';
@@ -9,33 +8,6 @@ import type { ServicesContent } from '@/types/content';
 const services = servicesData as ServicesContent;
 
 const FONT = 'Arial, Helvetica, sans-serif';
-
-function ZohoLogo({ src }: { src: string }) {
-  const [imgError, setImgError] = useState(false);
-
-  if (imgError) {
-    return (
-      <span
-        className="font-bold tracking-tight"
-        style={{ color: '#E42527', fontSize: '3rem', fontFamily: FONT }}
-      >
-        ZOHO
-      </span>
-    );
-  }
-
-  return (
-    <div className="relative mx-auto w-1/2" style={{ height: '4rem' }}>
-      <Image
-        src={src}
-        alt="Zoho"
-        fill
-        className="object-contain"
-        onError={() => setImgError(true)}
-      />
-    </div>
-  );
-}
 
 export default function OurServicesSection() {
   const loc = useLocalized();
@@ -70,19 +42,14 @@ export default function OurServicesSection() {
           {loc(services.title)}
         </h2>
 
-        {/* Zoho Foundation — logo left, text right, 20% margin around container */}
+        {/* Zoho Foundation — centered text, 20% margin around container */}
         <div className="mx-0 md:mx-[20%]">
-          <div className="grid grid-cols-2 items-center gap-4 md:gap-8 mt-4 mb-4 md:mt-[40px] md:mb-[40px]">
-            <div className="flex justify-center">
-              <ZohoLogo src={services.platform.logo} />
-            </div>
-            <p
-              className="text-white"
-              style={{ fontSize: '20px', fontFamily: FONT }}
-            >
-              {loc(services.platform.description)}
-            </p>
-          </div>
+          <p
+            className="text-white text-center mt-4 mb-4 md:mt-[40px] md:mb-[40px]"
+            style={{ fontSize: '20px', fontFamily: FONT }}
+          >
+            {loc(services.platform.description)}
+          </p>
         </div>
 
         {/* Desktop: 4 cards in a row */}

@@ -5,6 +5,13 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['pdfkit'],
+  // Tau-Agent-Seite vorübergehend offline (temporärer Redirect, Code bleibt erhalten)
+  async redirects() {
+    return [
+      { source: '/tau-zoho-agent/:path*', destination: '/', permanent: false },
+      { source: '/:locale(de|en)/tau-zoho-agent/:path*', destination: '/:locale', permanent: false },
+    ];
+  },
   images: {
     remotePatterns: [
       {
